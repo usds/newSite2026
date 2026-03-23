@@ -1,0 +1,35 @@
+.wrapper {
+  width: fit-content;
+  color: var(--primary-light-muted);
+  font-size: var(--fs-meta);
+  font-weight: 300;
+  padding: 0.375rem 1.5rem;
+  border-radius: var(--border-radius-primary);
+  background: var(--primary-dark-panel-muted-transparent);
+  -webkit-backdrop-filter: var(--backdrop-filter-blur);
+  backdrop-filter: var(--backdrop-filter-blur);
+  box-shadow: var(--shadow-s);
+  overflow: hidden;
+}
+
+.left {
+  text-align: left;
+  align-self: start;
+}
+
+.center {
+  text-align: center;
+  align-self: center;
+
+}
+
+.right {
+  text-align: right;
+  align-self: flex-end;
+
+}
+
+.text {
+  display: inline-block;
+  will-change: transform;
+}

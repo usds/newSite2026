@@ -1,0 +1,416 @@
+.wrapper {
+  width: 100%;
+}
+
+.hero,
+.valuesSection,
+.disciplinesSection,
+.principlesSection,
+.spotlightsSection,
+.ctaSection {
+  width: 100%;
+}
+
+.hero {
+  margin-top: clamp(7rem, 14vh, 10rem);
+}
+
+.heroLayout {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-xl);
+}
+
+.heroContent {
+  min-width: 0;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-l);
+}
+
+.heroVisual {
+  min-width: 0;
+  flex: 0 0 clamp(14rem, 27vw, 21rem);
+}
+
+.heroBody,
+.valuesIntro,
+.valuesFoot,
+.principlesIntro {
+  margin: 0;
+  max-width: 72ch;
+  color: var(--primary-light-muted);
+  font-size: var(--fs-h5);
+  /* line-height: 1.65; */
+  font-weight: 400;
+  
+}
+
+/* .valuesFoot {
+  font-weight: 300;
+} */
+
+.valuesGrid {
+  width: 100%;
+}
+
+.valuesGrid > * {
+  width: 100%;
+}
+
+.valueCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.cardVisual {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.valueCardInner,
+.disciplineCardInner,
+.principleCardInner,
+.spotlightCardInner {
+  padding: var(--space-xl);
+}
+
+.valueTitle {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: var(--primary-color);
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-subtitle);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.valueBody {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: var(--primary-light-muted);
+  font-size: var(--fs-body);
+  /* line-height: 1.6; */
+  font-weight: 400;
+}
+
+.disciplineGrid {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: var(--space-xl);
+  row-gap: var(--space-2xl);
+  align-items: start;
+  justify-content: center;
+}
+
+/* .disciplineGrid > * {
+  width: 100%;
+} */
+
+.disciplineCard {
+  position: relative;
+  /* border: 1px solid rgba(255, 255, 255, 0.08); */
+  /* background: linear-gradient(
+    145deg,
+    rgba(10, 32, 54, 0.68),
+    rgba(7, 26, 44, 0.54)
+  ); */
+
+    /* background: radial-gradient(
+    circle at 10% 10%,
+    var(--primary-color-transparent),
+    transparent 90%
+  ); */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+  padding: 0;
+  background: none;
+  border: 0;
+  box-shadow: none;
+  flex: 1 1 calc((100% - (var(--space-xl) * 2)) / 3);
+  min-width: min(100%, 16rem);
+  padding-left: var(--space-l);
+}
+
+.disciplineCard::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--space-xl) / -2);
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--primary-light-muted-transparent);
+}
+
+.disciplineCard:nth-child(3n + 1) {
+  padding-left: 0;
+}
+
+.disciplineCard:nth-child(3n + 1)::before {
+  display: none;
+}
+
+.disciplineTitle {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: var(--primary-color);
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-subtitle);
+  margin-bottom: var(--space-s);
+  /* line-height: 1.5; */
+  /* letter-spacing: -0.01em; */
+}
+
+.disciplineSummary {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: var(--primary-light);
+  font-size: var(--fs-body);
+  line-height: 2;
+  font-weight: 300;
+  margin-bottom: 0;
+}
+
+.disciplineSkills {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: var(--primary-light-muted);
+  font-size: var(--fs-body);
+  font-weight: 300;
+  /* line-height: 2; */
+
+
+  /* line-height: 1.65; */
+}
+
+.disciplineSkills span {
+  color: var(--primary-color-light);
+}
+
+.principlesGrid {
+  width: 100%;
+}
+
+.principlesGrid > * {
+  width: 100%;
+}
+
+.principleCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.principleTitle {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: var(--primary-light);
+  font-size: var(--fs-h4);
+  font-weight: 430;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.principleBody {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: var(--primary-light-muted);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  font-weight: 340;
+}
+
+.spotlightGrid {
+  width: 100%;
+}
+
+.spotlightGrid > * {
+  width: 100%;
+}
+
+.spotlightCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.spotlightAgency {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: var(--primary-color-light);
+  font-size: var(--fs-meta-smaller);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.spotlightTitle {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: var(--primary-light);
+  font-size: var(--fs-h4);
+  font-weight: 430;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.spotlightBody {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: var(--primary-light-muted);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  font-weight: 340;
+}
+
+.spotlightLink {
+  position: relative;
+  z-index: 1;
+  margin-top: var(--space-xs);
+  width: fit-content;
+  color: var(--primary-light-subtle);
+  font-size: var(--fs-meta);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.spotlightLink:hover {
+  color: var(--primary-light);
+}
+
+.ctaSection {
+  align-items: center;
+  text-align: center;
+}
+
+.ctaTitle {
+  margin: 0;
+  color: var(--primary-light);
+  font-size: var(--fs-h2);
+  font-weight: 500;
+  line-height: 1.2;
+  font-family: var(--font-instrumentSerif);
+}
+
+.ctaAction {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 72em) {
+  .valuesGrid > *,
+  .principlesGrid > *,
+  .spotlightGrid > * {
+    flex-basis: 100%;
+    min-width: 0;
+  }
+
+  .disciplineGrid {
+    column-gap: var(--space-l);
+    row-gap: var(--space-xl);
+  }
+
+  .disciplineCard {
+    flex-basis: calc((100% - var(--space-l)) / 2);
+    min-width: 0;
+    padding-left: var(--space-m);
+  }
+
+  .disciplineCard::before {
+    left: calc(var(--space-l) / -2);
+    display: block;
+  }
+
+  .disciplineCard:nth-child(3n + 1) {
+    padding-left: var(--space-m);
+  }
+
+  .disciplineCard:nth-child(3n + 1)::before {
+    display: block;
+  }
+
+  .disciplineCard:nth-child(odd) {
+    padding-left: 0;
+  }
+
+  .disciplineCard:nth-child(odd)::before {
+    display: none;
+  }
+}
+
+@media (max-width: 40em) {
+  .hero {
+    margin-top: clamp(6.5rem, 13vh, 8rem);
+  }
+
+  .valueCardInner,
+  .disciplineCardInner,
+  .principleCardInner,
+  .spotlightCardInner {
+    padding: var(--space-l);
+  }
+
+  .heroBody,
+  .valuesIntro,
+  .valuesFoot,
+  .principlesIntro {
+    font-size: var(--fs-body);
+  }
+
+  .ctaTitle {
+    font-size: var(--fs-h3);
+  }
+
+  .disciplineGrid {
+    row-gap: var(--space-l);
+  }
+
+  .disciplineCard,
+  .disciplineCard:nth-child(3n + 1),
+  .disciplineCard:nth-child(odd) {
+    flex-basis: 100%;
+    padding-left: 0;
+  }
+
+  .disciplineCard::before,
+  .disciplineCard:nth-child(3n + 1)::before,
+  .disciplineCard:nth-child(odd)::before {
+    display: none;
+  }
+}
+
+@media (max-width: 64em) {
+  .heroLayout {
+    flex-direction: column;
+  }
+
+  .heroVisual {
+    flex: none;
+    width: 100%;
+  }
+}

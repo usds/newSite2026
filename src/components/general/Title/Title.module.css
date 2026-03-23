@@ -1,0 +1,26 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+}
+
+.left {
+  justify-content: flex-start;
+}
+
+.center {
+  justify-content: center;
+}
+
+.right {
+  justify-content: flex-end;
+}
+
+.title {
+  visibility: hidden;
+}
+
+.title :global(.word),
+.title :global(.char) {
+  font-family: var(--font-instrumentSerif) !important;
+  line-height: inherit;
+}

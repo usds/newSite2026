@@ -1,0 +1,307 @@
+.wrapper {
+  color: var(--primary-light);
+}
+
+.inner {
+  display: flex;
+  gap: var(--space-xl);
+  /* align-items: stretch; */
+  justify-content: space-between;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+  /* border: 1px solid red; */
+}
+
+.left {
+  flex: 1 1 40%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+  max-width: 800px;
+  /* border: 1px solid red; */
+}
+
+.right {
+  flex: 1 1 40%;
+  min-width: 0;
+  max-width: 800px;
+
+  height: 100%;
+  align-self: stretch;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--border-radius-primary);
+  background: radial-gradient(
+    circle at 10% 10%,
+    var(--primary-color-transparent),
+    transparent 90%
+  );
+  box-shadow: var(--shadow-s);
+}
+
+.rightInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xl);
+  padding: var(--space-xl);
+}
+
+.right::before {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  background: radial-gradient(
+    circle at 25% 0%,
+    var(--primary-color-transparent),
+    transparent 55%
+  );
+  filter: blur(50px);
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+.kicker {
+}
+
+.roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-l);
+}
+
+.roleCard {
+  flex: 1 1 calc(50% - var(--space-m));
+  min-width: 220px;
+}
+
+.roleCardInner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-m);
+  padding: var(--space-m);
+  border-radius: var(--border-radius-secondary);
+  background: var(--primary-dark-panel-transparent);
+  -webkit-backdrop-filter: var(--backdrop-filter-blur);
+  backdrop-filter: var(--backdrop-filter-blur);
+  box-shadow: var(--shadow-s);
+}
+
+.roleIcon {
+  padding: var(--space-s);
+  border-radius: calc(var(--border-radius-secondary) - 1.5rem);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--secondary-color-light-transparent);
+  color: var(--primary-color);
+}
+
+.roleIcon svg {
+  height: 100%;
+  width: 100%;
+}
+
+.roleText {
+  font-weight: 500;
+  color: var(--primary-light-subtle);
+  font-size: var(--fs-body);
+}
+
+.expectList {
+  list-style: none;
+}
+
+.expectItem {
+  align-items: center;
+  color: var(--primary-color);
+}
+
+.checkDot {
+}
+
+.expectText {
+  color: var(--primary-light-muted);
+}
+
+.panelTitle {
+  margin: 0;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.steps {
+  width: 100%;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  position: relative;
+  z-index: 1;
+  flex: 1 1 auto;
+}
+
+.stepRow {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.stepBadge {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(24, 182, 255, 0.12);
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.stepBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.stepTitle {
+  margin: 0;
+  font-weight: 700;
+  color: var(--primary-light-subtle);
+}
+
+.stepText {
+  margin: 0;
+  color: var(--primary-light-muted);
+  font-size: var(--fs-meta);
+}
+
+.ctaWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-l);
+  font-weight: 500;
+}
+.applyButton {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.95rem 1.1rem;
+  border-radius: 14px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  background: linear-gradient(
+    90deg,
+    var(--primary-color) 0%,
+    var(--primary-color-light) 100%
+  );
+  text-decoration: none;
+  box-shadow: 0 0 26px rgba(24, 182, 255, 0.22);
+}
+
+.applyButton:hover {
+  filter: brightness(1.03);
+}
+
+.applyButton:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 3px;
+}
+
+.arrow {
+  transform: translateY(1px);
+}
+
+.note {
+  text-align: center;
+  color: var(--primary-light-muted);
+  font-size: var(--fs-meta);
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 64em) {
+  .inner {
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+
+  .right {
+    width: 100%;
+  }
+
+  .rightInner {
+    padding: var(--space-l);
+    gap: var(--space-xl);
+  }
+
+  .roleCard {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 40em) {
+  .inner {
+    gap: var(--space-l);
+  }
+
+  .left {
+    gap: var(--space-xl);
+  }
+
+  .roles {
+    gap: var(--space-m);
+  }
+
+  .roleCard {
+    border-radius: var(--border-radius-primary);
+  }
+
+  .roleCardInner {
+    padding: var(--space-m);
+  }
+
+  .right {
+    border-radius: var(--border-radius-primary);
+  }
+
+  .rightInner {
+    padding: var(--space-m);
+    gap: var(--space-l);
+  }
+
+  .steps {
+    gap: var(--space-l);
+  }
+
+  .stepRow {
+    gap: 0.75rem;
+  }
+
+  .stepBadge {
+    width: 34px;
+    height: 34px;
+    font-size: var(--fs-meta);
+  }
+}

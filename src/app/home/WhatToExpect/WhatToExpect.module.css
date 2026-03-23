@@ -1,0 +1,36 @@
+.wrapper {
+  width: 100%;
+}
+
+.inner {
+  width: 100%;
+  display: flex;
+  gap: var(--space-l);
+  align-items: flex-start;
+}
+
+.inner > :first-child {
+  min-width: 0;
+  flex: 0 0 45%;
+}
+
+.inner > :last-child {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.accordionWrap {
+  min-width: 0;
+}
+
+@media (max-width: 64em) {
+  .inner {
+    flex-direction: column;
+    gap: var(--space-l);
+  }
+
+  .inner > :first-child,
+  .inner > :last-child {
+    flex: 1 1 100%;
+  }
+}

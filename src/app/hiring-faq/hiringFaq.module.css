@@ -1,0 +1,245 @@
+.wrapper {
+  width: 100%;
+  flex: 1 1 auto;
+
+  /* border: 1px solid rgb(17, 255, 0); */
+
+}
+
+.frame {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* border: 1px solid red; */
+}
+
+.gapMd {
+  gap: var(--space-m);
+}
+
+.gapLg {
+  gap: var(--space-xl);
+}
+
+.panelTone {
+  border-radius: var(--border-radius-primary);
+  padding: var(--space-2xl);
+}
+
+.hero,
+.section,
+.ctaSection {
+  width: 100%;
+}
+
+.section {
+  padding: 0;
+  /* border: 1px solid red; */
+}
+
+
+
+.hero {
+  margin-top: clamp(7rem, 14vh, 10rem);
+  margin-bottom: var(--space-s);
+}
+
+.quickLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-s);
+}
+
+.quickLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--border-radius-tertiary);
+  border: 1px solid var(--primary-light-muted-transparent);
+  background: var(--primary-dark-panel-transparent);
+  color: var(--primary-light-subtle);
+  font-size: var(--fs-meta);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: var(--transition-normal);
+}
+
+.quickLink:hover {
+  color: var(--primary-light);
+  border-color: var(--primary-color-light-transparent);
+}
+
+.faqList {
+  width: 100%;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2xl);
+  /* border: 1px solid red; */
+}
+
+.faqItem,
+.equalOpportunity {
+  /* border-radius: var(--border-radius-primary);
+  background: radial-gradient(
+    circle at 10% 10%,
+    var(--primary-color-transparent),
+    transparent 90%
+  );
+  box-shadow: var(--shadow-s); */
+  overflow: hidden;
+  text-align: left;
+  width: 100%;
+  max-width: 50%;
+}
+
+.faqItemInner,
+.equalOpportunityInner {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  gap: var(--space-s);
+  /* border: 1px solid red; */
+}
+
+.question {
+  margin: 0;
+  color: var(--primary-color-light);
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-subtitle);
+}
+
+.answerGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+}
+
+.answer {
+  margin: 0;
+  color: var(--primary-light-subtle);
+  font-size: var(--fs-body);
+  font-weight: 300;
+  line-height: 1.65;
+  max-width: 70ch;
+}
+
+.answerList {
+  margin: 0;
+  padding-left: var(--space-2xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+  color: var(--primary-light-muted);
+  font-size: var(--fs-body);
+  font-weight: 300;
+  max-width: 60ch;
+}
+
+.timelineGrid {
+  width: 100%;
+  display: flex;
+  /* flex-direction: column; */
+  gap: var(--space-xl);
+  margin: var(--space-m) 0;
+  /* border: 1px solid red !important; */
+}
+
+.timelineCard {
+  flex: 1 1 auto;
+  max-width: calc(50% - var(--space-m));
+  border-radius: var(--border-radius-primary);
+  background: radial-gradient(
+    circle at 10% 10%,
+    var(--primary-color-transparent),
+    transparent 90%
+  );
+  box-shadow: var(--shadow-s);
+  overflow: hidden;
+}
+
+.timelineCardInner {
+  padding: var(--space-l);
+}
+
+.timelineTitle {
+  margin: 0 0 var(--space-m);
+  color: var(--primary-light);
+  font-size: var(--fs-h4);
+  /* letter-spacing: 0.08em; */
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--primary-color-light);
+}
+
+.timelineTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.timelineTable th,
+.timelineTable td {
+  text-align: left;
+  padding: 0.75rem;
+  border-top: 1px solid var(--primary-light-muted-transparent);
+  font-size: var(--fs-body);
+  /* line-height: 1.45; */
+}
+
+.timelineTable th {
+  color: var(--primary-color);
+  font-weight: 400;
+}
+
+.timelineTable td {
+  color: var(--primary-light-muted);
+}
+
+.timelineTable th:last-child,
+.timelineTable td:last-child {
+  text-align: right;
+}
+
+.ctaSection {
+  align-items: center;
+  text-align: center;
+  margin-top: var(--space-s);
+}
+
+.ctaTitle {
+  margin: 0;
+  color: var(--primary-light);
+  font-size: var(--fs-h2);
+  font-weight: 500;
+  line-height: 1.2;
+  font-family: var(--font-instrumentSerif);
+}
+
+.ctaAction {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 72em) {
+  .timelineGrid {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 40em) {
+  .hero {
+    margin-top: clamp(6.5rem, 13vh, 8rem);
+  }
+
+  .panelTone {
+    padding: var(--space-l);
+  }
+
+  .ctaTitle {
+    font-size: var(--fs-h3);
+  }
+}

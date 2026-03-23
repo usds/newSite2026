@@ -1,0 +1,171 @@
+.wrapper {
+  width: 100%;
+  gap: var(--space-xl);
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+}
+
+.practiceGrid {
+  min-width: 0;
+  flex: 1 1 auto;
+  /* border: 1px solid red; */
+  display: flex;
+  /* flex-wrap: wrap; */
+  gap: var(--space-xl);
+}
+
+.practiceCard {
+  flex: 1 1 calc((100% - (var(--space-xl) * 2)) / 3);
+  min-width: min(100%, 15rem);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  border-radius: var(--border-radius-primary);
+  background: radial-gradient(
+    circle at 10% 10%,
+    var(--primary-color-transparent),
+    transparent 90%
+  );
+  box-shadow: var(--shadow-s);
+  overflow: hidden;
+  /* border: 1px solid red; */
+  /* height: 300px; */
+}
+
+.practiceCardInner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  height: 100%;
+  padding: var(--space-xl);
+}
+
+.cardVisual {
+  width: 100%;
+  /* margin-bottom: var(--space-s); */
+  border-radius: var(--border-radius-secondary);
+}
+
+.practiceTitle {
+  margin: 0;
+  color: var(--primary-color-light);
+  font-weight: 600;
+  font-size: var(--fs-h4);
+  line-height: 1.35;
+}
+
+.practiceBody {
+  margin: 0;
+  color: var(--primary-light-subtle);
+  font-size: var(--fs-h5);
+  font-weight: 300;
+}
+
+.communitiesPanel {
+  min-width: 0;
+  flex: none;
+  width: 100%;
+  /* border-radius: var(--border-radius-primary); */
+  /* background: radial-gradient(
+    circle at 10% 10%,
+    var(--primary-color-transparent),
+    transparent 90%
+  ); */
+  /* box-shadow: var(--shadow-s); */
+  overflow: hidden;
+  /* border: 1px solid red; */
+  width: fit-content;
+  align-self: center;
+}
+
+.communitiesPanelInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-m);
+  /* padding: var(--space-xl); */
+  height: 100%;
+  width: 100%;
+}
+
+.communitiesTitle {
+  margin: 0;
+  color: var(--primary-light);
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-subtitle);
+  text-transform: capitalize;
+  font-family: var(--font-instrumentSerif);
+}
+
+.communityList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+  width: 100%;
+  margin-bottom: var(--space-m) ;
+
+}
+
+.communityItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-m);
+  color: var(--primary-color-light);
+  font-size: var(--fs-h3);
+  justify-content: center;
+  padding: 0.75rem;
+  font-weight: 300;
+}
+
+.dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: var(--primary-color-light);
+  opacity: 0.9;
+  flex: 0 0 auto;
+}
+
+.communitiesCta {
+  margin-top: auto;
+  width: fit-content;
+}
+
+@media (max-width: 72em) {
+  .practiceGrid {
+    gap: var(--space-l);
+  }
+
+  .practiceCard {
+    flex-basis: 100%;
+    min-width: 0;
+  }
+
+  .communitiesPanel {
+    flex: none;
+    width: 100%;
+  }
+}
+
+@media (max-width: 40em) {
+  .content {
+    gap: var(--space-l);
+  }
+
+  .practiceCardInner,
+  .communitiesPanelInner {
+    padding: var(--space-l);
+  }
+
+  .practiceGrid {
+    gap: var(--space-m);
+  }
+}

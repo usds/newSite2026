@@ -1,0 +1,142 @@
+.wrapper {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-light);
+  position: relative;
+
+  background: var(--primary-dark);
+  box-shadow: var(--shadow-s);
+  overflow: hidden;
+  /* margin-bottom: var(--space-l); */
+}
+
+.mediaWrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.mediaWrapperInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.image {
+  mix-blend-mode: screen;
+  filter: saturate(200%) contrast(120%) brightness(20%) grayscale(50%);
+}
+
+.inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4.5rem;
+  padding: 3rem;
+  max-width: var(--max-layout-width);
+}
+
+.inner header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.title {
+  font-weight: 700;
+  letter-spacing: -0.1rem;
+  max-width: 15ch;
+  visibility: hidden;
+}
+.title,
+.title * {
+  font-family: var(--font-instrumentSerif);
+  letter-spacing: 3px;
+  line-height: 1.15;
+
+  font-size: var(--fs-hero);
+  text-align: center;
+  height: fit-content;
+  margin: 0;
+  position: relative;
+}
+
+.titleSpan {
+  color: var(--primary-color);
+  font-style: none !important;
+}
+
+.subTitle {
+  max-width: 500px;
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-subtitle);
+  text-align: center;
+  visibility: hidden;
+  color: var(--primary-light-muted);
+}
+
+.ctaWrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  z-index: 1;
+}
+
+@media (max-width: 72em) {
+  .inner {
+    gap: 3rem;
+    padding: 2.25rem 1.5rem;
+  }
+
+  .subTitle {
+    font-size: var(--fs-body);
+    max-width: 42ch;
+  }
+
+  .ctaWrapper {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 40em) {
+  .inner {
+    gap: 2rem;
+    padding: 1.5rem 1rem;
+  }
+
+  .title {
+    max-width: 11ch;
+  }
+
+  .subTitle {
+    max-width: 34ch;
+    font-size: var(--fs-meta);
+  }
+
+  .ctaWrapper {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .ctaWrapper > * {
+    width: 100%;
+  }
+}
+
+@media (min-width: 2000px) {
+  .wrapper {
+    border-radius: 0 0 var(--border-radius-tertiary ) var(--border-radius-tertiary);
+    overflow: hidden;
+    height: calc(100vh - var(--space-l));
+  }
+}

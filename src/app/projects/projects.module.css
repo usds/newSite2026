@@ -1,0 +1,387 @@
+.wrapper {
+  width: 100%;
+}
+
+.hero {
+  width: 100%;
+  /* padding-top: var(--space-l); */
+  /* border: 1px solid red; */
+}
+
+.heroLayout {
+  width: 100%;
+  display: flex;
+  gap: var(--space-xl);
+  align-items: flex-start;
+}
+
+.heroContent {
+  min-width: 0;
+  flex: 1 1 52%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+}
+
+.heroBody {
+  margin: 0;
+  max-width: 66ch;
+  color: var(--primary-light-muted);
+  font-size: var(--fs-h5);
+  line-height: 1.65;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-s);
+}
+
+.heroAside {
+  min-width: 0;
+  flex: 1 1 48%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m) !important  ;
+}
+
+.heroVisual {
+  width: 100%;
+  min-height: clamp(13rem, 26vh, 17rem);
+}
+
+.statGrid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-m);
+}
+
+.statCard {
+  flex: 1 1 calc((100% - var(--space-m)) / 2);
+  min-width: min(100%, 14rem);
+  border-radius: var(--border-radius-primary);
+
+  box-shadow: var(--shadow-s);
+  overflow: hidden;
+}
+
+.statCard:nth-child(1) {
+  background: radial-gradient(
+    circle at 60% 80%,
+    var(--primary-color-transparent),
+    transparent 90%
+  );
+}
+
+.statCard:nth-child(2) {
+    background: radial-gradient(
+    circle at 40% 80%,
+    var(--primary-color-transparent),
+    transparent 90%
+  );
+}
+
+.statCard:nth-child(3) {
+    background: radial-gradient(
+    circle at 60% 20%,
+    var(--primary-color-transparent),
+    transparent 90%
+  );
+}
+
+.statCard:nth-child(4) {
+    background: radial-gradient(
+    circle at 40% 20%,
+    var(--primary-color-transparent),
+    transparent 90%
+  );
+}
+
+
+.statCardInner {
+  padding: var(--space-m);
+}
+
+.statValue {
+  margin: 0;
+  color: var(--primary-color-light);
+  font-size: var(--fs-h4);
+  font-weight: 400;
+  font-weight: var(--fw-subtitle);
+  line-height: 1;
+}
+
+.statLabel {
+  margin: var(--space-xs) 0 0;
+  color: var(--primary-light-muted);
+  font-size: var(--fs-body);
+  line-height: 1.45;
+  font-weight: 330;
+  max-width: 30ch;
+}
+
+.projectsSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.projectGrid {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xl);
+  /* border: 1px solid red; */
+  margin-top: var(--space-xl);
+}
+
+.projectCard {
+  flex: 1 1 calc((100% - var(--space-2xl)) / 2);
+  min-width: min(100%, 20rem);
+  border-radius: var(--border-radius-primary);
+  background: var(--primary-color-transparent);
+
+
+  box-shadow: var(--shadow-s);
+  overflow: hidden;
+  padding: var(--space-xl);
+
+}
+
+.projectCard:nth-child(1) {
+  background: radial-gradient(
+    circle at 60% 90%,
+    var(--primary-color-transparent),
+    transparent 80%
+  );
+}
+
+.projectCard:nth-child(2) {
+    background: radial-gradient(
+    circle at 40% 90%,
+    var(--primary-color-transparent),
+    transparent 80%
+  );
+}
+
+.projectCard:nth-child(3) {
+    background: radial-gradient(
+    circle at 60% 50%,
+    var(--primary-color-transparent),
+    transparent 80%
+  );
+}
+
+.projectCard:nth-child(4) {
+    background: radial-gradient(
+    circle at 40% 50%,
+    var(--primary-color-transparent),
+    transparent 80%
+  );
+}
+
+.projectCard:nth-child(5) {
+      background: radial-gradient(
+    circle at 60% 50%,
+    var(--primary-color-transparent),
+    transparent 80%
+  );
+}
+
+.projectCard:nth-child(6) {
+      background: radial-gradient(
+    circle at 40% 50%,
+    var(--primary-color-transparent),
+    transparent 80%
+  );
+}
+
+.projectCard:nth-child(7) {
+        background: radial-gradient(
+    circle at 60% 10%,
+    var(--primary-color-transparent),
+    transparent 80%
+  );
+}
+
+.projectCard:nth-child(8) {
+      background: radial-gradient(
+    circle at 40% 10%,
+    var(--primary-color-transparent),
+    transparent 80%
+  );
+}
+
+.projectCardInner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+  height: 100%;
+}
+
+.featuredCard {
+  /* background: rgba(24, 182, 255, 0.08); */
+}
+
+.projectMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-s);
+}
+
+.projectArea {
+  margin: 0;
+  color: var(--primary-light-subtle);
+  font-size: var(--fs-meta);
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  font-weight: 300;
+
+}
+
+.projectStatus {
+  margin: 0;
+  color: var(--primary-light-muted);
+  font-size: var(--fs-meta-smaller);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.projectTitle {
+  margin: 0;
+  color: var(--primary-color-light);
+  font-size: var(--fs-h2);
+  /* font-family: var(--font-instrumentSerif); */
+  font-weight: var(--fw-subtitle);
+  /* line-height: 1.35; */
+}
+
+.projectSummary {
+  margin: 0;
+  color: var(--primary-light-muted);
+  font-size: var(--fs-h5) !important;
+  font-weight: 300;
+  /* line-height: 1.6; */
+  /* margin-bottom: var(--space-xl); */
+}
+
+.cardVisual {
+  width: 100%;
+  min-height: 7rem;
+}
+
+.projectImpact {
+  margin: 0.15rem 0 0;
+  color: var(--primary-light);
+  font-size: var(--fs-h5);
+  font-weight: 300;
+
+}
+
+.projectLinkRow {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: var(--space-xs);
+}
+
+.projectLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--primary-color-light);
+  font-size: var(--fs-meta);
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: var(--transition-normal);
+}
+
+.projectLink:hover {
+  transform: scale(1.05);
+}
+
+.projectLink:active {
+  transform: scale(0.97);
+}
+
+
+.ctaSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: var(--space-2xl);
+}
+
+.ctaTitle {
+  margin: 0;
+  color: var(--primary-light);
+  font-family: var(--font-instrumentSerif);
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-subtitle);
+  line-height: 1.2;
+  max-width: 20ch;
+  text-align: center;
+}
+
+.ctaBody {
+  margin: 0;
+  max-width: 60ch;
+  color: var(--primary-light-muted);
+  font-size: var(--fs-h5);
+  text-align: center;
+  max-width: 38ch;
+
+}
+
+.ctaActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-s);
+}
+
+@media (max-width: 72em) {
+  .heroLayout {
+    flex-direction: column;
+    gap: var(--space-l);
+  }
+
+  .projectCard {
+    flex-basis: 100%;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 40em) {
+  .heroBody {
+    font-size: var(--fs-body);
+  }
+
+  .statCard {
+    flex-basis: 100%;
+    min-width: 0;
+  }
+
+  .statCardInner {
+    min-height: 0;
+    padding: var(--space-s) var(--space-m);
+  }
+
+  .projectCardInner {
+    padding: var(--space-m);
+    gap: var(--space-s);
+  }
+
+  .projectTitle {
+    font-size: var(--fs-h3);
+  }
+
+  .ctaBody {
+    font-size: var(--fs-body);
+  }
+}

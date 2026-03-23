@@ -1,0 +1,35 @@
+.cardGradient {
+  min-height: 260px;
+}
+
+.cardGradient::before {
+  content: "";
+  position: absolute;
+  inset: -45%;
+  filter: blur(90px);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.iconPillGradient {
+    background: var(--primary-light-muted-transparent);
+
+  color: var(--primary-light);
+}
+
+.statusPillGradient {
+  color: var(--primary-light);
+    background: var(--primary-light-muted-transparent);
+
+}
+
+.tagPillGradient {
+
+  color: var(--primary-light);
+    background: var(--primary-light-muted-transparent);
+
+}
+
+.cardTitleGradient {
+  font-weight: 700;
+}

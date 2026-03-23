@@ -1,0 +1,44 @@
+.wrapper {
+  --page-bg: var(--primary-dark);
+  --star-size: 1.5rem;
+  /* --pad: 0.75rem; */
+
+  position: relative;
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border: 1px solid red; */
+}
+
+.stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.starPad {
+  padding: var(--space-s);
+  background: var(--page-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.star {
+  width: var(--star-size);
+  height: var(--star-size);
+  color: var(--primary-light-muted-transparent);
+  fill: transparent;
+  stroke-width: 2px;
+}
+
+@media (max-width: 40em) {
+  .wrapper {
+    height: 2.75rem;
+  }
+}

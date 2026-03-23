@@ -1,0 +1,51 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xl);
+  align-items: stretch;
+}
+
+.cardWrapper {
+  flex: 1 1 var(--horizontal-card-basis, calc((100% - (var(--space-xl) * 2)) / 3));
+  min-width: var(--horizontal-card-min-width, min(100%, 16rem));
+}
+
+.cardWrapper > * {
+  --card-background: radial-gradient(
+    circle at 20% 80%,
+    var(--primary-color-transparent),
+    transparent 80%
+  );
+}
+
+.cardWrapper:nth-child(4n + 2) > * {
+  --card-background: radial-gradient(
+    circle at 40% 90%,
+    var(--primary-color-transparent),
+    transparent 80%
+  );
+}
+
+.cardWrapper:nth-child(4n + 3) > * {
+  --card-background: radial-gradient(
+    circle at 60% 90%,
+    var(--primary-color-transparent),
+    transparent 80%
+  );
+}
+
+.cardWrapper:nth-child(4n) > * {
+  --card-background: radial-gradient(
+    circle at 80% 80%,
+    var(--primary-color-transparent),
+    transparent 80%
+  );
+}
+
+@media (max-width: 40em) {
+  .cardWrapper {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+}

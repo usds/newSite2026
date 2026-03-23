@@ -1,0 +1,85 @@
+.wrapper {
+  width: 100%;
+  /* border: 1px solid green; */
+}
+
+.layout {
+  width: 100%;
+  display: flex;
+  gap: var(--space-m);
+  align-items: flex-start;
+}
+
+.colLeft {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+  min-width: 0;
+  flex: 1 1 51%;
+}
+
+.colRight {
+  min-width: 0;
+  flex: 1 1 49%;
+}
+
+.statGrid {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-m);
+  align-items: stretch;
+}
+
+.statGrid > :not(.wideRow) {
+  flex: 1 1 calc((100% - var(--space-m)) / 2);
+  min-width: 0;
+}
+
+.wideRow {
+  flex: 1 1 100%;
+  width: 100%;
+}
+
+@media (max-width: 72em) {
+  .layout {
+    gap: 1.5rem;
+  }
+
+  .colLeft {
+    gap: 1.5rem;
+  }
+
+  .statGrid {
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 64em) {
+  .layout {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .colLeft {
+    gap: 1.25rem;
+  }
+
+  .statGrid {
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 40em) {
+  .wrapper {
+    gap: 2.25rem;
+  }
+
+  .statGrid {
+    gap: 1rem;
+  }
+
+  .statGrid > :not(.wideRow) {
+    flex-basis: 100%;
+  }
+}
