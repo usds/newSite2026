@@ -1,3 +1,5 @@
+import { COMMUNITY_DISCIPLINES } from "./communities";
+
 type HomeHeaderContent = {
   eyebrow: string;
   title: string;
@@ -33,7 +35,7 @@ type HomeHowWeWorkContent = {
   sidePanelCtaText: string;
   sidePanelCtaHref: string;
   practices: readonly HomePractice[];
-  communities: readonly string[];
+  communities: string[];
 };
 
 type HomeRole = {
@@ -227,13 +229,7 @@ export const HOME_HOW_WE_WORK_CONTENT: HomeHowWeWorkContent = {
       body: "We prioritize measurable service improvements that make government more effective, accountable, and useful for people.",
     },
   ],
-  communities: [
-    "Engineering",
-    "Design and user experience",
-    "Data science",
-    "Product, strategy, and operations",
-    "Procurement",
-  ],
+  communities: COMMUNITY_DISCIPLINES.map(({ title }) => title),
 };
 
 export const HOME_HOW_TO_JOIN_CONTENT: HomeHowToJoinContent = {

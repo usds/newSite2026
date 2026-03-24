@@ -93,14 +93,14 @@ export default function ImpactCard({
 
       gsap.fromTo(
         lines,
-        { xPercent: -10, opacity: 0.35, scaleX: 0.85 },
+        { xPercent: -10, opacity: 0.3, scaleX: 0.7 },
         {
           xPercent: 10,
           opacity: 0.85,
           scaleX: 1,
           duration: 2.1,
           ease: "sine.inOut",
-          stagger: 0.18,
+          stagger: 0.1,
           repeat: -1,
           yoyo: true,
         }

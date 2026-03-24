@@ -44,14 +44,13 @@ export default function HowWeWork() {
           ))}
         </div>
 
-        <aside className={styles.communitiesPanel} aria-label="Communities we hire from">
+        {/* <aside className={styles.communitiesPanel} aria-label="Communities we hire from">
           <div className={styles.communitiesPanelInner}>
             <p className={styles.communitiesTitle}>{sidePanelTitle}</p>
 
             <ul className={styles.communityList}>
               {communities.map((item) => (
                 <li key={item} className={styles.communityItem}>
-                  {/* <span className={styles.dot} aria-hidden="true" /> */}
                   <span>{item}</span>
                 </li>
               ))}
@@ -67,7 +66,7 @@ export default function HowWeWork() {
               />
             </div>
           </div>
-        </aside>
+        </aside> */}
       </div>
     </section>
   );

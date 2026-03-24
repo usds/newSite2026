@@ -7,12 +7,8 @@ import ColorImageBlock from "@/components/general/ColorImageBlock";
 import Link from "next/link";
 import { type Card } from "@/components/cards/ContentCard";
 import HorizontalCards from "@/components/sections/HorizontalCards";
-
-type Discipline = {
-  title: string;
-  summary: string;
-  skills: string;
-};
+import { COMMUNITY_DISCIPLINES } from "@/content/communities";
+import WhoWeHireScroller from "./WhoWeHireScroller";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "https://www.usds.gov";
 
@@ -62,44 +58,6 @@ const VALUES: Card[] = [
   {
     title: "Go where the work is.",
     body: "We prioritize based on where we are needed most and where we can do the greatest good for the greatest number of people in the greatest need.",
-  },
-];
-
-const DISCIPLINES: Discipline[] = [
-  {
-    title: "Engineering",
-    summary:
-      "Engineers will rarely find systems more mission-critical than those at USDS, where we build, scale, and troubleshoot systems of huge reach. We are most successful advocating for modern software practices when we work alongside product managers, UX designers, and acquisition specialists.",
-    skills:
-      "Skills you might bring to the engineering community: programming, modern architecture, incident response, technical communication, project and team management, or collaborative engineering practices.",
-  },
-  {
-    title: "Design and user experience",
-    summary:
-      "USDS designers know government users come from many backgrounds and contexts, so we design alongside them to make experiences simple, consistent, and useful. We often introduce human-centered design practices across government.",
-    skills:
-      "Skills you might bring to the design community: design process, systems thinking, leadership, user research, interaction design, service design, design operations, content strategy, visual design, front-end development, or art direction.",
-  },
-  {
-    title: "Data science",
-    summary:
-      "USDS data scientists tap deep reservoirs of government data to find insights that improve delivery, predict policy effects, and identify inequities in services. We do our best work in collaboration with researchers and subject matter experts.",
-    skills:
-      "Skills you might bring to the data community: statistical analysis, machine learning and AI, data engineering, data visualization and communication, data ethics, or public policy analysis.",
-  },
-  {
-    title: "Product, strategy, and operations",
-    summary:
-      "Product and operations staff focus on data to make decisions based on reality, not politics. We identify paths to success through user research and technical feasibility, then deliver the best solution together.",
-    skills:
-      "Skills you might bring to the product community: execution, communication, leadership, user focus, grit, product delivery, product strategy, capacity building, government expertise, or data analysis.",
-  },
-  {
-    title: "Procurement",
-    summary:
-      "USDS acquisition strategists make buying digital services more effective through market intelligence, modern evaluation methods, and contracts focused on outcomes over requirements.",
-    skills:
-      "Skills you might bring to the procurement community: digital market knowledge, federal procurement process, strategic advice, or technical acumen.",
   },
 ];
 
@@ -231,7 +189,10 @@ export default function HowWeWorkPage() {
 
         <DividerStars />
 
-        <section className={`sectionFrameBase ${styles.disciplinesSection}`}>
+        <section
+          id="who-we-hire"
+          className={`sectionFrameBase ${styles.disciplinesSection}`}
+        >
           <SectionHeader
             eyebrow="Communities"
             title="Who we hire"
@@ -244,15 +205,7 @@ export default function HowWeWorkPage() {
             linkHref="/careers"
           />
 
-          <div className={styles.disciplineGrid}>
-            {DISCIPLINES.map((discipline) => (
-              <article key={discipline.title} className={styles.disciplineCard}>
-                <h3 className={styles.disciplineTitle}>{discipline.title}</h3>
-                <p className={styles.disciplineSummary}>{discipline.summary}</p>
-                <p className={styles.disciplineSkills}>{discipline.skills}</p>
-              </article>
-            ))}
-          </div>
+          <WhoWeHireScroller disciplines={COMMUNITY_DISCIPLINES} />
         </section>
 
         <DividerStars />

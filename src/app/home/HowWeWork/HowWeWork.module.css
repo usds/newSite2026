@@ -37,7 +37,40 @@
   /* height: 300px; */
 }
 
-.practiceCardInner {
+.practiceCard:nth-child(1) {
+  background: var(
+    --card-background,
+    radial-gradient(
+      circle at 20% 80%,
+      var(--primary-color-transparent),
+      transparent 80%
+    )
+  );
+}
+
+.practiceCard:nth-child(2) {
+  background: var(
+    --card-background,
+    radial-gradient(
+      circle at 50% 80%,
+      var(--primary-color-transparent),
+      transparent 80%
+    )
+  );
+}
+
+.practiceCard:nth-child(3) {
+  background: var(
+    --card-background,
+    radial-gradient(
+      circle at 80% 80%,
+      var(--primary-color-transparent),
+      transparent 80%
+    )
+  );
+}
+
+ .practiceCardInner {
   display: flex;
   flex-direction: column;
   gap: var(--space-xl);
@@ -108,21 +141,22 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: var(--space-m);
   width: 100%;
-  margin-bottom: var(--space-m) ;
+  margin-bottom: var(--space-m);
+  border: 1px solid red;
 
 }
 
 .communityItem {
   display: flex;
   align-items: center;
-  gap: var(--space-m);
   color: var(--primary-color-light);
-  font-size: var(--fs-h3);
+  font-size: var(--fs-h2);
   justify-content: center;
   padding: 0.75rem;
-  font-weight: 300;
+  font-weight: 500;
+  padding: var(--space-xl);
+  border: 1px solid green;
 }
 
 .dot {

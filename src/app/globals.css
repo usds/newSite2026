@@ -84,7 +84,8 @@
 
   --border-theme: 1px solid var(--primary-light-muted-transparent);
 
-  --transition-normal: 0.1s all ease-out;
+  --transition-fast: 0.1s all ease-out;
+  --transition-normal: 0.3s all ease-out;
 
   --shadow-color: 0deg 0% 0%;
 
@@ -183,7 +184,7 @@ body {
   font-family: var(--font-outfit);
   line-height: 1.5;
   scroll-behavior: smooth;
-  letter-spacing: 0.01rem;
+  letter-spacing: 0.03rem;
 }
 
 /* button {

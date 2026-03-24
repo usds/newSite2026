@@ -115,14 +115,14 @@
   justify-content: center;
   border-radius: calc(var(--border-radius-tertiary) - 0.75rem) !important;
   border: 1px solid transparent;
-  transition: var(--transition-normal);
+  transition: var(--transition-fast);
   font-size: inherit;
   font-weight: inherit;
 }
 
 .navLink *,
 .navButton * {
-  transition: var(--transition-normal);
+  transition: var(--transition-fast);
 }
 
 .navLink:hover,

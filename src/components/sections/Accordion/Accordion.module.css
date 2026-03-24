@@ -33,7 +33,7 @@
   gap: var(--space-m);
   cursor: pointer;
   text-align: left;
-  transition: var(--transition-normal);
+  transition: var(--transition-fast);
 }
 
 .trigger:hover {
@@ -56,7 +56,7 @@
   align-items: center;
   justify-content: center;
   color: var(--primary-light-muted);
-  transition: var(--transition-normal);
+  transition: var(--transition-fast);
   flex: 0 0 auto;
 }
 

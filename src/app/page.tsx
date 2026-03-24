@@ -11,9 +11,14 @@ import Preloader from "@/components/general/Preloader";
 import { AnimatePresence } from "motion/react";
 import { useState } from "react";
 import DividerStars from "@/ui/DividerStars";
+import Communities from "./home/Communities";
+import { HOME_HOW_WE_WORK_CONTENT } from "@/content/home";
+
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
+
+    const { communities } = HOME_HOW_WE_WORK_CONTENT;
 
   return (
     <div className={`pageWrapper ${styles.wrapper}`}>
@@ -37,6 +42,10 @@ export default function Home() {
 
         <HowWeWork />
         <DividerStars />
+
+        <Communities communities={communities} />
+        <DividerStars />
+
 
         <HowToJoin />
         <DividerStars />
