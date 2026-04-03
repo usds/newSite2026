@@ -173,6 +173,15 @@ background: radial-gradient(
   /* min-height: 120px; */
 }
 
+.roleTitleWrap {
+  width: 100%;
+}
+
+.roleTitleCompact {
+  font-size: var(--fs-h4) !important;
+  white-space: nowrap;
+}
+
 .roleCardBottom {
   margin-top: auto;
   display: flex;

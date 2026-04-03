@@ -2,10 +2,9 @@ import type { Metadata } from "next";
 import styles from "./howWeWork.module.css";
 import DividerStars from "@/ui/DividerStars";
 import SectionHeader from "@/components/general/SectionHeader";
-import CTA from "@/components/buttons/CTA";
+import CTASection from "@/components/sections/CTASection";
 import ColorImageBlock from "@/components/general/ColorImageBlock";
-import Link from "next/link";
-import HorizontalCards from "@/components/general/sections/HorizontalCards";
+import HorizontalCards from "@/components/sections/HorizontalCards";
 import { COMMUNITY_DISCIPLINES } from "@/text/communities";
 import { HOW_WE_WORK_PAGE_CONTENT } from "@/text/howWeWork";
 import ContentScroller from "./ContentScroller";
@@ -49,7 +48,6 @@ export default function HowWeWorkPage() {
     valuesSection,
     disciplinesSection,
     principlesSection,
-    spotlightsSection,
     ctaSection,
   } = HOW_WE_WORK_PAGE_CONTENT;
 
@@ -59,16 +57,6 @@ export default function HowWeWorkPage() {
     body: card.body,
     gradientPosition: card.gradientPosition,
     image: <ColorImageBlock tone={card.tone} micro />,
-  }));
-
-  const spotlightCards = spotlightsSection.cards.map((card) => ({
-    id: card.id,
-    eyebrow: card.eyebrow,
-    title: card.title,
-    body: card.body,
-    gradientPosition: card.gradientPosition,
-    image: <ColorImageBlock tone={card.tone} micro />,
-    footer: <Link href={card.linkHref}>{card.linkText}</Link>,
   }));
 
   return (
@@ -140,22 +128,7 @@ export default function HowWeWorkPage() {
 
       <DividerStars />
 
-      <section className={`sectionFrameBase sectionFrameTonePanel ${styles.ctaSection}`}>
-        <h2 className={styles.ctaTitle}>
-          {ctaSection.titleLineOne}
-          <br />
-          {ctaSection.titleLineTwo}
-        </h2>
-        <div className={styles.ctaAction}>
-          <CTA
-            text={ctaSection.ctaText}
-            href={ctaSection.ctaHref}
-            icon="arrowRight"
-            backgroundColor="var(--primary-color)"
-            textColor="var(--primary-light)"
-          />
-        </div>
-      </section>
+      <CTASection {...ctaSection} />
     </div>
   );
 }

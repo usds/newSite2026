@@ -1,13 +1,15 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "motion/react";
 import styles from "./careers.module.css";
 import DividerStars from "@/ui/DividerStars";
 import SectionHeader from "@/components/general/SectionHeader";
 import CTA from "@/components/buttons/CTA";
-import HorizontalCards from "@/components/general/sections/HorizontalCards";
+import CTASection from "@/components/sections/CTASection";
+import HorizontalCards from "@/components/sections/HorizontalCards";
 import {
   CAREERS_PAGE_CONTENT,
   CAREERS_PAGE_UI_TEXT,
@@ -24,11 +26,52 @@ function RoleCard({
   summary,
   skills,
   location,
-  tour,
   applyHref,
   index,
 }: RoleCardProps) {
   const isFeatured = index === 0;
+  const titleContainerRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    const titleContainer = titleContainerRef.current;
+    if (!titleContainer) return;
+
+    const titleElement = titleContainer.querySelector("h2, h3, h4, p");
+    if (!(titleElement instanceof HTMLElement)) return;
+
+    const updateTitleSizing = () => {
+      const previousWhiteSpace = titleElement.style.whiteSpace;
+      const previousFontSize = titleElement.style.fontSize;
+
+      titleElement.style.whiteSpace = "nowrap";
+      titleElement.style.fontSize = "var(--fs-subtitle)";
+
+      const needsShrink = titleElement.scrollWidth > titleElement.clientWidth + 1;
+
+      titleElement.style.whiteSpace = previousWhiteSpace;
+      titleElement.style.fontSize = previousFontSize;
+
+      titleElement.classList.toggle(
+        styles.roleTitleCompact,
+        !isFeatured && needsShrink,
+      );
+    };
+
+    updateTitleSizing();
+
+    const resizeObserver = new ResizeObserver(updateTitleSizing);
+    resizeObserver.observe(titleContainer);
+    resizeObserver.observe(titleElement);
+
+    const fontsReady = document.fonts?.ready;
+    if (fontsReady) {
+      void fontsReady.then(updateTitleSizing);
+    }
+
+    return () => {
+      titleElement.classList.remove(styles.roleTitleCompact);
+      resizeObserver.disconnect();
+    };
+  }, [isFeatured, title]);
 
   return (
     <motion.article
@@ -65,7 +108,9 @@ function RoleCard({
           </div>
         </div>
         <span className={styles.roleHeader}>
-          <Subtitle text={title} className={styles.roleTitle} />
+          <div ref={titleContainerRef} className={styles.roleTitleWrap}>
+            <Subtitle text={title} className={styles.roleTitle} />
+          </div>
           <p className={styles.roleSummary}>{summary}</p>
 
         </span>
@@ -130,7 +175,6 @@ export default function CareersPageClient() {
               {
                 text: hero.secondaryCta.text,
                 href: hero.secondaryCta.href,
-                icon: "arrowRight",
                 backgroundColor: "var(--primary-dark-panel-muted)",
                 textColor: "var(--primary-light)",
               },
@@ -197,8 +241,8 @@ export default function CareersPageClient() {
                   <ArrowUpRight size={16} />
                 </Link>
                 <CTA
-                  text={cta.text}
-                  href={cta.href}
+                  text={cta.primary.text}
+                  href={cta.primary.href}
                   icon="arrowRight"
                   backgroundColor="var(--primary-color)"
                   textColor="var(--primary-light)"
@@ -228,6 +272,10 @@ export default function CareersPageClient() {
           cards={processCards}
         />
       </section>
+
+      <DividerStars />
+
+      <CTASection {...cta} />
     </div>
   );
 }

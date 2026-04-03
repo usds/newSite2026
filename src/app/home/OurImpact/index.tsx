@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./OurImpact.module.css";
-import ImpactCard from "@/components/general/cards/ImpactCard";
+import ImpactCard from "@/components/cards/ImpactCard";
 import SectionHeader from "@/components/general/SectionHeader";
 import { HOME_OUR_IMPACT_CONTENT } from "@/text/home";
 import { AnimatePresence } from "motion/react";

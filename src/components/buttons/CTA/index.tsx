@@ -5,17 +5,18 @@ import Link from "next/link";
 import { useMemo } from "react";
 import styles from "./cta.module.css";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
+import type { CtaLink } from "@/types/cta";
 
 
-export type ctaProps = {
-  text: string;
-  href: string;
+export type CTAProps = CtaLink & {
   backgroundColor?: string;
   textColor?: string;
   ariaLabel?: string;
   icon?: "arrowUpRight" | "arrowRight" | undefined;
   className?: string;
 };
+
+export type ctaProps = CTAProps;
 
 export default function CTA({
   text,
@@ -25,7 +26,7 @@ export default function CTA({
   ariaLabel,
   icon,
   className,
-}: ctaProps) {
+}: CTAProps) {
   const reduceMotion = useReducedMotion();
   const displayText = useMemo(
     () => text.replace(/\b([a-z])/g, (char) => char.toUpperCase()),
@@ -37,6 +38,7 @@ export default function CTA({
     "arrowUpRight": <ArrowUpRight />,
     "arrowRight": <ArrowRight />,
   };
+  const showAffordance = Boolean(icon && iconOpts[icon]);
 
   const renderChars = (side: "front" | "back") =>
     chars.map((char, index) => (
@@ -57,13 +59,17 @@ export default function CTA({
     >
       <Link
         href={href}
-        className={styles.link}
+        className={`${styles.link} ${showAffordance ? styles.withAffordance : ""}`}
         aria-label={ariaLabel ?? displayText}
         style={{
           backgroundColor: backgroundColor,
           color: textColor,
         }}
       >
+        {showAffordance ? (
+          <span className={styles.leftDot} aria-hidden="true" />
+        ) : null}
+
         <span
           className={`${styles.text} ${reduceMotion ? styles.textReduced : ""}`}
           aria-hidden="true"
@@ -76,11 +82,11 @@ export default function CTA({
           </span>
         </span>
 
-        {icon && iconOpts[icon] && (
-          <span className={styles.ctaIcon}>
-            {iconOpts[icon]}
+        {showAffordance ? (
+          <span className={styles.rightIcon} aria-hidden="true">
+            {iconOpts[icon!]}
           </span>
-        )}
+        ) : null}
       </Link>
     </motion.div>
   );

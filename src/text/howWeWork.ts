@@ -1,4 +1,5 @@
 import type { BasicTextCard } from "@/types/cards";
+import type { CtaSectionContent } from "@/types/cta";
 
 type Tone = "ocean" | "teal" | "amber";
 
@@ -21,9 +22,11 @@ type SpotlightCardContent = BasicTextCard & {
   linkText: string;
 };
 
+type HowWeWorkCtaSectionContent = CtaSectionContent;
+
 export const HOW_WE_WORK_PAGE_CONTENT = {
   hero: {
-    eyebrow: "Mission-driven tours of service for high-impact delivery",
+    eyebrow: "Mission-Driven Service Tours",
     title: "How We Work",
     body: "We deploy mission-driven experts with federal teams to solve urgent service problems and deliver measurable improvements for the people.",
   },
@@ -107,7 +110,7 @@ export const HOW_WE_WORK_PAGE_CONTENT = {
     cards: [
       {
         id: "cms-modernization",
-        eyebrow: "Centers for Medicare and Medicaid Services",
+        eyebrow: "CMS Partnership",
         title: "Modernizing Medicare and Medicaid",
         body: "Working with CMS to modernize critical healthcare systems by reducing waste, fraud, and abuse while improving secure, user-friendly tools for patients and providers.",
         tone: "ocean",
@@ -168,11 +171,18 @@ export const HOW_WE_WORK_PAGE_CONTENT = {
     ] as const satisfies readonly SpotlightCardContent[],
   },
   ctaSection: {
-    titleLineOne: "We need you.",
-    titleLineTwo: "Let's help millions of people together.",
-    ctaText: "Apply now",
-    ctaHref: "/mission#applyNow",
-  },
+    eyebrow: "Tour of service",
+    title: "Join a high-impact tour of service.",
+    body: "Work directly with federal teams to ship measurable improvements.",
+    primary: {
+      text: "Apply now",
+      href: "/mission#applyNow",
+    },
+    secondary: {
+      text: "View careers",
+      href: "/careers",
+    },
+  } satisfies HowWeWorkCtaSectionContent,
 } as const;
 
 export const HOW_WE_WORK_PAGE_UI_TEXT = {

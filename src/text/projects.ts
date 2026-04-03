@@ -1,3 +1,5 @@
+import type { CtaLink, CtaSectionContent } from "@/types/cta";
+
 export type ProjectCardContent = {
   area: string;
   title: string;
@@ -5,6 +7,22 @@ export type ProjectCardContent = {
   impact: string;
   status: "Active" | "Scaling" | "In Delivery";
 };
+
+type ProjectsHeroStat = {
+  label: string;
+  value: string;
+};
+
+type ProjectsHeroContent = {
+  eyebrow: string;
+  title: string;
+  body: string;
+  primaryCta: CtaLink;
+  secondaryCta: CtaLink;
+  stats: readonly ProjectsHeroStat[];
+};
+
+type ProjectsCtaContent = CtaSectionContent;
 
 export const PROJECTS_PAGE_CONTENT = {
   hero: {
@@ -25,7 +43,7 @@ export const PROJECTS_PAGE_CONTENT = {
       { label: "Critical service lines", value: "8" },
       { label: "People impacted", value: "Millions" },
     ] as const,
-  },
+  } satisfies ProjectsHeroContent,
   section: {
     eyebrow: "Current Work",
     title: "Where we deliver impact", 
@@ -99,6 +117,7 @@ export const PROJECTS_PAGE_CONTENT = {
     },
   ] as const satisfies readonly ProjectCardContent[],
   cta: {
+    eyebrow: "Project collaboration",
     title: "Have a high-impact service challenge?",
     body: "We partner with federal teams where modernization can deliver the greatest public value.",
     primary: {
@@ -109,7 +128,7 @@ export const PROJECTS_PAGE_CONTENT = {
       text: "Contact us",
       href: "/mission#contact",
     },
-  },
+  } satisfies ProjectsCtaContent,
 } as const;
 
 export const PROJECTS_PAGE_UI_TEXT = {

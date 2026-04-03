@@ -3,10 +3,10 @@
 import styles from "./hiringFaq.module.css";
 import DividerStars from "@/ui/DividerStars";
 import SectionHeader from "@/components/general/SectionHeader";
-import CTA from "@/components/buttons/CTA";
 import FaqItem from "./FaqItem";
 import { motion } from "motion/react";
 import { HIRING_FAQ_PAGE_CONTENT, type HiringTimelineRow } from "@/text/hiringFaq";
+import CTASection from "@/components/sections/CTASection";
 
 function TimelineCard({
   title,
@@ -185,24 +185,7 @@ export default function ClientHiringFaq() {
 
       <DividerStars />
 
-      <section
-        className={`${styles.frame} ${styles.gapMd} ${styles.panelTone} ${styles.ctaSection}`}
-      >
-        <h2 className={styles.ctaTitle}>
-          {cta.titleLineOne}
-          <br />
-          {cta.titleLineTwo}
-        </h2>
-        <div className={styles.ctaAction}>
-          <CTA
-            text={cta.buttonText}
-            href={cta.buttonHref}
-            icon="arrowRight"
-            backgroundColor="var(--primary-color-light)"
-            textColor="var(--primary-dark)"
-          />
-        </div>
-      </section>
+      <CTASection {...cta} />
     </div>
   );
 }

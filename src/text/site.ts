@@ -1,3 +1,5 @@
+import type { CtaLink } from "@/types/cta";
+
 export type HeaderNavItem =
   | {
       type: "link";
@@ -12,11 +14,9 @@ export type HeaderNavItem =
         href: string;
       }[];
     }
-  | {
+  | ({
       type: "cta";
-      label: string;
-      href: string;
-    };
+    } & CtaLink);
 
 export type FooterSocialItem = {
   label: string;
@@ -34,8 +34,7 @@ export type FooterColumn = {
 type FooterCalloutContent = {
   title: string;
   body: string;
-  ctaText: string;
-  ctaHref: string;
+  cta: CtaLink;
 };
 
 export const HEADER_NAV_ITEMS: readonly HeaderNavItem[] = [
@@ -60,7 +59,7 @@ export const HEADER_NAV_ITEMS: readonly HeaderNavItem[] = [
   },
   {
     type: "cta",
-    label: "Apply Now",
+    text: "Apply now",
     href: "/mission#applyNow",
   },
 ];
@@ -113,8 +112,10 @@ export const FOOTER_COLUMNS: readonly FooterColumn[] = [
 export const FOOTER_CALLOUT_CONTENT: FooterCalloutContent = {
   title: "Digital services for the people.",
   body: "We partner with federal teams to modernize the systems Americans depend on, from benefits to education and public health services.",
-  ctaText: "Apply now",
-  ctaHref: "/mission#applyNow",
+  cta: {
+    text: "Apply now",
+    href: "/mission#applyNow",
+  },
 };
 
 export const FOOTER_ACTIONS = [
@@ -126,7 +127,7 @@ export const FOOTER_ACTIONS = [
     text: "Contact us",
     href: "/mission#contact",
   },
-] as const;
+] as const satisfies readonly CtaLink[];
 
 export const FOOTER_POLICIES = [
   { label: "Privacy Policy", href: "/privacy" },

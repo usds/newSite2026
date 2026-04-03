@@ -1,7 +1,7 @@
 "use client";
 
 import SectionHeader from "@/components/general/SectionHeader";
-import HorizontalCards from "@/components/general/sections/HorizontalCards";
+import HorizontalCards from "@/components/sections/HorizontalCards";
 import styles from "./ourValues.module.css";
 import type { BasicTextCard } from "@/types/cards";
 import { MISSION_VALUES_SECTION_CONTENT } from "@/text/mission";

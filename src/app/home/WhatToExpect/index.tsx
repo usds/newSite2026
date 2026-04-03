@@ -2,7 +2,7 @@
 
 import styles from "./WhatToExpect.module.css";
 import SectionHeader from "@/components/general/SectionHeader";
-import Accordion from "@/components/general/sections/Accordion";
+import Accordion from "@/components/sections/Accordion";
 import { HOME_SECTION_ARIA_TEXT, HOME_WHAT_TO_EXPECT_CONTENT } from "@/text/home";
 
 export default function WhatToExpect() {

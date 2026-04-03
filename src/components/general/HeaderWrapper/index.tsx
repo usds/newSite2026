@@ -134,7 +134,7 @@ export default function HeaderWrapper() {
 
                 if (item.type === "cta") {
                   return (
-                    <CTA text={item.label} href={item.href} key={item.label} backgroundColor="var(--primary-color-light)" textColor="var(--primary-dark)" className={styles.headerCTA}/>
+                    <CTA text={item.text} href={item.href} key={item.text} icon="arrowRight" backgroundColor="var(--primary-color-light)" textColor="var(--primary-dark)" className={styles.headerCTA}/>
                   )
                 }
               })}
@@ -205,10 +205,11 @@ export default function HeaderWrapper() {
                 }
 
                 return (
-                  <li key={item.label} className={styles.mobileItem}>
+                  <li key={item.text} className={styles.mobileItem}>
                     <CTA
-                      text={item.label}
+                      text={item.text}
                       href={item.href}
+                      icon="arrowRight"
                       backgroundColor="var(--primary-color-light)"
                       textColor="var(--primary-dark)"
                     />

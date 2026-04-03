@@ -14,7 +14,7 @@ import type { CSSProperties } from "react";
 import { useRef } from "react";
 import { useBodyReveal } from "@/hooks/useSplitReveal/presets";
 import Subtitle from "../Subtitle";
-import CTA, { type ctaProps as CTAProps } from "@/components/buttons/CTA";
+import CTA, { type CTAProps } from "@/components/buttons/CTA";
 import { motion } from "motion/react";
 
 type SectionHeaderCTA = CTAProps & {

@@ -1,7 +1,7 @@
 "use client";
 
-import ImpactCard from "@/components/general/cards/ImpactCard";
-import type { IconName } from "@/components/general/cards/ImpactCard";
+import ImpactCard from "@/components/cards/ImpactCard";
+import type { IconName } from "@/components/cards/ImpactCard";
 
 type GradientCardProps = {
   icon: IconName;

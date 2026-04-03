@@ -1,4 +1,5 @@
 import type { BasicTextCard } from "@/types/cards";
+import type { CtaSectionContent } from "@/types/cta";
 
 type ObjectiveItem = {
   title: string;
@@ -199,3 +200,17 @@ export const MISSION_ORIGIN_STORY_CONTENT = {
   ],
   applyLinkLabel: "Apply now.",
 } as const;
+
+export const MISSION_PAGE_CTA_CONTENT = {
+  eyebrow: "Join the mission",
+  title: "Help modernize services millions rely on.",
+  body: "USDS tours pair private-sector expertise with urgent federal delivery challenges.",
+  primary: {
+    text: "Apply now",
+    href: "/mission#applyNow",
+  },
+  secondary: {
+    text: "View projects",
+    href: "/projects",
+  },
+} as const satisfies CtaSectionContent;

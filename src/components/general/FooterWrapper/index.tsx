@@ -99,8 +99,8 @@ export default function FooterWrapper() {
             // subtitle={FOOTER_CALLOUT_CONTENT.body}
             // subtitleAlignment="left"
             cta={{
-              text: FOOTER_CALLOUT_CONTENT.ctaText,
-              href: FOOTER_CALLOUT_CONTENT.ctaHref,
+              text: FOOTER_CALLOUT_CONTENT.cta.text,
+              href: FOOTER_CALLOUT_CONTENT.cta.href,
               icon: "arrowRight",
               backgroundColor: "var(--primary-color-light)",
               textColor: "var(--primary-dark)",
@@ -153,7 +153,6 @@ export default function FooterWrapper() {
                     key={action.text}
                     text={action.text}
                     href={action.href}
-                    icon="arrowRight"
                     backgroundColor={actionStyles[index]?.backgroundColor ?? actionStyles[0].backgroundColor}
                     textColor={actionStyles[index]?.textColor ?? actionStyles[0].textColor}
                   />

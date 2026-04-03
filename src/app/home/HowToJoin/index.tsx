@@ -6,7 +6,7 @@ import CTA from "@/components/buttons/CTA";
 import { HOME_HOW_TO_JOIN_CONTENT, HOME_SECTION_ARIA_TEXT } from "@/text/home";
 
 export default function HowToJoin() {
-  const { header, process, ctaHref, ctaText } = HOME_HOW_TO_JOIN_CONTENT;
+  const { header, process, cta } = HOME_HOW_TO_JOIN_CONTENT;
 
   return (
     <section
@@ -59,8 +59,9 @@ export default function HowToJoin() {
 
             <span className={styles.ctaWrapper}>
               <CTA
-                href={ctaHref}
-                text={ctaText}
+                href={cta.href}
+                text={cta.text}
+                icon="arrowRight"
                 textColor="var(--primary-light)"
                 backgroundColor="var(--primary-color)"
               />

@@ -1,3 +1,5 @@
+import type { CtaSectionContent } from "@/types/cta";
+
 export type HiringFaqItem = {
   question: string;
   paragraphs: readonly string[];
@@ -8,6 +10,8 @@ export type HiringTimelineRow = {
   step: string;
   days: string;
 };
+
+type HiringFaqCtaContent = CtaSectionContent;
 
 export const HIRING_FAQ_PAGE_CONTENT = {
   hero: {
@@ -35,13 +39,13 @@ export const HIRING_FAQ_PAGE_CONTENT = {
         {
           title: "Hiring process",
           rows: [
-            { step: "Phone screen", days: "1 - 3" },
+            { step: "Phone screening", days: "1 - 3" },
             { step: "Take-home technical assessment", days: "5 - 7" },
             {
               step: "Interviews (technical and behavioral)",
               days: "10 - 18",
             },
-            { step: "Total from application", days: "16 - 28" },
+            { step: "Total", days: "16 - 28" },
           ] as readonly HiringTimelineRow[],
         },
         {
@@ -53,7 +57,7 @@ export const HIRING_FAQ_PAGE_CONTENT = {
               days: "10 - 30",
             },
             { step: "Final offer of employment", days: "2 - 7" },
-            { step: "Total from application", days: "14 - 44" },
+            { step: "Total", days: "14 - 44" },
           ] as readonly HiringTimelineRow[],
         },
       ],
@@ -242,9 +246,16 @@ export const HIRING_FAQ_PAGE_CONTENT = {
     businessDays: "Business days",
   },
   cta: {
-    titleLineOne: "We need you.",
-    titleLineTwo: "Let's help millions of people together.",
-    buttonText: "Apply now",
-    buttonHref: "/mission#applyNow",
-  },
+    eyebrow: "Ready when you are",
+    title: "Start your USDS application today.",
+    body: "Submit one application and we will evaluate you across the tracks where your skills fit best.",
+    primary: {
+      text: "Apply now",
+      href: "/mission#applyNow",
+    },
+    secondary: {
+      text: "View careers",
+      href: "/careers",
+    },
+  } satisfies HiringFaqCtaContent,
 } as const;

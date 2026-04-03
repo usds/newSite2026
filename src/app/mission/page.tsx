@@ -2,13 +2,14 @@
 
 import styles from "./missionPage.module.css";
 import Hero from "./Hero";
-import InfoPanel from "@/components/general/sections/InfoPanel";
+import InfoPanel from "@/components/sections/InfoPanel";
 import DividerStars from "@/ui/DividerStars";
-import StickyList from "@/components/general/sections/StickyList";
+import StickyList from "@/components/sections/StickyList";
 import WhoWeHelp from "./WhoWeHelp";
 import OurValues from "./OurValues";
 import OriginStory from "./OriginStory";
-import { MISSION_PAGE_CONTENT } from "@/text/mission";
+import CTASection from "@/components/sections/CTASection";
+import { MISSION_PAGE_CONTENT, MISSION_PAGE_CTA_CONTENT } from "@/text/mission";
 
 export default function MissionPage() {
   const { infoCards, objectives, whoWeHelp, values } = MISSION_PAGE_CONTENT;
@@ -36,6 +37,10 @@ export default function MissionPage() {
       <DividerStars />
 
       <OriginStory />
+
+      <DividerStars />
+
+      <CTASection {...MISSION_PAGE_CTA_CONTENT} />
     </div>
   );
 }

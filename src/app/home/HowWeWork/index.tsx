@@ -2,7 +2,7 @@
 
 import styles from "./HowWeWork.module.css";
 import SectionHeader from "@/components/general/SectionHeader";
-import HorizontalCards from "@/components/general/sections/HorizontalCards";
+import HorizontalCards from "@/components/sections/HorizontalCards";
 import { HOME_HOW_WE_WORK_CONTENT, HOME_SECTION_ARIA_TEXT } from "@/text/home";
 
 export default function HowWeWork() {
@@ -42,8 +42,8 @@ export default function HowWeWork() {
 
             <div className={styles.communitiesCta}>
               <CTA
-                text={sidePanelCtaText}
-                href={sidePanelCtaHref}
+                text={sidePanelCta.text}
+                href={sidePanelCta.href}
                 icon="arrowRight"
                 backgroundColor="var(--primary-color)"
                 textColor="var(--primary-light)"

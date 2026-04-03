@@ -21,10 +21,10 @@ export default function Hero({ ready = true }: HeroProps) {
     icon?: "arrowRight";
   }> = [
     {
-      icon: "arrowRight",
       textColor: "var(--primary-light)",
     },
     {
+      icon: "arrowRight",
       backgroundColor: "var(--primary-color-light)",
       textColor: "var(--primary-dark)",
     },

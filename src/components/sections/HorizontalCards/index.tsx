@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react";
 import styles from "./HorizontalCards.module.css";
-import ContentCard, { type Card } from "@/components/general/cards/ContentCard";
+import ContentCard, { type Card } from "@/components/cards/ContentCard";
 
 type Props = {
   cards: readonly Card[];

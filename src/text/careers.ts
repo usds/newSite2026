@@ -1,3 +1,5 @@
+import type { CtaLink, CtaSectionContent } from "@/types/cta";
+
 export type CareerTone = "ocean" | "teal" | "amber";
 
 export type CareersHeroFact = {
@@ -21,9 +23,21 @@ export type CareersProcessStep = {
   timeline: string;
 };
 
+type CareersHeroContent = {
+  eyebrow: string;
+  title: string;
+  subTitle: string;
+  body: string;
+  primaryCta: CtaLink;
+  secondaryCta: CtaLink;
+  facts: readonly CareersHeroFact[];
+};
+
+type CareersCtaContent = CtaSectionContent;
+
 export const CAREERS_PAGE_CONTENT = {
   hero: {
-    eyebrow: "Mission-driven tours across high-impact government services",
+    eyebrow: "High-Impact Service Tours",
     title: "Careers",
     subTitle:
       "USDS hires engineers, designers, product leaders, data scientists, and procurement specialists for high-impact tours of service.",
@@ -42,7 +56,7 @@ export const CAREERS_PAGE_CONTENT = {
       { label: "Team model", value: "Cross-functional mission squads" },
       { label: "Focus", value: "High-impact public services" },
     ] as const satisfies readonly CareersHeroFact[],
-  },
+  } satisfies CareersHeroContent,
   rolesSection: {
     eyebrow: "Open Disciplines",
     title: "Open positions across USDS",
@@ -149,7 +163,7 @@ export const CAREERS_PAGE_CONTENT = {
       timeline: "10-18 business days",
     },
     {
-      title: "Offer and Onboarding",
+      title: "Onboarding",
       body: "Tentative offer, background process, and final offer with start-date coordination.",
       timeline: "14-44 business days",
     },
@@ -160,11 +174,18 @@ export const CAREERS_PAGE_CONTENT = {
     body: "USDS tours are designed for focused, high-impact service. Teams are in-person and embedded with agencies where decisions are made.",
   },
   cta: {
+    eyebrow: "Ready to apply",
     title: "Ready to apply?",
     body: "Submit your application today and help modernize the systems millions of people depend on.",
-    text: "Apply to USDS",
-    href: "/mission#applyNow",
-  },
+    primary: {
+      text: "Apply to USDS",
+      href: "/mission#applyNow",
+    },
+    secondary: {
+      text: "Read hiring FAQ",
+      href: "/hiring-faq",
+    },
+  } satisfies CareersCtaContent,
 } as const;
 
 export const CAREERS_PAGE_UI_TEXT = {

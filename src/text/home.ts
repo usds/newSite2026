@@ -1,5 +1,6 @@
 import { COMMUNITY_DISCIPLINES } from "./communities";
 import type { BasicTextCard } from "@/types/cards";
+import type { CtaLink, CtaSectionContent } from "@/types/cta";
 
 type HomeHeaderContent = {
   eyebrow: string;
@@ -18,11 +19,9 @@ type HomeHeroContent = {
     suffix: string;
   };
   subTitle: string;
-  ctas: readonly {
-    text: string;
-    href: string;
+  ctas: readonly (CtaLink & {
     ariaLabel?: string;
-  }[];
+  })[];
 };
 
 type HomePractice = BasicTextCard;
@@ -30,8 +29,7 @@ type HomePractice = BasicTextCard;
 type HomeHowWeWorkContent = {
   header: HomeHeaderContent;
   sidePanelTitle: string;
-  sidePanelCtaText: string;
-  sidePanelCtaHref: string;
+  sidePanelCta: CtaLink;
   practices: readonly HomePractice[];
   communities: string[];
 };
@@ -52,8 +50,7 @@ type HomeHowToJoinContent = {
   roles: readonly HomeRole[];
   processTitle: string;
   process: readonly HomeProcessStep[];
-  ctaText: string;
-  ctaHref: string;
+  cta: CtaLink;
   ctaNote: string;
 };
 
@@ -199,8 +196,10 @@ export const HOME_HOW_WE_WORK_CONTENT: HomeHowWeWorkContent = {
     linkHref: "/how-we-work",
   },
   sidePanelTitle: "Communities we hire from",
-  sidePanelCtaText: "Explore how we work",
-  sidePanelCtaHref: "/how-we-work",
+  sidePanelCta: {
+    text: "Explore how we work",
+    href: "/how-we-work",
+  },
   practices: [
     {
       id: "short-tours-high-trust",
@@ -263,8 +262,10 @@ export const HOME_HOW_TO_JOIN_CONTENT: HomeHowToJoinContent = {
       body: "Begin your tour of duty making an impact.",
     },
   ],
-  ctaText: "Start Your Application",
-  ctaHref: "#apply",
+  cta: {
+    text: "Start Your Application",
+    href: "#apply",
+  },
   ctaNote: "Applications are reviewed on a rolling basis",
 };
 
@@ -314,3 +315,17 @@ export const HOME_COMMUNITIES_CONTENT = {
   linkMeta: "View details",
   fallbackHref: "/how-we-work#who-we-hire",
 } as const;
+
+export const HOME_PAGE_CTA_CONTENT = {
+  eyebrow: "Take the next step",
+  title: "Bring your skills to public service.",
+  body: "Explore open roles and start your USDS application.",
+  primary: {
+    text: "Apply now",
+    href: "/mission#applyNow",
+  },
+  secondary: {
+    text: "View careers",
+    href: "/careers",
+  },
+} as const satisfies CtaSectionContent;
