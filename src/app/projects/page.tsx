@@ -2,7 +2,6 @@ import styles from "./projects.module.css";
 import SectionHeader from "@/components/general/SectionHeader";
 import DividerStars from "@/ui/DividerStars";
 import CTASection from "@/components/sections/CTASection";
-import ColorImageBlock from "@/components/general/ColorImageBlock";
 import { ArrowUpRight } from "lucide-react";
 import { PROJECTS_PAGE_CONTENT, PROJECTS_PAGE_UI_TEXT } from "@/text/projects";
 
@@ -41,7 +40,7 @@ export default function ProjectsPage() {
             className={styles.heroAside}
             aria-label={PROJECTS_PAGE_UI_TEXT.heroAsideAriaLabel}
           >
-            <ColorImageBlock tone="ocean" solid className={styles.heroVisual} />
+            <div className={styles.heroVisual} aria-hidden="true" />
             <ul className={styles.statGrid}>
               {hero.stats.map((stat) => (
                 <li key={stat.label} className={styles.statCard}>
@@ -79,12 +78,6 @@ export default function ProjectsPage() {
                 </div>
                 <h3 className={styles.projectTitle}>{`${project.title}.`}</h3>
                 <p className={styles.projectSummary}>{project.summary}</p>
-                {/* <ColorImageBlock
-                  tone={projectTones[index % projectTones.length]}
-                  solid
-                  compact
-                  className={styles.cardVisual}
-                /> */}
                 <p className={styles.projectImpact}>{project.impact}</p>
                 <div className={styles.projectLinkRow}>
                   <span className={styles.projectLink}>

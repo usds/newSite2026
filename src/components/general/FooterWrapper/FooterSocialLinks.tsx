@@ -1,6 +1,7 @@
 import styles from "./FooterSocialLinks.module.css";
 import type { FooterSocialItem } from "@/text/site";
 import { FOOTER_SOCIAL_LINKS_TEXT } from "@/text/ui";
+import { withBasePath } from "@/utils/basePath";
 
 type Props = {
   socials: readonly FooterSocialItem[];
@@ -37,7 +38,7 @@ export default function FooterSocialLinks({ socials }: Props) {
                 focusable="false"
                 role="img"
               >
-                <use href={`/assets/img/sprite.svg#${iconKey}`} />
+                <use href={withBasePath(`/assets/img/sprite.svg#${iconKey}`)} />
               </svg>
             </a>
           </li>

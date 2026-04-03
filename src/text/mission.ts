@@ -172,8 +172,6 @@ export const MISSION_VALUES_SECTION_CONTENT = {
 
 export const MISSION_WHO_WE_HELP_UI_TEXT = {
   sectionAriaLabel: "Who we help",
-  expandLabel: "More",
-  collapseLabel: "Less",
 } as const;
 
 export const MISSION_ORIGIN_STORY_CONTENT = {

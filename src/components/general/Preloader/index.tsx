@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "motion/react";
 import type { Variants } from "motion/react";
 import Image from "next/image";
 import { PRELOADER_TEXT } from "@/text/ui";
+import { withBasePath } from "@/utils/basePath";
 
 const easeCurve: [number, number, number, number] = [0.76, 0, 0.24, 1];
 
@@ -152,7 +153,7 @@ export default function Preloader({ onDone }: PreloaderProps) {
             }}
           >
             <Image
-              src="/usds-logo-cropped.svg"
+              src={withBasePath("/usds-logo-cropped.svg")}
               alt={PRELOADER_TEXT.logoAlt}
               height={50}
               width={200}

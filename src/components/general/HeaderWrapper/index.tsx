@@ -9,6 +9,7 @@ import { ChevronDown } from "lucide-react";
 import { HEADER_NAV_ITEMS } from "@/text/site";
 import { HEADER_WRAPPER_TEXT } from "@/text/ui";
 import { motion } from "motion/react";
+import { withBasePath } from "@/utils/basePath";
 
 export default function HeaderWrapper() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -62,7 +63,7 @@ export default function HeaderWrapper() {
           >
             <span className={styles.logoBox}>
               <Image
-                src="/usds-logo-cropped.svg"
+                src={withBasePath("/usds-logo-cropped.svg")}
                 alt={HEADER_WRAPPER_TEXT.logoAlt}
                 fill
                 priority

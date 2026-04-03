@@ -18,6 +18,7 @@ import {
   FOOTER_SOCIALS,
 } from "@/text/site";
 import { FOOTER_WRAPPER_TEXT } from "@/text/ui";
+import { withBasePath } from "@/utils/basePath";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -115,7 +116,7 @@ export default function FooterWrapper() {
             <div className={styles.brandLockup}>
               <span className={styles.logoBox}>
                 <Image
-                  src="/usds-logo-cropped.svg"
+                  src={withBasePath("/usds-logo-cropped.svg")}
                   alt={FOOTER_WRAPPER_TEXT.logoAlt}
                   fill
                   priority

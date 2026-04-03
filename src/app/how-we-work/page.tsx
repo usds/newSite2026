@@ -3,7 +3,6 @@ import styles from "./howWeWork.module.css";
 import DividerStars from "@/ui/DividerStars";
 import SectionHeader from "@/components/general/SectionHeader";
 import CTASection from "@/components/sections/CTASection";
-import ColorImageBlock from "@/components/general/ColorImageBlock";
 import HorizontalCards from "@/components/sections/HorizontalCards";
 import { COMMUNITY_DISCIPLINES } from "@/text/communities";
 import { HOW_WE_WORK_PAGE_CONTENT } from "@/text/howWeWork";
@@ -13,24 +12,27 @@ import {
   SHARED_METADATA_TEXT,
   SITE_URL_FALLBACK,
 } from "@/text/metadata";
+import { toAbsoluteSiteUrl, withBasePath } from "@/utils/basePath";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || SITE_URL_FALLBACK;
 const pageMeta = ROUTE_METADATA_TEXT.howWeWork;
+const canonicalPath = withBasePath(pageMeta.canonical);
+const logoPath = withBasePath(SHARED_METADATA_TEXT.logoImagePath);
 
 export const metadata: Metadata = {
   title: pageMeta.title,
   description: pageMeta.description,
   keywords: [...pageMeta.keywords],
   alternates: {
-    canonical: pageMeta.canonical,
+    canonical: canonicalPath,
   },
   openGraph: {
-    url: `${siteUrl}${pageMeta.canonical}`,
+    url: toAbsoluteSiteUrl(pageMeta.canonical, siteUrl),
     title: pageMeta.openGraphTitle,
     description: pageMeta.openGraphDescription,
     images: [
       {
-        url: SHARED_METADATA_TEXT.logoImagePath,
+        url: logoPath,
         alt: SHARED_METADATA_TEXT.logoAlt,
       },
     ],
@@ -38,7 +40,7 @@ export const metadata: Metadata = {
   twitter: {
     title: pageMeta.twitterTitle,
     description: pageMeta.twitterDescription,
-    images: [SHARED_METADATA_TEXT.logoImagePath],
+    images: [logoPath],
   },
 };
 
@@ -50,14 +52,6 @@ export default function HowWeWorkPage() {
     principlesSection,
     ctaSection,
   } = HOW_WE_WORK_PAGE_CONTENT;
-
-  const principleCards = principlesSection.cards.map((card) => ({
-    id: card.id,
-    title: card.title,
-    body: card.body,
-    gradientPosition: card.gradientPosition,
-    image: <ColorImageBlock tone={card.tone} micro />,
-  }));
 
   return (
     <div className={`pageWrap ${styles.wrapper}`}>
@@ -122,7 +116,7 @@ export default function HowWeWorkPage() {
         />
 
         <div className={styles.principlesGrid}>
-          <HorizontalCards cards={principleCards} />
+          <HorizontalCards cards={principlesSection.cards} />
         </div>
       </section>
 

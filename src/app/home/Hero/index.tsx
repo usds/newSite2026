@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useTitleReveal, useBodyReveal } from "@/hooks/useSplitReveal/presets";
 import { useRef } from "react";
 import { HOME_HERO_CONTENT, HOME_SECTION_ARIA_TEXT } from "@/text/home";
+import { withBasePath } from "@/utils/basePath";
 
 type HeroProps = {
   ready?: boolean;
@@ -51,7 +52,7 @@ export default function Hero({ ready = true }: HeroProps) {
         <div className={styles.mediaWrapperInner}>
           <Image
             className={styles.image}
-            src={HOME_HERO_CONTENT.imageSrc}
+            src={withBasePath(HOME_HERO_CONTENT.imageSrc)}
             alt={HOME_HERO_CONTENT.imageAlt}
             fill
             priority

@@ -39,6 +39,25 @@
 .heroVisual {
   width: 100%;
   min-height: clamp(13rem, 26vh, 17rem);
+  border-radius: var(--border-radius-primary);
+  border: var(--border-theme);
+  background:
+    radial-gradient(
+      circle at 18% 22%,
+      var(--primary-color-light-transparent),
+      transparent 56%
+    ),
+    radial-gradient(
+      circle at 84% 78%,
+      var(--tertiary-color-light-transparent),
+      transparent 60%
+    ),
+    linear-gradient(
+      135deg,
+      var(--primary-dark-panel-subtle-transparent),
+      var(--primary-dark-panel-muted-transparent)
+    );
+  box-shadow: var(--shadow-s);
 }
 
 .statGrid {

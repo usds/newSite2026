@@ -16,6 +16,7 @@ import {
   SITE_URL_FALLBACK,
 } from "@/text/metadata";
 import { ROOT_LAYOUT_UI_TEXT } from "@/text/ui";
+import { toAbsoluteSiteUrl, withBasePath } from "@/utils/basePath";
 // import Preloader from "@/components/general/Preloader";
 
 const publicSans = Public_Sans({
@@ -57,6 +58,8 @@ const instrumentSerif = Instrument_Serif({
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || SITE_URL_FALLBACK;
+const homePath = withBasePath("/");
+const logoPath = withBasePath(SHARED_METADATA_TEXT.logoImagePath);
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -68,7 +71,7 @@ export const metadata: Metadata = {
   applicationName: ROOT_LAYOUT_METADATA_TEXT.applicationName,
   keywords: [...ROOT_LAYOUT_METADATA_TEXT.keywords],
   alternates: {
-    canonical: "/",
+    canonical: homePath,
   },
   robots: {
     index: true,
@@ -84,13 +87,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "/",
+    url: toAbsoluteSiteUrl("/", siteUrl),
     siteName: ROOT_LAYOUT_METADATA_TEXT.openGraph.siteName,
     title: ROOT_LAYOUT_METADATA_TEXT.openGraph.title,
     description: ROOT_LAYOUT_METADATA_TEXT.openGraph.description,
     images: [
       {
-        url: SHARED_METADATA_TEXT.logoImagePath,
+        url: logoPath,
         alt: SHARED_METADATA_TEXT.logoAlt,
       },
     ],
@@ -99,17 +102,17 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: ROOT_LAYOUT_METADATA_TEXT.twitter.title,
     description: ROOT_LAYOUT_METADATA_TEXT.twitter.description,
-    images: [SHARED_METADATA_TEXT.logoImagePath],
+    images: [logoPath],
   },
   icons: {
     icon: [
       {
-        url: SHARED_METADATA_TEXT.logoImagePath,
+        url: logoPath,
         type: "image/svg+xml",
       },
     ],
-    shortcut: [SHARED_METADATA_TEXT.logoImagePath],
-    apple: [SHARED_METADATA_TEXT.logoImagePath],
+    shortcut: [logoPath],
+    apple: [logoPath],
   },
   creator: ROOT_LAYOUT_METADATA_TEXT.creator,
   publisher: ROOT_LAYOUT_METADATA_TEXT.publisher,
@@ -135,7 +138,7 @@ export default function RootLayout({
     name: ROOT_LAYOUT_METADATA_TEXT.schema.organizationName,
     alternateName: ROOT_LAYOUT_METADATA_TEXT.schema.organizationAlternateNames,
     url: siteUrl,
-    logo: `${siteUrl}${SHARED_METADATA_TEXT.logoImagePath}`,
+    logo: toAbsoluteSiteUrl(SHARED_METADATA_TEXT.logoImagePath, siteUrl),
   };
 
   return (

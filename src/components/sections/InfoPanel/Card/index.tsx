@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useTitleReveal, useBodyReveal } from "@/hooks/useSplitReveal/presets";
 import usePerspectiveTilt from "@/hooks/usePerspectiveTilt";
 import { INFO_PANEL_CARD_TEXT } from "@/text/ui";
+import { withBasePath } from "@/utils/basePath";
 
 type Props = {
   title: string;
@@ -42,7 +43,7 @@ export default function Card({ title, body, name }: Props) {
       <div className={styles.wrapperInner}>
         <div ref={tiltRef} className={styles.imageWrapper}>
           <Image
-            src={images[name].src}
+            src={withBasePath(images[name].src)}
             alt={images[name].alt}
             fill
             className={styles.image}

@@ -7,6 +7,7 @@ import type { CtaSectionContent } from "@/types/cta";
 
 type Props = CtaSectionContent & {
   className?: string;
+  id?: string;
 };
 
 const IMPORTANT_CTA_PATTERN = /\b(apply|join|career|hiring|role|start)\b/i;
@@ -17,6 +18,7 @@ function shouldShowArrow(text: string, href: string) {
 }
 
 export default function CTASection({
+  id,
   eyebrow,
   title,
   body,
@@ -26,6 +28,7 @@ export default function CTASection({
 }: Props) {
   return (
     <section
+      id={id}
       className={`sectionFrameBase sectionFrameTonePanel ${styles.wrapper} ${className ?? ""}`}
     >
       {eyebrow ? (

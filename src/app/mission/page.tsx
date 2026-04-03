@@ -40,7 +40,7 @@ export default function MissionPage() {
 
       <DividerStars />
 
-      <CTASection {...MISSION_PAGE_CTA_CONTENT} />
+      <CTASection id="applyNow" {...MISSION_PAGE_CTA_CONTENT} />
     </div>
   );
 }

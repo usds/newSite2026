@@ -2,7 +2,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: var(--space-xl);
+  gap: var(--space-2xl);
 }
 
 .originHeader {
@@ -11,17 +11,13 @@
 
 .layout {
   width: 100%;
-  display: flex;
-  gap: var(--space-xl);
-  align-items: flex-start;
 }
 
 .copy {
-  flex: 1 1 56%;
-  min-width: 0;
+  width: min(100%, 78ch);
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: var(--space-m);
 }
 
 .paragraph {
@@ -43,9 +39,15 @@
 .strategyBlock {
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
-  padding: 0.2rem 0 0.2rem 1rem;
-  border-left: 2px solid var(--primary-light-muted-transparent);
+  gap: var(--space-s);
+  padding: var(--space-m);
+  border: var(--border-theme);
+  border-radius: calc(var(--border-radius-primary) - 10px);
+  background: radial-gradient(
+    circle at 20% 20%,
+    var(--primary-color-transparent),
+    transparent 80%
+  );
   visibility: hidden;
 }
 
@@ -55,46 +57,11 @@
   line-height: 1.6;
   font-size: var(--fs-body);
   font-weight: var(--fw-body);
-  /* border: 1px solid red; */
-}
-
-.mediaCol {
-  flex: 1 1 44%;
-  min-width: 280px;
-  display: flex;
-}
-
-.mediaStack {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-l);
-}
-
-.mediaPrimary {
-  width: 100%;
-  min-height: clamp(15rem, 36vh, 22rem);
-}
-
-.mediaSecondary {
-  width: 78%;
-  align-self: flex-end;
 }
 
 @media (max-width: 72em) {
-  .layout {
-    flex-direction: column;
-    gap: var(--space-l);
-  }
-
-  .mediaCol {
-    width: 100%;
-    min-width: 0;
-  }
-
-  .mediaSecondary {
-    width: 100%;
-    align-self: stretch;
+  .wrapper {
+    gap: var(--space-xl);
   }
 }
 
