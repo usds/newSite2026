@@ -116,6 +116,7 @@ margin-top: 0 !important;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-l);
+  display: none;
 }
 
 .brandLockup {
