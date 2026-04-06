@@ -55,21 +55,28 @@
   font-size: var(--fs-h2) !important;
   font-weight: var(--fw-subtitle);
   text-box-trim: trim-both;
+  margin-bottom: var(--space-m);
 }
 
+.title * {
+  font-family: var(--font-instrumentSerif);
+  font-weight: var(--fw-title);
+  color: var(--primary-light-subtle)
+}
 .subtitle {
   margin: 0;
-  color: var(--primary-light-subtle);
   font-size: var(--fs-meta-smaller);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.05rem;
+  line-height: 2 !important;
   text-transform: uppercase;
   margin-bottom: var(--space-m);
 }
 
+
+
 .body {
-  margin: 0;
-  color: var(--primary-light-subtle);
-  font-size: var(--fs-body);
+  color: var(--primary-light-muted);
+  font-size: var(--fs-h5);
   font-weight: var(--fw-body);
   line-height: 2;
   letter-spacing: 0.05rem;
