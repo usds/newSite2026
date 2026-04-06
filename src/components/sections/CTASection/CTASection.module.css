@@ -21,18 +21,17 @@
   color: var(--primary-light);
   font-family: var(--font-instrumentSerif);
   font-size: var(--fs-h1);
-  font-weight: 400;
   line-height: 1.2;
 }
 
 .body {
   margin: 0;
-  color: var(--primary-light-subtle);
-  font-size: var(--fs-body);
+  color: var(--primary-color-light);
+  font-size: var(--fs-h5);
   font-weight: var(--fw-body);
   line-height: 2;
-  max-width: 40ch;
-  margin-bottom: var(--space-xl);
+  /* max-width: 50ch; */
+  margin-bottom: var(--space-m);
 
 }
 

@@ -219,14 +219,14 @@ margin-top: 0 !important;
 
 .linkList a {
   display: block;
-  color: var(--primary-light-muted);
-  font-size: var(--fs-meta);
+  color: var(--primary-light-subtle);
+  font-size: var(--fs-body);
 
   transition: var(--transition-fast);
   /* border: 1px solid red; */
   width: fit-content;
   letter-spacing: 0.1rem;
-  font-weight: var(--fw-subtitle);
+  font-weight: var(--fw-body);
 }
 
 .linkList a:hover {

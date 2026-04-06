@@ -56,7 +56,7 @@ export default function StickyList({ header, list }: Props) {
       <ol className={`${styles.half} ${styles.listHalf}`} ref={listRef}>
         {list.map((item, idx) => (
           <li key={idx} className={styles.listItem}>
-            <div className={styles.itemIndex}>{idx + 1}</div>
+            {/* <div className={styles.itemIndex}>{idx + 1}</div> */}
 
             <div className={styles.itemDetails}>
               <h3 className={styles.itemTitle}>{item.title}</h3>

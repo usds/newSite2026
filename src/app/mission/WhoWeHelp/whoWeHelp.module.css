@@ -10,7 +10,6 @@
 }
 
 .cardDetails {
-  margin-top: var(--space-m);
   color: var(--primary-light-muted);
   font-size: var(--fs-body);
   line-height: 1.8;

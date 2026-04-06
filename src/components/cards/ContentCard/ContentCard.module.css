@@ -30,7 +30,6 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  /* gap: var(--space-s); */
 
 }
 
@@ -51,7 +50,6 @@
 }
 
 .title {
-  margin: 0 0 0.75rem;
   font-size: var(--fs-h2) !important;
   font-weight: var(--fw-subtitle);
   text-box-trim: trim-both;
@@ -61,7 +59,7 @@
 .title * {
   font-family: var(--font-instrumentSerif);
   font-weight: var(--fw-title);
-  color: var(--primary-light-subtle)
+  color: var(--primary-color-light)
 }
 .subtitle {
   margin: 0;
@@ -76,21 +74,24 @@
 
 .body {
   color: var(--primary-light-muted);
-  font-size: var(--fs-h5);
+  font-size: var(--fs-h4);
   font-weight: var(--fw-body);
   line-height: 2;
   letter-spacing: 0.05rem;
+  margin-bottom: var(--space-m);
+
 }
 
 .footer {
-  margin-top: auto;
+  max-width: 50ch;
+
 }
 
 .footer :where(a) {
   color: var(--primary-color-light);
   font-size: var(--fs-meta);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05rem;
   transition: color 0.2s ease;
 }
 
