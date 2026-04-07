@@ -47,7 +47,7 @@ export const HOVER_CURSOR_PREVIEW_TEXT = {
 export const INFO_PANEL_CARD_TEXT = {
   images: {
     whoWeAre: {
-      src: "/whoWeAre.png",
+      src: "/WhoWeAre.png",
       alt: "Who We Are",
     },
     whatWeDo: {
