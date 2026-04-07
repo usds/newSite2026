@@ -1,20 +1,20 @@
 .wrapper {
   width: 100%;
-  border-radius: var(--border-radius-primary);
+  /* border-radius: var(--border-radius-primary); */
   /* background: radial-gradient(
     circle at 10% 10%,
     var(--primary-color-transparent),
     transparent 90%
   ); */
   /* box-shadow: var(--shadow-s); */
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .wrapperInner {
   display: flex;
   flex-direction: column;
   gap: var(--space-m);
-  padding: var(--space-m);
+  /* padding: var(--space-m); */
 }
 
 .imageWrapper {
@@ -48,8 +48,8 @@
 
 .title {
   color: var(--primary-color-light);
-  font-weight: 400;
   font-family: var(--font-instrumentSerif) !important;
+  font-size: var(--fs-h2);
 }
 
 .title :global(.word),
@@ -58,11 +58,12 @@
 }
 
 .body {
-  color: var(--primary-light-subtle);
+  color: var(--primary-light-muted);
   font-weight: var(--fw-body);
-  max-width: 60ch;
-  font-size: var(--fs-h5);
   width: 100%;
+
+  max-width: 50ch;
+  font-size: var(--fs-h4);
 }
 
 @media (max-width: 72em) {

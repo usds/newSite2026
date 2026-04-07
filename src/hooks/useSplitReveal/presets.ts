@@ -44,7 +44,7 @@ export function useBodyReveal<TScope extends Element, TText extends Element>(
     deps,
     from: {
       duration: (i: number) => 0.5 + i * 0.15,
-      yPercent: 105,
+      yPercent: 120,
       stagger: 0.01,
       ease: "expo.out",
       delay: 0.1,

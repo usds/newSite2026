@@ -41,7 +41,7 @@ export default function Card({ title, body, name }: Props) {
   return (
     <article className={styles.wrapper} ref={cardRef}>
       <div className={styles.wrapperInner}>
-        <div ref={tiltRef} className={styles.imageWrapper}>
+        {/* <div ref={tiltRef} className={styles.imageWrapper}>
           <Image
             src={withBasePath(images[name].src)}
             alt={images[name].alt}
@@ -52,7 +52,7 @@ export default function Card({ title, body, name }: Props) {
             sizes="(max-width: 1024px) 100vw, 50vw"
             priority={false}
           />
-        </div>
+        </div> */}
 
         <div className={styles.details}>
           <header className={styles.header}>
