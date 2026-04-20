@@ -1,35 +1,39 @@
 "use client";
 
 import styles from "./OurImpact.module.css";
-import ImpactCard from "@/components/cards/ImpactCard";
+import ImpactCard, { type IconName } from "@/components/cards/ImpactCard";
 import SectionHeader from "@/components/general/SectionHeader";
 import { HOME_OUR_IMPACT_CONTENT } from "@/text/home";
 import { AnimatePresence } from "motion/react";
 
 export default function OurImpact() {
   const { header, leftCards, statsTop, statsBottom, wideCard } = HOME_OUR_IMPACT_CONTENT;
-  const leftCardStyles = [
+  const leftCardStyles: Array<{
+    variant: "default" | "feature" | "gradientTeal";
+    icon: IconName;
+    animateWaves: boolean;
+  }> = [
     { variant: "default", icon: "groups", animateWaves: false },
     { variant: "feature", icon: "verified", animateWaves: true },
     { variant: "gradientTeal", icon: "iphone", animateWaves: false },
-  ] as const;
-  const leftGradientPositions = [
+  ];
+  const leftGradientPositions: Array<{ x: string; y: string }> = [
     { x: "50%", y: "10%" },
     { x: "90%", y: "90%" },
     { x: "10%", y: "90%" },
-  ] as const;
-  const topStatIcons = ["dollar", "school", "building", "globe"] as const;
-  const topStatGradientPositions = [
+  ];
+  const topStatIcons: IconName[] = ["dollar", "school", "building", "globe"];
+  const topStatGradientPositions: Array<{ x: string; y: string }> = [
     { x: "90%", y: "10%" },
     { x: "10%", y: "10%" },
     { x: "90%", y: "90%" },
     { x: "10%", y: "90%" },
-  ] as const;
-  const bottomStatIcons = ["trendingUp", "map"] as const;
-  const bottomStatGradientPositions = [
+  ];
+  const bottomStatIcons: IconName[] = ["trendingUp", "map"];
+  const bottomStatGradientPositions: Array<{ x: string; y: string }> = [
     { x: "50%", y: "10%" },
     { x: "90%", y: "90%" },
-  ] as const;
+  ];
 
   return (
     <section

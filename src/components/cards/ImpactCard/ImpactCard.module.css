@@ -4,6 +4,7 @@
   flex-direction: column;
   justify-content: flex-start;
   min-height: 255px;
+  height: 100lvh;
   padding: var(--space-xl);
   gap: var(--space-m);
   border-radius: var(--border-radius-primary);

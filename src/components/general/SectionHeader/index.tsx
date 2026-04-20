@@ -74,24 +74,30 @@ export default function SectionHeader({
   const resolvedCtas = cta ? (Array.isArray(cta) ? cta : [cta]) : [];
   const ctaAlignment = resolvedCtas[0]?.alignment ?? titleAlignment;
 
-  const subtitleSizeOpts = {
-    small: "body" as const,
-    medium: "small" as const,
-    large: "medium" as const,
+  const subtitleSizeOpts: Record<"small" | "medium" | "large", "body" | "small" | "medium"> = {
+    small: "body",
+    medium: "small",
+    large: "medium",
   };
 
-  const alignmentOpts = {
+  const alignmentOpts: Record<
+    Alignment,
+    {
+      alignSelf: CSSProperties["alignSelf"];
+      textAlign: CSSProperties["textAlign"];
+    }
+  > = {
     left: {
       alignSelf: "flex-start",
-      textAlign: "left" as const,
+      textAlign: "left",
     },
     center: {
       alignSelf: "center",
-      textAlign: "center" as const,
+      textAlign: "center",
     },
     right: {
       alignSelf: "flex-end",
-      textAlign: "right" as const,
+      textAlign: "right",
     },
   };
 

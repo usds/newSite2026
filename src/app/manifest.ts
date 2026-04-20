@@ -10,7 +10,7 @@ export default function manifest(): MetadataRoute.Manifest {
     short_name: APP_MANIFEST_TEXT.shortName,
     description: APP_MANIFEST_TEXT.description,
     start_url: withBasePath(APP_MANIFEST_TEXT.startUrl),
-    display: APP_MANIFEST_TEXT.display,
+    display: "standalone",
     background_color: APP_MANIFEST_TEXT.backgroundColor,
     theme_color: APP_MANIFEST_TEXT.themeColor,
     icons: [

@@ -29,7 +29,7 @@ export default function Hero({ ready = true }: HeroProps) {
       backgroundColor: "var(--primary-color-light)",
       textColor: "var(--primary-dark)",
     },
-  ] as const;
+  ];
 
   useTitleReveal(sectionRef, titleRef, [ready], {
     enabled: ready,

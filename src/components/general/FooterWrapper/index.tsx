@@ -35,7 +35,7 @@ export default function FooterWrapper() {
       backgroundColor: "var(--primary-dark-panel)",
       textColor: "var(--primary-light)",
     },
-  ] as const;
+  ];
 
   useGSAP(
     () => {

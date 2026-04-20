@@ -16,7 +16,7 @@ type ListItem = {
 
 type Props = {
   header: string;
-  list: readonly ListItem[];
+  list: ListItem[];
 };
 
 export default function StickyList({ header, list }: Props) {

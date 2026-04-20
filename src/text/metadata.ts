@@ -3,7 +3,7 @@ export const SITE_URL_FALLBACK = "https://www.usds.gov";
 export const SHARED_METADATA_TEXT = {
   logoImagePath: "/usds-logo-cropped.svg",
   logoAlt: "U.S. DOGE Service logo",
-} as const;
+};
 
 export const ROOT_LAYOUT_METADATA_TEXT = {
   title: {
@@ -43,7 +43,7 @@ export const ROOT_LAYOUT_METADATA_TEXT = {
     organizationName: "U.S. DOGE Service",
     organizationAlternateNames: ["U.S. Digital Service", "USDS"],
   },
-} as const;
+};
 
 export const ROUTE_METADATA_TEXT = {
   mission: {
@@ -122,7 +122,7 @@ export const ROUTE_METADATA_TEXT = {
     twitterDescription:
       "Learn what to expect in the USDS hiring process, interview stages, timelines, onboarding requirements, and relocation expectations.",
   },
-} as const;
+};
 
 export const APP_MANIFEST_TEXT = {
   name: "U.S. DOGE Service (USDS)",
@@ -133,4 +133,4 @@ export const APP_MANIFEST_TEXT = {
   display: "standalone",
   backgroundColor: "#0f1c2b",
   themeColor: "#0f1c2b",
-} as const;
+};

@@ -13,7 +13,7 @@ export type AccordionItem = {
 };
 
 type Props = {
-  items: readonly AccordionItem[];
+  items: AccordionItem[];
   className?: string;
   defaultOpenId?: string;
   allowCollapse?: boolean;

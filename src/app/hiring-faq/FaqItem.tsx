@@ -5,8 +5,8 @@ import styles from "./hiringFaq.module.css";
 
 type FaqItemProps = {
   question: string;
-  paragraphs: readonly string[];
-  bullets?: readonly string[];
+  paragraphs: string[];
+  bullets?: string[];
 };
 
 export default function FaqItem({ question, paragraphs, bullets }: FaqItemProps) {

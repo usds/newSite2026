@@ -23,6 +23,14 @@ type WhoWeHelpCard = {
   details: string;
 };
 
+export type Items = Item[];
+
+export type Item = {
+  id: number;
+  className?: string;
+  src: string;
+};
+
 export const MISSION_PAGE_CONTENT = {
   infoCards: [
     {
@@ -35,7 +43,7 @@ export const MISSION_PAGE_CONTENT = {
       title: "What We Do",
       body: "We collaborate with public servants throughout the government to address some of the most critical needs and ultimately deliver a better government experience to people. We work across multiple agencies and bring best practices from our various disciplines, which include engineering, product, design, procurement, data science, operations, talent, and communications.",
     },
-  ] as const satisfies readonly BasicTextCard[],
+  ] as BasicTextCard[],
   objectives: {
     header: "Our Objectives",
     items: [
@@ -59,7 +67,7 @@ export const MISSION_PAGE_CONTENT = {
         description:
           "Reduce fraud, waste, and abuse by improving system integrity, oversight, and accountability.",
       },
-    ] as const satisfies readonly ObjectiveItem[],
+    ] as ObjectiveItem[],
   },
   whoWeHelp: {
     content: {
@@ -76,7 +84,8 @@ export const MISSION_PAGE_CONTENT = {
     cards: [
       {
         title: "Farmers",
-        summary: "Modern, reliable digital tools for agriculture and rural communities.",
+        summary:
+          "Modern, reliable digital tools for agriculture and rural communities.",
         details:
           "We help farmers access benefits faster, reduce paperwork burden, and improve field service coordination through clearer forms, resilient platforms, and better data sharing.",
       },
@@ -88,29 +97,33 @@ export const MISSION_PAGE_CONTENT = {
       },
       {
         title: "Medicare beneficiaries",
-        summary: "Safer systems that protect care delivery and payment integrity.",
+        summary:
+          "Safer systems that protect care delivery and payment integrity.",
         details:
           "We strengthen identity and eligibility checks, reduce fraud vectors, and streamline beneficiary-facing services so people get trusted access to care.",
       },
       {
         title: "Students",
-        summary: "Simpler aid experiences that reduce friction and uncertainty.",
+        summary:
+          "Simpler aid experiences that reduce friction and uncertainty.",
         details:
           "We modernize student aid journeys, improve completion flows, and reduce outages so students can apply, verify, and receive support with less confusion.",
       },
       {
         title: "Military Service Members",
-        summary: "Reliable digital pathways for critical military and transition services.",
+        summary:
+          "Reliable digital pathways for critical military and transition services.",
         details:
           "We support secure, mission-ready systems that improve access to records, benefits, and essential workflows used by Service Members and their families.",
       },
       {
         title: "Small Business Owners",
-        summary: "Clearer federal interactions so businesses can grow and compete.",
+        summary:
+          "Clearer federal interactions so businesses can grow and compete.",
         details:
           "We simplify complex service touchpoints, modernize application processes, and improve platform trust so owners can spend less time navigating bureaucracy.",
       },
-    ] as const satisfies readonly WhoWeHelpCard[],
+    ] as WhoWeHelpCard[],
   },
   values: [
     {
@@ -149,8 +162,8 @@ export const MISSION_PAGE_CONTENT = {
       body: "We involve real people early and often so products fit their needs in practice.",
       gradientPosition: { x: "80%", y: "20%" },
     },
-  ] as const satisfies readonly BasicTextCard[],
-} as const;
+  ] as BasicTextCard[],
+};
 
 export const MISSION_HERO_CONTENT = {
   eyebrow: "Built for the public good",
@@ -158,7 +171,7 @@ export const MISSION_HERO_CONTENT = {
   titleHighlightSlice: [4, 11] as [number, number],
   message:
     "Transforming government to deliver fast, secure and user-centered digital services that millions of Americans rely on every day.",
-} as const;
+};
 
 export const MISSION_VALUES_SECTION_CONTENT = {
   eyebrow: "What Guides Us",
@@ -168,11 +181,11 @@ export const MISSION_VALUES_SECTION_CONTENT = {
     "Our values shape how we partner, how we build, and how we deliver measurable outcomes for the public.",
   linkText: "See how we work",
   linkHref: "/how-we-work",
-} as const;
+};
 
 export const MISSION_WHO_WE_HELP_UI_TEXT = {
   sectionAriaLabel: "Who we help",
-} as const;
+};
 
 export const MISSION_ORIGIN_STORY_CONTENT = {
   header: {
@@ -181,23 +194,52 @@ export const MISSION_ORIGIN_STORY_CONTENT = {
     titleHighlightSlice: [4, 9] as [number, number],
     subtitle:
       "How a scrappy idea became a durable digital service for the American people.",
-    subtitleSize: "medium" as const,
     linkText: "Apply now",
     linkHref: "#applyNow",
   },
-  paragraphs: [
-    "The idea of a team like USDS had been percolating since 2012, and people across federal agencies had been exploring new modes of hiring and working since 2008. The HealthCare.gov launch crisis created an opportunity for a scrappy idea to become a reality. The challenges behind the launch made clear that accessing government services should be as easy as ordering a book online.",
-    "Founded by President Obama in August of 2014, the U.S. Digital Service brought together the best engineering, design, and government talent to change our government's approach to technology. We planned to hire ten people for three critical national priorities: modernizing immigration, Veterans' benefits, and HealthCare.gov. During the 2015 State of the Union address, we launched an online application to join the team. We worried if ten people would even apply. 1000 did.",
-    "We quickly went to work with a simple strategy:",
-    "Does this sound like you?",
-  ],
-  strategyLines: [
-    "Recruit top designers and engineers.",
-    "Pair them with leading civil servants.",
-    "Deploy teams to address critical services.",
-  ],
-  applyLinkLabel: "Apply now.",
-} as const;
+  body: `The idea of a team like USDS had been percolating since 2012, and people across federal agencies had been exploring new modes of hiring and working since 2008. The HealthCare.gov launch crisis created an opportunity for a scrappy idea to become a reality. The challenges behind the launch made clear that accessing government services should be as easy as ordering a book online.
+
+  Founded by President Obama in August of 2014, the U.S. Digital Service brought together the best engineering, design, and government talent to change our government's approach to technology. We planned to hire ten people for three critical national priorities: modernizing immigration, Veterans' benefits, and HealthCare.gov. During the 2015 State of the Union address, we launched an online application to join the team. We worried if ten people would even apply. 1000 did.
+
+  - We quickly went to work with a simple strategy:
+  - Recruit top designers and engineers.
+  - Pair them with leading civil servants.
+  - Deploy teams to address critical services.
+
+  Does this sound like you? Apply now.`,
+  items: [
+    {
+      id: 1,
+      className: "one",
+      src: "https://picsum.photos/id/237/200/300",
+    } as Item,
+    {
+      id: 2,
+      className: "two",
+      src: "https://assets.codepen.io/16327/portrait-image-1.jpg",
+    } as Item,
+    {
+      id: 3,
+      className: "three",
+      src: "https://assets.codepen.io/16327/portrait-image-12.jpg",
+    } as Item,
+    {
+      id: 4,
+      className: "four",
+      src: "https://assets.codepen.io/16327/portrait-image-2.jpg",
+    } as Item,
+    {
+      id: 5,
+      className: "five",
+      src: "https://assets.codepen.io/16327/portrait-image-4.jpg",
+    } as Item,
+    {
+      id: 6,
+      className: "six",
+      src: "https://assets.codepen.io/16327/portrait-image-8.jpg",
+    } as Item,
+  ] as Items,
+};
 
 export const MISSION_PAGE_CTA_CONTENT = {
   eyebrow: "Join the mission",
@@ -211,4 +253,4 @@ export const MISSION_PAGE_CTA_CONTENT = {
     text: "View projects",
     href: "/projects",
   },
-} as const satisfies CtaSectionContent;
+} as CtaSectionContent;

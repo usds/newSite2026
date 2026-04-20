@@ -20,7 +20,7 @@ type TriggerHandlers = {
 };
 
 type HoverCursorPreviewProps = {
-  items: readonly HoverCursorPreviewItem[];
+  items: HoverCursorPreviewItem[];
   cursorLabel?: string;
   renderTriggers: (args: {
     getTriggerProps: (index: number) => TriggerHandlers;
@@ -45,7 +45,7 @@ const SCALE_ANIMATION: Variants = {
     y: "-50%",
     transition: {
       duration: 0.35,
-      ease: [0.76, 0, 0.24, 1] as const,
+      ease: [0.76, 0, 0.24, 1],
     },
   },
   closed: {
@@ -54,7 +54,7 @@ const SCALE_ANIMATION: Variants = {
     y: "-50%",
     transition: {
       duration: 0.25,
-      ease: [0.32, 0, 0.67, 0] as const,
+      ease: [0.32, 0, 0.67, 0],
     },
   },
 };

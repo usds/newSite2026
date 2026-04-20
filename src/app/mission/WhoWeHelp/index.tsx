@@ -24,7 +24,7 @@ type WhoWeHelpContent = {
 };
 
 type Props = {
-  cards: readonly WhoWeHelpCard[];
+  cards: WhoWeHelpCard[];
   content: WhoWeHelpContent;
 };
 

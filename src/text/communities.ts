@@ -2,7 +2,7 @@ export type CommunityDiscipline = {
   id: string;
   title: string;
   summary: string;
-  roles: readonly string[];
+  roles: string[];
   skills: string;
 };
 
@@ -77,4 +77,4 @@ export const COMMUNITY_DISCIPLINES = [
     skills:
       "Skills you might bring to the procurement community: digital market knowledge, federal procurement process, strategic advice, or technical acumen.",
   },
-] as const satisfies readonly CommunityDiscipline[];
+] as CommunityDiscipline[];

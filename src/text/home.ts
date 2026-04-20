@@ -19,7 +19,7 @@ type HomeHeroContent = {
     suffix: string;
   };
   subTitle: string;
-  ctas: readonly (CtaLink & {
+  ctas: (CtaLink & {
     ariaLabel?: string;
   })[];
 };
@@ -30,7 +30,7 @@ type HomeHowWeWorkContent = {
   header: HomeHeaderContent;
   sidePanelTitle: string;
   sidePanelCta: CtaLink;
-  practices: readonly HomePractice[];
+  practices: HomePractice[];
   communities: string[];
 };
 
@@ -47,9 +47,9 @@ type HomeProcessStep = {
 type HomeHowToJoinContent = {
   header: HomeHeaderContent;
   rolesTitle: string;
-  roles: readonly HomeRole[];
+  roles: HomeRole[];
   processTitle: string;
-  process: readonly HomeProcessStep[];
+  process: HomeProcessStep[];
   cta: CtaLink;
   ctaNote: string;
 };
@@ -62,14 +62,14 @@ type HomeExpectationItem = {
 
 type HomeWhatToExpectContent = {
   header: HomeHeaderContent;
-  accordionItems: readonly HomeExpectationItem[];
+  accordionItems: HomeExpectationItem[];
 };
 
 type ImpactListCard = {
   status?: string;
   eyebrow?: string;
   title: string;
-  bullets: readonly string[];
+  bullets: string[];
 };
 
 type ImpactStatCard = {
@@ -80,9 +80,9 @@ type ImpactStatCard = {
 
 type HomeOurImpactContent = {
   header: HomeHeaderContent;
-  leftCards: readonly ImpactListCard[];
-  statsTop: readonly ImpactStatCard[];
-  statsBottom?: readonly ImpactStatCard[];
+  leftCards: ImpactListCard[];
+  statsTop: ImpactStatCard[];
+  statsBottom?: ImpactStatCard[];
   wideCard: ImpactListCard;
 };
 
@@ -307,14 +307,14 @@ export const HOME_SECTION_ARIA_TEXT = {
   howWeWork: "How we work",
   whatToExpect: "What to expect",
   applicationProcess: "Application Process",
-} as const;
+};
 
 export const HOME_COMMUNITIES_CONTENT = {
   header: "Communities We Hire From",
   cursorLabel: "View",
   linkMeta: "View details",
   fallbackHref: "/how-we-work#who-we-hire",
-} as const;
+};
 
 export const HOME_PAGE_CTA_CONTENT = {
   eyebrow: "Take the next step",
@@ -328,4 +328,4 @@ export const HOME_PAGE_CTA_CONTENT = {
     text: "View careers",
     href: "/careers",
   },
-} as const satisfies CtaSectionContent;
+} as CtaSectionContent;

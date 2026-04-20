@@ -12,7 +12,7 @@ import { HOW_WE_WORK_PAGE_UI_TEXT } from "@/text/howWeWork";
 gsap.registerPlugin(ScrollTrigger);
 
 type Props = {
-  disciplines: readonly CommunityDiscipline[];
+  disciplines: CommunityDiscipline[];
 };
 
 type CommunityCardProps = {

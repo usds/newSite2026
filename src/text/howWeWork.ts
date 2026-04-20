@@ -57,7 +57,7 @@ export const HOW_WE_WORK_PAGE_CONTENT = {
         body: "We prioritize based on where we are needed most and where we can do the greatest good for the greatest number of people in the greatest need.",
         gradientPosition: { x: "80%", y: "80%" },
       },
-    ] as const satisfies readonly BasicTextCard[],
+    ] as BasicTextCard[],
   },
   disciplinesSection: {
     header: {
@@ -97,7 +97,7 @@ export const HOW_WE_WORK_PAGE_CONTENT = {
         tone: "amber",
         gradientPosition: { x: "80%", y: "80%" },
       },
-    ] as const satisfies readonly PrincipleCardContent[],
+    ] as PrincipleCardContent[],
   },
   spotlightsSection: {
     header: {
@@ -168,7 +168,7 @@ export const HOW_WE_WORK_PAGE_CONTENT = {
         linkText: "Learn more",
         gradientPosition: { x: "80%", y: "20%" },
       },
-    ] as const satisfies readonly SpotlightCardContent[],
+    ] as SpotlightCardContent[],
   },
   ctaSection: {
     eyebrow: "Tour of service",
@@ -183,8 +183,8 @@ export const HOW_WE_WORK_PAGE_CONTENT = {
       href: "/careers",
     },
   } satisfies HowWeWorkCtaSectionContent,
-} as const;
+};
 
 export const HOW_WE_WORK_PAGE_UI_TEXT = {
   communityListAriaLabel: "Community list",
-} as const;
+};

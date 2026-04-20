@@ -47,7 +47,7 @@ type Props = {
   status?: string;
   eyebrow?: string;
   title: string;
-  bullets?: readonly string[];
+  bullets?: string[];
   value?: string;
   subtitle?: string;
   animateWaves?: boolean;

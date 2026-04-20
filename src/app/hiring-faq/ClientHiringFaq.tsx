@@ -13,7 +13,7 @@ function TimelineCard({
   rows,
 }: {
   title: string;
-  rows: ReadonlyArray<HiringTimelineRow>;
+  rows: Array<HiringTimelineRow>;
 }) {
   return (
     <article className={styles.timelineCard}>
@@ -72,7 +72,7 @@ export default function ClientHiringFaq() {
         <SectionHeader
           eyebrow={sections.gettingHired.header.eyebrow}
           title={sections.gettingHired.header.title}
-          titleSize={sections.gettingHired.header.titleSize}
+          titleSize="medium"
         />
 
         <div className={styles.faqList}>
@@ -135,7 +135,7 @@ export default function ClientHiringFaq() {
         <SectionHeader
           eyebrow={sections.onboarding.header.eyebrow}
           title={sections.onboarding.header.title}
-          titleSize={sections.onboarding.header.titleSize}
+          titleSize="medium"
         />
 
         <div className={styles.faqList}>
@@ -154,7 +154,7 @@ export default function ClientHiringFaq() {
         <SectionHeader
           eyebrow={sections.relocation.header.eyebrow}
           title={sections.relocation.header.title}
-          titleSize={sections.relocation.header.titleSize}
+          titleSize="medium"
         />
 
         <div className={styles.faqList}>
@@ -173,7 +173,7 @@ export default function ClientHiringFaq() {
         <SectionHeader
           eyebrow={sections.lifeAtUsds.header.eyebrow}
           title={sections.lifeAtUsds.header.title}
-          titleSize={sections.lifeAtUsds.header.titleSize}
+          titleSize="medium"
         />
 
         <div className={styles.faqList}>

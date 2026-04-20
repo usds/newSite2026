@@ -7,7 +7,7 @@ import type { BasicTextCard } from "@/types/cards";
 import { MISSION_VALUES_SECTION_CONTENT } from "@/text/mission";
 
 type Props = {
-  items: readonly BasicTextCard[];
+  items: BasicTextCard[];
 };
 
 export default function OurValues({ items }: Props) {

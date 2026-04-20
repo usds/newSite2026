@@ -5,13 +5,13 @@ import styles from "./HorizontalCards.module.css";
 import ContentCard, { type Card } from "@/components/cards/ContentCard";
 
 type Props = {
-  cards: readonly Card[];
+  cards: Card[];
   className?: string;
   renderCard?: undefined;
 };
 
 type GenericProps<T> = {
-  cards: readonly T[];
+  cards: T[];
   className?: string;
   renderCard: (card: T, index: number) => ReactNode;
 };

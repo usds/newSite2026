@@ -9,7 +9,7 @@ export type HeaderNavItem =
   | {
       type: "dropdown";
       label: string;
-      items: readonly {
+      items: {
         label: string;
         href: string;
       }[];
@@ -25,7 +25,7 @@ export type FooterSocialItem = {
 
 export type FooterColumn = {
   title: string;
-  links: readonly {
+  links: {
     label: string;
     href: string;
   }[];
@@ -37,7 +37,7 @@ type FooterCalloutContent = {
   cta: CtaLink;
 };
 
-export const HEADER_NAV_ITEMS: readonly HeaderNavItem[] = [
+export const HEADER_NAV_ITEMS: HeaderNavItem[] = [
   {
     type: "dropdown",
     label: "About",
@@ -64,7 +64,7 @@ export const HEADER_NAV_ITEMS: readonly HeaderNavItem[] = [
   },
 ];
 
-export const FOOTER_SOCIALS: readonly FooterSocialItem[] = [
+export const FOOTER_SOCIALS: FooterSocialItem[] = [
   { label: "X", href: "https://x.com/USDS" },
   {
     label: "LinkedIn",
@@ -77,7 +77,7 @@ export const FOOTER_SOCIALS: readonly FooterSocialItem[] = [
   },
 ];
 
-export const FOOTER_COLUMNS: readonly FooterColumn[] = [
+export const FOOTER_COLUMNS: FooterColumn[] = [
   {
     title: "Programs",
     links: [
@@ -127,10 +127,10 @@ export const FOOTER_ACTIONS = [
     text: "Contact us",
     href: "/mission#contact",
   },
-] as const satisfies readonly CtaLink[];
+] as CtaLink[];
 
 export const FOOTER_POLICIES = [
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Accessibility", href: "/accessibility" },
   { label: "FOIA", href: "/foia" },
-] as const;
+];

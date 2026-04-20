@@ -4,7 +4,7 @@ import { FOOTER_SOCIAL_LINKS_TEXT } from "@/text/ui";
 import { withBasePath } from "@/utils/basePath";
 
 type Props = {
-  socials: readonly FooterSocialItem[];
+  socials: FooterSocialItem[];
 };
 
 const iconKeyByLabel: Record<string, string> = {

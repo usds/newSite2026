@@ -143,7 +143,7 @@ export default function CareersPageClient() {
     { x: "40%", y: "90%" },
     { x: "60%", y: "90%" },
     { x: "80%", y: "80%" },
-  ] as const;
+  ];
   const processCards = process.map((step, index) => ({
     id: `process-step-${index + 1}`,
     title: step.title,

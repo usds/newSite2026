@@ -35,18 +35,24 @@ const colorOpts: Record<TitleColor, string> = {
   primaryLightMuted: "var(--primary-light-muted)",
 };
 
-const alignmentOpts = {
+const alignmentOpts: Record<
+  Alignment,
+  {
+    alignSelf: CSSProperties["alignSelf"];
+    textAlign: CSSProperties["textAlign"];
+  }
+> = {
   left: {
     alignSelf: "flex-start",
-    textAlign: "left" as const,
+    textAlign: "left",
   },
   center: {
     alignSelf: "center",
-    textAlign: "center" as const,
+    textAlign: "center",
   },
   right: {
     alignSelf: "flex-end",
-    textAlign: "right" as const,
+    textAlign: "right",
   },
 };
 

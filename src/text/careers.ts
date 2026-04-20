@@ -10,7 +10,7 @@ export type CareersHeroFact = {
 export type CareersRole = {
   title: string;
   summary: string;
-  skills: readonly string[];
+  skills: string[];
   location: string;
   tour: string;
   tone: CareerTone;
@@ -30,7 +30,7 @@ type CareersHeroContent = {
   body: string;
   primaryCta: CtaLink;
   secondaryCta: CtaLink;
-  facts: readonly CareersHeroFact[];
+  facts: CareersHeroFact[];
 };
 
 type CareersCtaContent = CtaSectionContent;
@@ -55,7 +55,7 @@ export const CAREERS_PAGE_CONTENT = {
       { label: "Work model", value: "In-person, Washington, DC area" },
       { label: "Team model", value: "Cross-functional mission squads" },
       { label: "Focus", value: "High-impact public services" },
-    ] as const satisfies readonly CareersHeroFact[],
+    ] as CareersHeroFact[],
   } satisfies CareersHeroContent,
   rolesSection: {
     eyebrow: "Open Disciplines",
@@ -139,7 +139,7 @@ export const CAREERS_PAGE_CONTENT = {
       tone: "teal",
       applyHref: "/mission#applyNow",
     },
-  ] as const satisfies readonly CareersRole[],
+  ] as CareersRole[],
   processSection: {
     eyebrow: "Hiring Process",
     title: "What to expect after you apply",
@@ -167,7 +167,7 @@ export const CAREERS_PAGE_CONTENT = {
       body: "Tentative offer, background process, and final offer with start-date coordination.",
       timeline: "14-44 business days",
     },
-  ] as const satisfies readonly CareersProcessStep[],
+  ] as CareersProcessStep[],
   workModel: {
     eyebrow: "Tour Model",
     title: "Short tours. Lasting impact.",
@@ -186,7 +186,7 @@ export const CAREERS_PAGE_CONTENT = {
       href: "/hiring-faq",
     },
   } satisfies CareersCtaContent,
-} as const;
+};
 
 export const CAREERS_PAGE_UI_TEXT = {
   viewPositionLabel: "View position",
@@ -195,4 +195,4 @@ export const CAREERS_PAGE_UI_TEXT = {
   focusedToursBody:
     "Submit one application and we will evaluate you across tracks where your skills are strongest.",
   readHiringFaqLabel: "Read hiring FAQ",
-} as const;
+};

@@ -121,9 +121,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
