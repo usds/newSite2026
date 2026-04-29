@@ -1,30 +1,16 @@
 .wrapper {
   width: 100%;
+}
+
+.cardStack {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: var(--space-2xl);
-}
-
-.grid {
-  --horizontal-card-basis: calc((100% - (var(--space-l) * 2)) / 3);
-  --horizontal-card-min-width: min(100%, 16rem);
-  gap: var(--space-l);
-}
-
-@media (max-width: 72em) {
-  .grid {
-    --horizontal-card-basis: calc((100% - var(--space-l)) / 2);
-  }
+  gap: max(var(--space-s), var(--space-m));
 }
 
 @media (max-width: 40em) {
   .wrapper {
     gap: var(--space-l);
-  }
-
-  .grid {
-    --horizontal-card-basis: 100%;
-    --horizontal-card-min-width: 0;
-    gap: var(--space-m);
   }
 }

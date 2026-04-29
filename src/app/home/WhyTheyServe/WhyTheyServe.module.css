@@ -1,0 +1,13 @@
+.wrapper {
+  width: 100%;
+}
+
+.header {
+  margin-bottom: clamp(var(--space-m), 2vw, var(--space-xl));
+}
+
+.cards {
+  width: 100%;
+  --quote-section-quote-size: clamp(1.2rem, 1.85vw, 1.58rem);
+  --quote-section-detail-min-height: 100px;
+}

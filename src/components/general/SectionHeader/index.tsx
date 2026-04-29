@@ -15,7 +15,6 @@ import { useRef } from "react";
 import { useBodyReveal } from "@/hooks/useSplitReveal/presets";
 import Subtitle from "../Subtitle";
 import CTA, { type CTAProps } from "@/components/buttons/CTA";
-import { motion } from "motion/react";
 
 type SectionHeaderCTA = CTAProps & {
   alignment?: Alignment;
@@ -31,15 +30,16 @@ type Props = {
   titleColor?: TitleColor;
   titleHighlightColor?: TitleColor;
   titleHighlightSlice?: [number, number];
+  titleLineBreakBefore?: string;
   titleAs?: "h1" | "h2" | "h3";
   isPageTitle?: boolean;
-  titleLineHeight?: CSSProperties["lineHeight"];
   subtitle?: string;
   subtitleSize?: "small" | "medium" | "large";
   subtitleAlignment?: Alignment;
   subTitle?: string;
   subTitleSize?: "small" | "medium" | "large";
   subTitleAlignment?: Alignment;
+  showLeftBorder?: boolean;
   linkText?: string;
   linkHref?: string;
   cta?: SectionHeaderCTA | SectionHeaderCTA[];
@@ -55,15 +55,16 @@ export default function SectionHeader({
   titleColor = "primaryLight",
   titleHighlightColor = "primaryColorLight",
   titleHighlightSlice,
+  titleLineBreakBefore,
   titleAs = "h2",
   isPageTitle = false,
-  titleLineHeight,
   subtitle,
   subtitleSize,
   subtitleAlignment,
   subTitle,
   subTitleSize = "medium",
   subTitleAlignment = "center",
+  showLeftBorder = true,
   linkText,
   linkHref,
   cta,
@@ -105,42 +106,26 @@ export default function SectionHeader({
   const resolvedSubtitleSize = subtitleSize ?? subTitleSize;
   const resolvedSubtitleAlignment = subtitleAlignment ?? subTitleAlignment;
   const resolvedTitleAs = isPageTitle ? "h1" : titleAs;
+  const showLeftAccent = titleAlignment === "left" && showLeftBorder;
+  const titleClassName = isPageTitle
+    ? styles.title
+    : `${styles.title} ${styles.sectionTitle}`;
 
   useBodyReveal(wrapperRef, linkRef, [linkText, linkHref]);
 
   return (
     <div
       className={`${styles.sectionHeaderWrapper} ${wrapperClassName ? wrapperClassName : ""}`}
-      
     >
-      {titleAlignment === "left" ? (
+      {showLeftAccent ? (
         <div className={styles.leftVerticalLineWrapper}>
           <div className={styles.leftVerticalLine}></div>
         </div>
       ) : null}
 
-      <motion.header
-        className={`${styles.wrapper} ${className ? className : ""} ${titleAlignment === "left" ? styles.borderLeft : null}`}
+      <header
+        className={`${styles.wrapper} ${className ? className : ""} ${showLeftAccent ? styles.borderLeft : ""}`}
         ref={wrapperRef}
-        initial={{
-        x: titleAlignment === "left" ? "-1%" : undefined,
-        opacity: titleAlignment === "left" ? 0 : undefined,
-        filter: titleAlignment == "left" ? "blur(10px)" : undefined,
-        scale: titleAlignment == "left" ? 0.95 : undefined
-      }}
-      whileInView={{
-        x: titleAlignment == "left" ? "0%": undefined,
-        opacity: titleAlignment === "left" ? 1 : undefined,
-        filter: titleAlignment == "left" ? "blur(0px)" : undefined,
-        scale: titleAlignment == "left" ? 1 : undefined
-      }}
-      viewport={{
-        once: true
-      }}
-      transition={{
-        duration: 0.7,
-        ease: "easeOut"
-      }}
       >
         {eyebrow ? (
           <div className={styles.eyebrowWrap}>
@@ -155,9 +140,9 @@ export default function SectionHeader({
           color={titleColor}
           highlightColor={titleHighlightColor}
           highlightSlice={titleHighlightSlice}
+          lineBreakBefore={titleLineBreakBefore}
           as={resolvedTitleAs}
-          lineHeight={titleLineHeight}
-          className={styles.title}
+          className={titleClassName}
         />
 
         {resolvedSubtitle ? (
@@ -209,7 +194,7 @@ export default function SectionHeader({
             ))}
           </div>
         ) : null}
-      </motion.header>
+      </header>
     </div>
   );
 }

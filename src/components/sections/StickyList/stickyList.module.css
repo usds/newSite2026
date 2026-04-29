@@ -26,7 +26,7 @@
 
 .headerWrapper {
   position: sticky;
-  top: calc(var(--header-height) + 6rem);
+  top: calc(var(--header-clearance) + 6rem);
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -100,7 +100,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  line-height: 1.5;
   color: var(--primary-light-muted);
   /* border: 1px solid red; */
   pointer-events: none;
@@ -117,7 +116,7 @@
   width: 100%;
   font-size: var(--fs-h3);
   font-weight: var(--fw-title);
-  font-family: var(--font-instrumentSerif);
+  font-family: var(--font-spaceGrotesk);
   color: var(--primary-color-light);
 }
 

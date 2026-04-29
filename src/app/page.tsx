@@ -1,52 +1,44 @@
 "use client";
 
 import styles from "./home/home.module.css";
-import "./home/homeGlobal.css";
 import Hero from "./home/Hero";
+import AgencyMarquee from "./home/AgencyMarquee";
 import OurImpact from "./home/OurImpact";
 import HowToJoin from "./home/HowToJoin";
 import HowWeWork from "./home/HowWeWork";
+import FeaturedProjects from "./home/FeaturedWork";
 import WhatToExpect from "./home/WhatToExpect";
-import Preloader from "@/components/general/Preloader";
-import { AnimatePresence } from "motion/react";
-import { useState } from "react";
 import DividerStars from "@/ui/DividerStars";
 import Communities from "./home/Communities";
+import WhyTheyServe from "./home/WhyTheyServe";
 import CTASection from "@/components/sections/CTASection";
 import { HOME_HOW_WE_WORK_CONTENT, HOME_PAGE_CTA_CONTENT } from "@/text/home";
 
-
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true);
-
-    const { communities } = HOME_HOW_WE_WORK_CONTENT;
+  const { communities } = HOME_HOW_WE_WORK_CONTENT;
 
   return (
-    <div className={`pageWrapper ${styles.wrapper}`}>
-      <AnimatePresence mode="wait">
-        {isLoading && (
-          <Preloader
-            onDone={() => {
-              setIsLoading(false);
-              document.body.style.cursor = "default";
-              window.scrollTo(0, 0);
-            }}
-          />
-        )}
-      </AnimatePresence>
-      
-      <Hero ready={!isLoading}/>
+    <div className={styles.wrapper}>
+      <Hero />
 
-      <div className="pageInnerWrapper">
+      <div className={styles.innerWrapper}>
+
         <OurImpact />
         <DividerStars />
 
         <HowWeWork />
         <DividerStars />
 
-        <Communities communities={communities} />
+        <FeaturedProjects />
         <DividerStars />
 
+        <Communities communities={communities} />
+        <AgencyMarquee />
+
+        <DividerStars />
+
+        <WhyTheyServe />
+        <DividerStars />
 
         <HowToJoin />
         <DividerStars />
@@ -54,7 +46,7 @@ export default function Home() {
         <WhatToExpect />
         <DividerStars />
 
-        <CTASection {...HOME_PAGE_CTA_CONTENT} />
+        <CTASection {...HOME_PAGE_CTA_CONTENT} surface="plain" />
       </div>
     </div>
   );

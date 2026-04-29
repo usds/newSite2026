@@ -122,11 +122,11 @@ export const PROJECTS_PAGE_CONTENT = {
     body: "We partner with federal teams where modernization can deliver the greatest public value.",
     primary: {
       text: "Apply now",
-      href: "/mission#applyNow",
+      href: "/apply",
     },
     secondary: {
       text: "Contact us",
-      href: "/mission#contact",
+      href: "/contact",
     },
   } satisfies ProjectsCtaContent,
 };
@@ -134,4 +134,5 @@ export const PROJECTS_PAGE_CONTENT = {
 export const PROJECTS_PAGE_UI_TEXT = {
   heroAsideAriaLabel: "Portfolio highlights",
   projectLinkLabel: "Learn more",
+  statusSideLabel: "Status",
 };

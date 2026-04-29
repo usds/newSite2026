@@ -1,3 +1,7 @@
+.wrapper {
+  display: contents;
+}
+
 .statCard {
-  border: 1px solid red;
+  border: none;
 }

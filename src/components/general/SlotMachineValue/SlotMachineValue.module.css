@@ -1,0 +1,65 @@
+.wrapper {
+  display: flex;
+}
+
+.value {
+  display: flex;
+  align-items: flex-end;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  white-space: pre;
+  /* border: 1px solid red; */
+}
+
+.staticChar {
+  display: inline-block;
+  line-height: 1;
+  white-space: pre;
+}
+
+.slotWindow {
+  position: relative;
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+  height: 1em;
+  width: fit-content;
+  overflow: hidden;
+  /* border: 1px solid red; */
+
+}
+
+.slotStrip {
+  display: flex;
+  flex-direction: column;
+  transform: translateY(calc(var(--slot-stop, 20) * -1em));
+  will-change: transform;
+}
+
+.slotStripActive {
+  animation: slot-spin 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--slot-delay, 0ms);
+}
+
+.slotDigit {
+  display: block;
+  width: 100%;
+  height: 1em;
+  line-height: 1em;
+  text-align: center;
+}
+
+@keyframes slot-spin {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(var(--slot-stop, 20) * -1em));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slotStripActive {
+    animation: none;
+  }
+}

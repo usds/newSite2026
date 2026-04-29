@@ -3,6 +3,7 @@ import styles from "./howWeWork.module.css";
 import DividerStars from "@/ui/DividerStars";
 import SectionHeader from "@/components/general/SectionHeader";
 import CTASection from "@/components/sections/CTASection";
+import HeroFrame from "@/components/sections/PageHero";
 import HorizontalCards from "@/components/sections/HorizontalCards";
 import { COMMUNITY_DISCIPLINES } from "@/text/communities";
 import { HOW_WE_WORK_PAGE_CONTENT } from "@/text/howWeWork";
@@ -55,25 +56,25 @@ export default function HowWeWorkPage() {
 
   return (
     <div className={`pageWrap ${styles.wrapper}`}>
-      <section id="work" className={`sectionFrameBase ${styles.hero}`}>
-        <div className={styles.heroLayout}>
-          <div className={styles.heroContent}>
-            <SectionHeader
-              eyebrow={hero.eyebrow}
-              title={hero.title}
-              isPageTitle
-              titleHighlightSlice={[7, 11]}
-              subtitle={hero.body}
-            />
-          </div>
-        </div>
-      </section>
-
+      <HeroFrame
+        className={styles.hero}
+        headerClassName={styles.heroSectionHeader}
+        variant="center"
+        eyebrow={hero.eyebrow}
+        title={hero.title}
+        subtitle={hero.body}
+        titleHighlightSlice={[7, 11]}
+        centeredStatsLayout="long"
+        stats={hero.details.map((detail, index) => ({
+          label: detail.label,
+          value: detail.value,
+          tone: (["blue", "teal", "gold"] as const)[index % 3],
+          animateValue: false,
+        }))}
+      />
       <DividerStars />
 
-      <section
-        className={`sectionFrameBase sectionFrameTonePanel ${styles.valuesSection}`}
-      >
+      <section className={`sectionFrameBase ${styles.valuesSection}`}>
         <SectionHeader
           eyebrow={valuesSection.header.eyebrow}
           title={valuesSection.header.title}
@@ -85,7 +86,6 @@ export default function HowWeWorkPage() {
           <HorizontalCards cards={valuesSection.cards} />
         </section>
       </section>
-
       <DividerStars />
 
       <section
@@ -105,9 +105,7 @@ export default function HowWeWorkPage() {
 
       <DividerStars />
 
-      <section
-        className={`sectionFrameBase sectionFrameTonePanel ${styles.principlesSection}`}
-      >
+      <section className={`sectionFrameBase ${styles.principlesSection}`}>
         <SectionHeader
         className={styles.principleHeader}
           eyebrow={principlesSection.header.eyebrow}

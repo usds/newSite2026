@@ -29,7 +29,6 @@ export default function MissionPage() {
       <DividerStars />
 
       <WhoWeHelp cards={whoWeHelp.cards} content={whoWeHelp.content} />
-
       <DividerStars />
 
       <OurValues items={values} />
@@ -39,7 +38,6 @@ export default function MissionPage() {
       <OriginStory />
 
       <DividerStars />
-
       <CTASection id="applyNow" {...MISSION_PAGE_CTA_CONTENT} />
     </div>
   );

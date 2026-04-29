@@ -35,7 +35,7 @@ export default function FooterWrapper() {
       backgroundColor: "var(--primary-dark-panel)",
       textColor: "var(--primary-light)",
     },
-  ];
+  ] as const;
 
   useGSAP(
     () => {
@@ -82,108 +82,113 @@ export default function FooterWrapper() {
   );
 
   return (
-    <footer
-      ref={footerRef}
-      className={styles.footer}
-      aria-label={FOOTER_WRAPPER_TEXT.footerAriaLabel}
-    >
-      <section
-        className={styles.callout}
-        aria-label={FOOTER_WRAPPER_TEXT.joinMissionAriaLabel}
-      >
-        <div className={styles.calloutText}>
-          <SectionHeader
-            wrapperClassName={styles.footerHeaderWrapper}
-            className={styles.calloutHeader}
-            title={FOOTER_CALLOUT_CONTENT.title}
-            titleHighlightSlice={[17, 32]}
-            // subtitle={FOOTER_CALLOUT_CONTENT.body}
-            // subtitleAlignment="left"
-            cta={{
-              text: FOOTER_CALLOUT_CONTENT.cta.text,
-              href: FOOTER_CALLOUT_CONTENT.cta.href,
-              icon: "arrowRight",
-              backgroundColor: "var(--primary-color-light)",
-              textColor: "var(--primary-dark)",
-            }}
-          />
-        </div>
-      </section>
-
-      <div className={styles.surface}>
-        <div className={styles.inner}>
-          <div className={styles.brandRow}>
-            <div className={styles.brandLockup}>
-              <span className={styles.logoBox}>
-                <Image
-                  src={withBasePath("/usds-logo-cropped.svg")}
-                  alt={FOOTER_WRAPPER_TEXT.logoAlt}
-                  fill
-                  priority
-                  className={styles.logoImg}
-                />
-              </span>
-              <p className={styles.logoHeading}>{FOOTER_WRAPPER_TEXT.logoHeading}</p>
+    <div className={styles.revealShell}>
+      <div className={styles.revealTrack}>
+        <footer
+          ref={footerRef}
+          className={`${styles.wrapper} ${styles.footer} ${styles.footerReveal}`}
+          aria-label={FOOTER_WRAPPER_TEXT.footerAriaLabel}
+        >
+          <section
+            className={styles.callout}
+            aria-label={FOOTER_WRAPPER_TEXT.joinMissionAriaLabel}
+          >
+            <div className={styles.calloutText}>
+              <SectionHeader
+                wrapperClassName={styles.footerHeaderWrapper}
+                className={styles.calloutHeader}
+                title={FOOTER_CALLOUT_CONTENT.title}
+                titleHighlightSlice={[17, 32]}
+                titleLineBreakBefore="for the people."
+                // subtitle={FOOTER_CALLOUT_CONTENT.body}
+                // subtitleAlignment="left"
+                // cta={{
+                //   text: FOOTER_CALLOUT_CONTENT.cta.text,
+                //   href: FOOTER_CALLOUT_CONTENT.cta.href,
+                //   icon: "arrowRight",
+                //   backgroundColor: "var(--primary-color-light)",
+                //   textColor: "var(--primary-dark)",
+                // }}
+              />
             </div>
-            <span className={styles.brandMark}>{FOOTER_WRAPPER_TEXT.brandMark}</span>
-          </div>
+          </section>
 
-          <div className={styles.mainGrid}>
-            <div className={styles.linkColumns}>
-              {FOOTER_COLUMNS.map((column) => (
-                <nav key={column.title} className={styles.column} aria-label={column.title}>
-                  <p className={styles.colTitle}>{column.title}</p>
-                  <ul className={styles.linkList}>
-                    {column.links.map((link) => (
-                      <li key={`${column.title}-${link.label}`}>
-                        <Link href={link.href}>{link.label}</Link>
-                      </li>
-                    ))}
-                  </ul>
-                </nav>
-              ))}
-            </div>
-
-            <aside
-              className={styles.actionPanel}
-              aria-label={FOOTER_WRAPPER_TEXT.primaryActionsAriaLabel}
-            >
-              <div className={styles.actionCtas}>
-                {FOOTER_ACTIONS.map((action, index) => (
-                  <CTA
-                    key={action.text}
-                    text={action.text}
-                    href={action.href}
-                    backgroundColor={actionStyles[index]?.backgroundColor ?? actionStyles[0].backgroundColor}
-                    textColor={actionStyles[index]?.textColor ?? actionStyles[0].textColor}
-                  />
-                ))}
+          <div className={styles.surface}>
+            <div className={styles.inner}>
+              <div className={styles.brandRow}>
+                <div className={styles.brandLockup}>
+                  <span className={styles.logoBox}>
+                    <Image
+                      src={withBasePath("/usds-logo-cropped.svg")}
+                      alt={FOOTER_WRAPPER_TEXT.logoAlt}
+                      fill
+                      priority
+                      className={styles.logoImg}
+                    />
+                  </span>
+                  <p className={styles.logoHeading}>{FOOTER_WRAPPER_TEXT.logoHeading}</p>
+                </div>
+                <span className={styles.brandMark}>{FOOTER_WRAPPER_TEXT.brandMark}</span>
               </div>
-              <p className={styles.actionMeta}>
-                {FOOTER_WRAPPER_TEXT.officialSiteNotice}
-              </p>
-            </aside>
-          </div>
 
-          <div className={styles.bottomRow}>
-            <ul className={styles.policyList}>
-              {FOOTER_POLICIES.map((policy) => (
-                <li key={policy.label}>
-                  <Link href={policy.href}>{policy.label}</Link>
-                </li>
-              ))}
-            </ul>
+              <div className={styles.mainGrid}>
+                <div className={styles.linkColumns}>
+                  {FOOTER_COLUMNS.map((column) => (
+                    <nav key={column.title} className={styles.column} aria-label={column.title}>
+                      <p className={styles.colTitle}>{column.title}</p>
+                      <ul className={styles.linkList}>
+                        {column.links.map((link) => (
+                          <li key={`${column.title}-${link.label}`}>
+                            <Link href={link.href}>{link.label}</Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </nav>
+                  ))}
+                </div>
 
-            <div className={styles.socialWrap}>
-              <FooterSocialLinks socials={FOOTER_SOCIALS} />
+                <aside
+                  className={styles.actionPanel}
+                  aria-label={FOOTER_WRAPPER_TEXT.primaryActionsAriaLabel}
+                >
+                  <div className={styles.actionCtas}>
+                    {FOOTER_ACTIONS.map((action, index) => (
+                      <CTA
+                        key={action.text}
+                        text={action.text}
+                        href={action.href}
+                        backgroundColor={actionStyles[index]?.backgroundColor ?? actionStyles[0].backgroundColor}
+                        textColor={actionStyles[index]?.textColor ?? actionStyles[0].textColor}
+                      />
+                    ))}
+                  </div>
+                  <p className={styles.actionMeta}>
+                    {FOOTER_WRAPPER_TEXT.officialSiteNotice}
+                  </p>
+                </aside>
+              </div>
+
+              <div className={styles.bottomRow}>
+                <ul className={styles.policyList}>
+                  {FOOTER_POLICIES.map((policy) => (
+                    <li key={policy.label}>
+                      <Link href={policy.href}>{policy.label}</Link>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className={styles.socialWrap}>
+                  <FooterSocialLinks socials={FOOTER_SOCIALS} />
+                </div>
+
+                <p className={styles.notice}>
+                  © {year} {FOOTER_WRAPPER_TEXT.rightsReservedSuffix}
+                </p>
+              </div>
             </div>
-
-            <p className={styles.notice}>
-              © {year} {FOOTER_WRAPPER_TEXT.rightsReservedSuffix}
-            </p>
           </div>
-        </div>
+        </footer>
       </div>
-    </footer>
+    </div>
   );
 }

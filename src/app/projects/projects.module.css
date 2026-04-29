@@ -6,10 +6,12 @@
 }
 
 .hero {
-  height: 100%;
   width: 100%;
-  max-width: 75ch;
-  /* padding-top: var(--space-l); */
+  gap: var(--space-2xl);
+}
+
+.heroSectionHeader {
+  margin-bottom: 0 !important;
 }
 
 .heroLayout {
@@ -30,9 +32,8 @@
 .heroAside {
   min-width: 0;
   flex: 1 1 40%;
-  display: flex;
   flex-direction: column;
-  gap: var(--space-m) !important  ;
+  gap: var(--space-m);
   display: none;
 }
 
@@ -41,22 +42,7 @@
   min-height: clamp(13rem, 26vh, 17rem);
   border-radius: var(--border-radius-primary);
   border: var(--border-theme);
-  background:
-    radial-gradient(
-      circle at 18% 22%,
-      var(--primary-color-light-transparent),
-      transparent 56%
-    ),
-    radial-gradient(
-      circle at 84% 78%,
-      var(--tertiary-color-light-transparent),
-      transparent 60%
-    ),
-    linear-gradient(
-      135deg,
-      var(--primary-dark-panel-subtle-transparent),
-      var(--primary-dark-panel-muted-transparent)
-    );
+  background: var(--primary-dark-panel-transparent);
   box-shadow: var(--shadow-s);
 }
 
@@ -73,41 +59,10 @@
   flex: 1 1 calc((100% - var(--space-m)) / 2);
   min-width: min(100%, 14rem);
   border-radius: var(--border-radius-primary);
-
+  border: var(--border-theme);
+  background: var(--primary-dark-panel-transparent);
   box-shadow: var(--shadow-s);
   overflow: hidden;
-}
-
-.statCard:nth-child(1) {
-  background: radial-gradient(
-    circle at 60% 80%,
-    var(--primary-color-transparent),
-    transparent 90%
-  );
-}
-
-.statCard:nth-child(2) {
-    background: radial-gradient(
-    circle at 40% 80%,
-    var(--primary-color-transparent),
-    transparent 90%
-  );
-}
-
-.statCard:nth-child(3) {
-    background: radial-gradient(
-    circle at 60% 20%,
-    var(--primary-color-transparent),
-    transparent 90%
-  );
-}
-
-.statCard:nth-child(4) {
-    background: radial-gradient(
-    circle at 40% 20%,
-    var(--primary-color-transparent),
-    transparent 90%
-  );
 }
 
 
@@ -120,14 +75,12 @@
   color: var(--primary-color-light);
   font-size: var(--fs-h4);
   font-weight: var(--fw-large);
-  line-height: 1;
 }
 
 .statLabel {
   margin: var(--space-xs) 0 0;
   color: var(--primary-light-muted);
   font-size: var(--fs-body);
-  line-height: 1.45;
   font-weight: var(--fw-body);
   max-width: 30ch;
 }
@@ -139,14 +92,22 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 0 !important;
+  gap: var(--space-xl);
 }
 
 .projectGrid {
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-xl);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-l);
+}
+
+.projectImpactFooter {
+  margin: 0;
+  color: var(--primary-light-subtle);
+  font-size: var(--fs-meta);
+  line-height: var(--lh-tall);
+  max-width: 58ch;
 }
 
 
@@ -155,15 +116,13 @@
     flex-direction: column;
     gap: var(--space-l);
   }
-
-  .projectCard {
-    flex-basis: 100%;
-    min-width: 0;
-    height: auto;
-  }
 }
 
 @media (max-width: 40em) {
+  .heroSectionHeader {
+    margin-bottom: 0 !important;
+  }
+
   .statCard {
     flex-basis: 100%;
     min-width: 0;
@@ -172,19 +131,6 @@
   .statCardInner {
     min-height: 0;
     padding: var(--space-s) var(--space-m);
-  }
-
-  .projectCardInner {
-    padding: var(--space-m);
-    gap: var(--space-s);
-  }
-
-  .projectTitle {
-    font-size: var(--fs-h3);
-  }
-
-  .projectSummary {
-    font-size: var(--fs-body) !important;
   }
 
   .ctaBody {

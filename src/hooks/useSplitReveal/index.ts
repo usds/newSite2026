@@ -46,7 +46,7 @@ export function useSplitReveal<TScope extends Element, TText extends Element>(
     type = "lines",
     mask = "lines",
     autoSplit = true,
-    lineHeight = 1.5,
+    lineHeight,
     linesClass = "line",
     wordsClass = "word",
     charsClass = "char",
@@ -62,6 +62,8 @@ export function useSplitReveal<TScope extends Element, TText extends Element>(
   useLayoutEffect(() => {
     if (!enabled) return;
 
+    let cancelled = false;
+    let ctx: gsap.Context | null = null;
     const scopeEl = scopeRef.current;
     const textEl = textRef.current;
     if (!scopeEl || !textEl) return;
@@ -69,61 +71,80 @@ export function useSplitReveal<TScope extends Element, TText extends Element>(
     let delayed: gsap.core.Tween | null = null;
     let st: ScrollTrigger | null = null;
 
-    const ctx = gsap.context(() => {
-      const split = new SplitText(textEl, {
-        type,
-        autoSplit,
-        mask: mask === "none" ? undefined : mask,
-        linesClass,
-        wordsClass,
-        charsClass,
-      });
+    const init = () => {
+      if (cancelled) return;
 
-      const splitUnits = [...split.lines, ...split.words, ...split.chars];
-      gsap.set(textEl, { lineHeight });
+      ctx = gsap.context(() => {
+        const split = new SplitText(textEl, {
+          type,
+          autoSplit,
+          mask: mask === "none" ? undefined : mask,
+          linesClass,
+          wordsClass,
+          charsClass,
+        });
 
-      if (splitUnits.length) {
-        gsap.set(splitUnits, { lineHeight });
-      }
-
-      const targets = type.includes("chars")
-        ? split.chars
-        : type.includes("words")
-        ? split.words
-        : split.lines;
-
-      const run = () => {
-        if (revealVisibility) {
-          gsap.set(textEl, { visibility: "visible" });
+        const splitUnits = [...split.lines, ...split.words, ...split.chars];
+        if (lineHeight !== undefined) {
+          gsap.set(textEl, { lineHeight });
+          if (splitUnits.length) {
+            gsap.set(splitUnits, { lineHeight });
+          }
         }
 
-        gsap.from(targets, {
-          yPercent: 105,
-          stagger: 0.1,
-          ease: "expo.out",
-          delay: 0.1,
-          ...from,
-        });
-      };
+        const targets = type.includes("chars")
+          ? split.chars
+          : type.includes("words")
+          ? split.words
+          : split.lines;
 
-      st = ScrollTrigger.create({
-        trigger: scopeEl,
-        start,
-        once,
-        onEnter: () => {
-          if (triggerDelayMs > 0) {
-            delayed = gsap.delayedCall(triggerDelayMs / 1000, run);
-          } else {
-            run();
+        const run = () => {
+          if (revealVisibility) {
+            gsap.set(textEl, { visibility: "visible" });
           }
-        },
-      });
-    }, scopeEl);
+
+          gsap.from(targets, {
+            yPercent: 105,
+            stagger: 0.1,
+            ease: "expo.out",
+            delay: 0.1,
+            ...from,
+          });
+        };
+
+        st = ScrollTrigger.create({
+          trigger: scopeEl,
+          start,
+          once,
+          onEnter: () => {
+            if (triggerDelayMs > 0) {
+              delayed = gsap.delayedCall(triggerDelayMs / 1000, run);
+            } else {
+              run();
+            }
+          },
+        });
+      }, scopeEl);
+    };
+
+    const waitForFontsAndInit = async () => {
+      if (type.includes("lines") && "fonts" in document) {
+        try {
+          await document.fonts.ready;
+        } catch {
+          // Fallback: proceed even if font readiness fails.
+        }
+      }
+      init();
+    };
+
+    void waitForFontsAndInit();
 
     return () => {
+      cancelled = true;
       delayed?.kill();
       st?.kill();
-      ctx.revert();
+      ctx?.revert();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [enabled, ...deps]);

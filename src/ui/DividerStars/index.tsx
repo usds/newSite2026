@@ -2,7 +2,7 @@
 "use client";
 
 import { useLayoutEffect, useRef } from "react";
-import styles from "./dividerStars.module.css";
+import styles from "./DividerStars.module.css";
 import { Star } from "lucide-react";
 import gsap from "gsap";
 

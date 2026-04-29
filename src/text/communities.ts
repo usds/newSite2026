@@ -1,8 +1,10 @@
 export type CommunityDiscipline = {
   id: string;
   title: string;
+  employeePercentage: string;
+  focusTags: readonly string[];
   summary: string;
-  roles: string[];
+  roles: readonly string[];
   skills: string;
 };
 
@@ -10,6 +12,8 @@ export const COMMUNITY_DISCIPLINES = [
   {
     id: "community-engineering",
     title: "Engineering",
+    employeePercentage: "34%",
+    focusTags: ["Platforms", "Reliability", "Security"],
     summary:
       "Engineers at USDS modernize high-impact systems, improve reliability, and ship safer releases for services millions of people use.",
     roles: [
@@ -24,6 +28,8 @@ export const COMMUNITY_DISCIPLINES = [
   {
     id: "community-design-ux",
     title: "Design and user experience",
+    employeePercentage: "18%",
+    focusTags: ["User Research", "Accessibility", "Service Design"],
     summary:
       "Designers partner with users and agency teams to make critical government services clearer, more accessible, and easier to complete.",
     roles: [
@@ -38,6 +44,8 @@ export const COMMUNITY_DISCIPLINES = [
   {
     id: "community-data-science",
     title: "Data science",
+    employeePercentage: "21%",
+    focusTags: ["Analytics", "ML and AI", "Fraud Detection"],
     summary:
       "Data specialists transform operational data into practical decisions that improve outcomes, reduce fraud risk, and increase service quality.",
     roles: [
@@ -52,6 +60,8 @@ export const COMMUNITY_DISCIPLINES = [
   {
     id: "community-product-strategy-operations",
     title: "Product, Strategy, & Operations",
+    employeePercentage: "19%",
+    focusTags: ["Delivery", "Strategy", "Operations"],
     summary:
       "Product and operations staff align policy, users, and delivery constraints to move critical initiatives from plan to shipped outcomes.",
     roles: [
@@ -66,6 +76,8 @@ export const COMMUNITY_DISCIPLINES = [
   {
     id: "community-procurement",
     title: "Procurement",
+    employeePercentage: "8%",
+    focusTags: ["Acquisition", "Contracting", "Vendor Strategy"],
     summary:
       "Acquisition specialists shape buying strategies and contracts that let agencies deliver modern digital services faster and with better outcomes.",
     roles: [
@@ -77,4 +89,4 @@ export const COMMUNITY_DISCIPLINES = [
     skills:
       "Skills you might bring to the procurement community: digital market knowledge, federal procurement process, strategic advice, or technical acumen.",
   },
-] as CommunityDiscipline[];
+] as const satisfies readonly CommunityDiscipline[];

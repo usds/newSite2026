@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "./infoPanel.module.css";
+import styles from "./InfoPanel.module.css";
 import Card from "./Card";
 import type { BasicTextCard } from "@/types/cards";
 

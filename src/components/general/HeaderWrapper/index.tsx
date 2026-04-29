@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import CTA from "@/components/buttons/CTA";
 import Image from "next/image";
 import styles from "./HeaderWrapper.module.css";
@@ -12,29 +13,47 @@ import { motion } from "motion/react";
 import { withBasePath } from "@/utils/basePath";
 
 export default function HeaderWrapper() {
+  const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const headerRef = useRef<HTMLElement | null>(null);
+  const openDesktopDropdownRef = useRef<HTMLLIElement | null>(null);
   const mobileNavId = "mobile-primary-nav";
+  const closeMenus = useCallback(() => {
+    setOpenDropdown(null);
+    setMobileOpen(false);
+  }, []);
+
+  useEffect(() => {
+    closeMenus();
+  }, [closeMenus, pathname]);
 
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        setMobileOpen(false);
-        setOpenDropdown(null);
+        closeMenus();
       }
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, []);
+  }, [closeMenus]);
 
   useEffect(() => {
     const onPointerDown = (event: MouseEvent | TouchEvent) => {
       const target = event.target as Node | null;
       if (!target) return;
-      if (headerRef.current?.contains(target)) return;
-      setOpenDropdown(null);
-      setMobileOpen(false);
+
+      const clickedInsideHeader = headerRef.current?.contains(target) ?? false;
+      const clickedInsideOpenDesktopDropdown =
+        openDesktopDropdownRef.current?.contains(target) ?? false;
+
+      if (!clickedInsideOpenDesktopDropdown) {
+        setOpenDropdown(null);
+      }
+
+      if (!clickedInsideHeader) {
+        setMobileOpen(false);
+      }
     };
 
     document.addEventListener("mousedown", onPointerDown);
@@ -60,6 +79,7 @@ export default function HeaderWrapper() {
             href="/"
             className={styles.brand}
             aria-label={HEADER_WRAPPER_TEXT.homeAriaLabel}
+            onClick={closeMenus}
           >
             <span className={styles.logoBox}>
               <Image
@@ -82,7 +102,7 @@ export default function HeaderWrapper() {
                 if (item.type === "link") {
                   return (
                     <li key={item.label} className={styles.navItem}>
-                      <Link className={styles.navLink} href={item.href}>
+                      <Link className={styles.navLink} href={item.href} onClick={closeMenus}>
                         {item.label}
                       </Link>
                     </li>
@@ -93,7 +113,11 @@ export default function HeaderWrapper() {
                   const dropdownId = `${item.label.toLowerCase().replace(/\s+/g, "-")}-menu`;
 
                   return (
-                    <li key={item.label} className={styles.navItem}>
+                    <li
+                      key={item.label}
+                      className={styles.navItem}
+                      ref={openDropdown === item.label ? openDesktopDropdownRef : null}
+                    >
                       <motion.button
                         type="button"
                         className={styles.navButton}
@@ -121,7 +145,7 @@ export default function HeaderWrapper() {
                               <Link
                                 href={dd.href}
                                 className={styles.dropdownLink}
-                                onClick={() => setOpenDropdown(null)}
+                                onClick={closeMenus}
                               >
                                 {dd.label}
                               </Link>
@@ -135,8 +159,20 @@ export default function HeaderWrapper() {
 
                 if (item.type === "cta") {
                   return (
-                    <CTA text={item.text} href={item.href} key={item.text} icon="arrowRight" backgroundColor="var(--primary-color-light)" textColor="var(--primary-dark)" className={styles.headerCTA}/>
-                  )
+                    <li
+                      key={item.text}
+                      className={`${styles.navItem} ${styles.navItemCta}`}
+                    >
+                      <CTA
+                        text={item.text}
+                        href={item.href}
+                        icon="arrowRight"
+                        backgroundColor="var(--primary-color-light)"
+                        textColor="var(--primary-dark)"
+                        className={styles.headerCTA}
+                      />
+                    </li>
+                  );
                 }
               })}
             </ul>
@@ -173,7 +209,7 @@ export default function HeaderWrapper() {
                       <Link
                         href={item.href}
                         className={styles.mobileLink}
-                        onClick={() => setMobileOpen(false)}
+                        onClick={closeMenus}
                       >
                         {item.label}
                       </Link>
@@ -194,7 +230,7 @@ export default function HeaderWrapper() {
                               key={dd.href}
                               href={dd.href}
                               className={styles.mobileSublink}
-                              onClick={() => setMobileOpen(false)}
+                              onClick={closeMenus}
                             >
                               {dd.label}
                             </Link>

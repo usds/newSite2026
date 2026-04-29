@@ -3,7 +3,7 @@
 import { motion, useReducedMotion } from "motion/react";
 import Link from "next/link";
 import { useMemo } from "react";
-import styles from "./cta.module.css";
+import styles from "./CTA.module.css";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import type { CtaLink } from "@/types/cta";
 
@@ -54,8 +54,8 @@ export default function CTA({
   return (
     <motion.div
       className={`${styles.wrapper} ${className ?? ""}`}
-      whileHover={reduceMotion ? undefined : { scale: 1.03 }}
-      whileTap={reduceMotion ? undefined : { scale: 0.98 }}
+      whileHover={reduceMotion ? undefined : { scale: 1.02 }}
+      whileTap={reduceMotion ? undefined : { scale: 0.97 }}
     >
       <Link
         href={href}

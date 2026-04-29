@@ -10,7 +10,7 @@ export default function HowToJoin() {
 
   return (
     <section
-      className={`sectionFrameBase homeSection ${styles.wrapper}`}
+      className={`sectionFrameBase ${styles.wrapper}`}
       id="join"
       aria-labelledby="how-to-join-title"
     >
@@ -34,15 +34,6 @@ export default function HowToJoin() {
           aria-label={HOME_SECTION_ARIA_TEXT.applicationProcess}
         >
           <div className={styles.rightInner}>
-            {/* <Subtitle
-              text="Application Process"
-              as="h3"
-              size="medium"
-              color="primaryLightSubtle"
-              animation="title"
-              className={styles.panelTitle}
-            /> */}
-
             <ol className={styles.steps}>
               {process.map((step) => (
                 <li key={step.step} className={styles.stepRow}>
@@ -62,19 +53,9 @@ export default function HowToJoin() {
                 href={cta.href}
                 text={cta.text}
                 icon="arrowRight"
-                textColor="var(--primary-light)"
-                backgroundColor="var(--primary-color)"
+                textColor="var(--primary-dark)"
+                backgroundColor="var(--primary-color-light)"
               />
-
-              {/* <Subtitle
-                text="Applications are reviewed on a rolling basis"
-                as="p"
-                size="small"
-                color="primaryLightMuted"
-                align="center"
-                animation="body"
-                className={styles.note}
-              /> */}
             </span>
           </div>
         </aside>

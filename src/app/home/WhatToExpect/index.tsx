@@ -10,7 +10,7 @@ export default function WhatToExpect() {
 
   return (
     <section
-      className={`sectionFrameBase homeSection ${styles.wrapper}`}
+      className={`sectionFrameBase ${styles.wrapper}`}
       id="whatToExpect"
       aria-label={HOME_SECTION_ARIA_TEXT.whatToExpect}
     >

@@ -10,6 +10,8 @@ type HoverCursorPreviewItem = {
   id: string;
   preview: string;
   previewColor?: string;
+  percentage?: string;
+  cursorTags?: readonly string[];
 };
 
 type TriggerHandlers = {
@@ -59,6 +61,32 @@ const SCALE_ANIMATION: Variants = {
   },
 };
 
+const SCALE_ANIMATION_ABOVE_CURSOR: Variants = {
+  initial: {
+    scale: 0,
+    x: "-50%",
+    y: "-380%",
+  },
+  enter: {
+    scale: 1,
+    x: "-50%",
+    y: "-380%",
+    transition: {
+      duration: 0.35,
+      ease: [0.76, 0, 0.24, 1],
+    },
+  },
+  closed: {
+    scale: 0,
+    x: "-50%",
+    y: "-380%",
+    transition: {
+      duration: 0.25,
+      ease: [0.32, 0, 0.67, 0],
+    },
+  },
+};
+
 const DEFAULT_PREVIEW_COLORS = [
   "var(--primary-color-transparent)",
   "var(--primary-light-transparent)",
@@ -80,12 +108,20 @@ export default function HoverCursorPreview({
   const modalContainerRef = useRef<HTMLDivElement | null>(null);
   const cursorRef = useRef<HTMLDivElement | null>(null);
   const cursorLabelRef = useRef<HTMLDivElement | null>(null);
+  const cursorMetaRef = useRef<HTMLDivElement | null>(null);
 
   const resolvedModal: ModalState =
     modal.index < items.length ? modal : { active: false, index: 0 };
+  const activeItem = items[resolvedModal.index];
+  const activeCursorTags = activeItem?.cursorTags?.join(", ");
 
   useEffect(() => {
-    if (!modalContainerRef.current || !cursorRef.current || !cursorLabelRef.current) {
+    if (
+      !modalContainerRef.current ||
+      !cursorRef.current ||
+      !cursorLabelRef.current ||
+      !cursorMetaRef.current
+    ) {
       return;
     }
 
@@ -120,6 +156,15 @@ export default function HoverCursorPreview({
       ease: "power3",
     });
 
+    const xMoveCursorMeta = gsap.quickTo(cursorMetaRef.current, "left", {
+      duration: 0.48,
+      ease: "power3",
+    });
+    const yMoveCursorMeta = gsap.quickTo(cursorMetaRef.current, "top", {
+      duration: 0.48,
+      ease: "power3",
+    });
+
     const handleMouseMove = (event: MouseEvent) => {
       const { clientX, clientY } = event;
       xMoveContainer(clientX);
@@ -128,6 +173,8 @@ export default function HoverCursorPreview({
       yMoveCursor(clientY);
       xMoveCursorLabel(clientX);
       yMoveCursorLabel(clientY);
+      xMoveCursorMeta(clientX);
+      yMoveCursorMeta(clientY);
     };
 
     window.addEventListener("mousemove", handleMouseMove);
@@ -161,7 +208,7 @@ export default function HoverCursorPreview({
   );
 
   return (
-    <>
+    <div className={styles.wrapper}>
       {renderTriggers({ getTriggerProps, isActive })}
 
       <motion.div
@@ -187,7 +234,12 @@ export default function HoverCursorPreview({
                   DEFAULT_PREVIEW_COLORS[itemIndex % DEFAULT_PREVIEW_COLORS.length],
               }}
             >
-              <span>{item.preview}</span>
+              <div className={styles.modalText}>
+                {item.percentage ? (
+                  <span className={styles.modalPercentage}>{item.percentage}</span>
+                ) : null}
+                <span className={styles.modalPreview}>{item.preview}</span>
+              </div>
             </div>
           ))}
         </div>
@@ -202,6 +254,18 @@ export default function HoverCursorPreview({
       />
 
       <motion.div
+        ref={cursorMetaRef}
+        className={styles.cursorMeta}
+        variants={SCALE_ANIMATION_ABOVE_CURSOR}
+        initial="initial"
+        animate={resolvedModal.active && activeCursorTags ? "enter" : "closed"}
+      >
+        {activeCursorTags ? (
+          <span className={styles.cursorMetaText}>{activeCursorTags}</span>
+        ) : null}
+      </motion.div>
+
+      <motion.div
         ref={cursorLabelRef}
         className={styles.cursorLabel}
         variants={SCALE_ANIMATION}
@@ -210,6 +274,6 @@ export default function HoverCursorPreview({
       >
         {cursorLabel}
       </motion.div>
-    </>
+    </div>
   );
 }

@@ -1,13 +1,10 @@
 "use client";
 
 import SectionHeader from "@/components/general/SectionHeader";
-import styles from "./originStory.module.css";
+import styles from "./OriginStory.module.css";
 import { MISSION_ORIGIN_STORY_CONTENT } from "@/text/mission";
-import gsap from "gsap";
-import Flip from "gsap/dist/Flip";
 import FlipGallery from "./FlipGallery";
-
-gsap.registerPlugin(Flip);
+import Link from "next/link";
 
 export default function OriginStory() {
   return (
@@ -29,6 +26,16 @@ export default function OriginStory() {
       <article className={styles.layout}>
         <section className={styles.side}>
           <p className={styles.paragraph}>{MISSION_ORIGIN_STORY_CONTENT.body}</p>
+          <p className={styles.applyPrompt}>
+            {MISSION_ORIGIN_STORY_CONTENT.cta.prompt}{" "}
+            <Link
+              href={MISSION_ORIGIN_STORY_CONTENT.cta.href}
+              className={styles.applyLink}
+            >
+              {MISSION_ORIGIN_STORY_CONTENT.cta.text}
+            </Link>
+            .
+          </p>
         </section>
         <section className={styles.originGallery}>
           <FlipGallery items={MISSION_ORIGIN_STORY_CONTENT.items}/>

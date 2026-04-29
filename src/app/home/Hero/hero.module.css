@@ -1,147 +1,252 @@
 .wrapper {
-  height: 100vh;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 100vh;
+  min-height: 100svh;
+  height: 100svh;
+  max-height: 100svh;
   color: var(--primary-light);
   position: relative;
-
-  background: var(--primary-dark);
-  box-shadow: var(--shadow-s);
-  overflow: hidden;
-  /* margin-bottom: var(--space-l); */
+  overflow: clip;
+  padding: calc(var(--header-clearance) + var(--space-xl)) var(--space-m) var(--space-m); 
 }
 
-.mediaWrapper {
+.innerWrapper {
   width: 100%;
   height: 100%;
-  position: absolute;
-}
-
-.mediaWrapperInner {
+  padding: calc(var(--header-height) - var(--space-m)) var(--space-m) var(--space-m);
   position: relative;
+}
+
+/* .frame {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: var(--border-radius-primary);
+  overflow: hidden;
+} */
+
+.heroImageWrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
   width: 100%;
   height: 100%;
 }
+
+.heroImageInner {
+  position: relative;
+  /* inset: 0; */
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  overflow: hidden;
+  will-change: clip-path;
+}
+
+
 .image {
-  mix-blend-mode: screen;
-  filter: saturate(200%) contrast(120%) brightness(20%) grayscale(50%);
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  object-position: 50% 60%;
+  filter: saturate(150%) brightness(30%);
 }
 
-.inner {
+.heroInner {
+  position: relative;
+  z-index: 2;
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  /* gap: 4.5rem; */
-  /* padding: 3rem; */
-  max-width: var(--max-layout-width);
+  align-items: flex-end;
+  padding: clamp(var(--space-m), 3vw, var(--space-xl));
 }
 
-.inner header {
+.content {
   display: flex;
   flex-direction: column;
-  /* gap: 0.75rem; */
-  align-items: center;
+  align-items: flex-start;
+  max-width: min(45rem, 96%);
+  gap: clamp(0.65rem, 1.1vw, 0.95rem);
 }
 
 .title {
-  letter-spacing: -0.1rem;
-  max-width: 15ch;
+  margin: 0;
   visibility: hidden;
-  text-box-trim: trim-both;
-  margin-bottom: var(--space-xs);
-
+  max-width: none;
+  letter-spacing: -0.05em;
+  line-height: 0.88;
+  text-transform: uppercase;
 }
+
 .title,
 .title * {
-  font-family: var(--font-instrumentSerif);
-  letter-spacing: 0;
-  line-height: 1.1 !important;
+  font-family: var(--font-spaceGrotesk), var(--font-outfit), sans-serif;
+  letter-spacing: inherit;
+  font-size: clamp(3rem, 7.2vw, 7rem);
+  text-align: left;
+  font-weight: var(--fw-large);
+  line-height: inherit;
+}
 
-  font-size: var(--fs-hero);
-  text-align: center;
-  height: fit-content;
-  position: relative;
-  text-box-trim: trim-both;
+.titleLine {
+  display: block;
+  white-space: nowrap;
+  line-height: 1;
+}
 
+.title :global(.line) {
+  display: block;
+  overflow: hidden;
+}
+
+.titleLine + .titleLine {
+  margin-top: 0.015em;
+}
+
+.titleLineTight {
+  letter-spacing: -0.045em;
 }
 
 .titleSpan {
-  color: var(--primary-color);
-  font-style: none !important;
+  color: var(--primary-color-light);
 }
 
 .subTitle {
-  max-width: 40ch;
-  font-size: var(--fs-h4);
-  font-weight: var(--fw-body);
-  text-align: center;
+  margin: clamp(0.45rem, 1.1vw, 0.8rem) 0 0;
   visibility: hidden;
-  color: var(--primary-light-subtle);
-  margin-bottom: var(--space-xl);
+  max-width: 38ch;
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-regular);
+  text-align: left;
+  color: var(--primary-light);
+  letter-spacing: 0.05rem;
+}
+
+.subTitle :global(.line) {
+  display: block;
+  overflow: hidden;
 }
 
 .ctaWrapper {
-  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: var(--space-m);
-  z-index: 1;
+  margin-top: clamp(0.55rem, 1.1vw, 0.95rem);
+  flex-wrap: wrap;
+}
+
+.ctaItem {
+  width: fit-content;
+}
+
+.revealDisabled {
+  visibility: visible;
 }
 
 @media (max-width: 72em) {
-  .inner {
-    padding: 2.25rem 1.5rem;
+  .title,
+  .title * {
+    font-size: clamp(2.45rem, 6.4vw, 5.5rem);
   }
 
   .subTitle {
-    font-size: var(--fs-body);
+    font-size: clamp(0.95rem, 1.45vw, 1.1rem);
   }
 
-  .ctaWrapper {
-    gap: 1rem;
-    flex-wrap: wrap;
+
+}
+
+@media (max-width: 56em) {
+  .wrapper {
+    min-height: calc(100svh - (var(--header-height) + (var(--space-m) * 2)));
+    height: auto;
+    max-height: none;
+  }
+
+  .innerWrapper {
+    min-height: calc(100svh - (var(--header-height) + (var(--space-m) * 2)));
+  }
+
+  .heroInner {
+    padding: clamp(var(--space-m), 6vw, var(--space-l));
+  }
+
+  .content {
+    max-width: min(40rem, 100%);
+  }
+
+  .title,
+  .title * {
+    font-size: clamp(2.2rem, 10vw, 4.7rem);
+  }
+
+  .titleLine {
+    white-space: normal;
+  }
+
+  .subTitle {
+    max-width: 42ch;
+    font-size: var(--fs-body);
   }
 }
 
-@media (max-width: 40em) {
+@media (max-width: 425px) {
   .wrapper {
-    min-height: 34rem;
+    /* padding: 0; */
+  padding: calc(var(--header-clearance) + var(--space-s)) var(--space-m) var(--space-m) !important; 
+  margin-bottom: var(--space-2xl);
+
   }
 
-  .inner {
-    padding: 1.5rem 1rem;
+  /* .innerWrapper {
+    border: 1px solid blue;
+  } */
+}
+
+@media (max-width: 40em) {
+  .wrapper,
+  .innerWrapper,
+  .heroInner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .title {
-    max-width: 11ch;
+  .innerWrapper {
+    padding: calc(var(--header-height) + var(--space-m)) 0.9rem 0.9rem;
+  }
+
+  .heroInner {
+    padding: var(--space-m);
+  }
+
+  .content {
+    width: 100%;
+    align-items: center;
+  }
+
+  .title,
+  .title * {
+    font-size: clamp(1.95rem, 10.8vw, 3.2rem);
+    text-align: center;
   }
 
   .subTitle {
     font-size: var(--fs-meta);
+    max-width: 46ch;
+    text-align: center;
   }
 
   .ctaWrapper {
-    width: 100%;
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
+    justify-content: center;
   }
 
-  .ctaWrapper > * {
+  .ctaItem {
     width: 100%;
-  }
-}
-
-@media (min-width: 2000px) {
-  .wrapper {
-    border-radius: 0 0 var(--border-radius-tertiary ) var(--border-radius-tertiary);
-    overflow: hidden;
-    height: calc(100vh - var(--space-l));
   }
 }

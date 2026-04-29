@@ -2,6 +2,7 @@
 
 import ImpactCard from "@/components/cards/ImpactCard";
 import type { IconName } from "@/components/cards/ImpactCard";
+import styles from "./FeaturedCard.module.css";
 
 type FeaturedCardProps = {
   icon?: IconName;
@@ -19,14 +20,16 @@ export default function FeaturedCard({
   pill,
 }: FeaturedCardProps) {
   return (
-    <ImpactCard
-      variant="feature"
-      icon={icon}
-      status={pill}
-      eyebrow={tag}
-      title={title}
-      bullets={bullets}
-      animateWaves
-    />
+    <div className={styles.wrapper}>
+      <ImpactCard
+        variant="feature"
+        icon={icon}
+        status={pill}
+        eyebrow={tag}
+        title={title}
+        bullets={bullets}
+        animateWaves
+      />
+    </div>
   );
 }

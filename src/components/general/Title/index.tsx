@@ -1,13 +1,13 @@
 "use client";
 
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { useRef } from "react";
 import { useTitleReveal } from "@/hooks/useSplitReveal/presets";
 import styles from "./Title.module.css";
 import { motion } from "motion/react";
 
 type Alignment = "left" | "center" | "right";
-type TitleSize = "small" | "medium" | "large";
+type TitleSize = "small" | "medium" | "large" | "heroChild";
 type TitleColor = "primaryLight" | "primaryColorLight" | "primaryLightMuted";
 type HeadingTag = "h1" | "h2" | "h3";
 
@@ -18,15 +18,16 @@ type Props = {
   color?: TitleColor;
   highlightColor?: TitleColor;
   highlightSlice?: [number, number];
+  lineBreakBefore?: string;
   as?: HeadingTag;
-  lineHeight?: CSSProperties["lineHeight"];
   className?: string;
 };
 
 const sizeOpts: Record<TitleSize, string> = {
   small: "var(--fs-h4)",
   medium: "var(--fs-h3)",
-  large: "var(--fs-hero)",
+  large: "var(--fs-h1)",
+  heroChild: "var(--fs-h1-child)",
 };
 
 const colorOpts: Record<TitleColor, string> = {
@@ -56,6 +57,46 @@ const alignmentOpts: Record<
   },
 };
 
+const isNonWhitespace = (char?: string) => Boolean(char && /\S/.test(char));
+
+function normalizeHighlightSlice(
+  text: string,
+  highlightSlice?: [number, number],
+): [number, number] | null {
+  if (!highlightSlice) return null;
+
+  let start = Math.max(0, Math.min(highlightSlice[0], text.length));
+  let end = Math.max(start, Math.min(highlightSlice[1], text.length));
+
+  if (start === end) return null;
+
+  while (start < end && !isNonWhitespace(text[start])) start += 1;
+  while (end > start && !isNonWhitespace(text[end - 1])) end -= 1;
+
+  if (start === end) return null;
+
+  while (
+    start > 0 &&
+    isNonWhitespace(text[start]) &&
+    isNonWhitespace(text[start - 1])
+  ) {
+    start -= 1;
+  }
+
+  while (
+    end < text.length &&
+    isNonWhitespace(text[end - 1]) &&
+    isNonWhitespace(text[end])
+  ) {
+    end += 1;
+  }
+
+  while (start < end && !isNonWhitespace(text[start])) start += 1;
+  while (end > start && !isNonWhitespace(text[end - 1])) end -= 1;
+
+  return start < end ? [start, end] : null;
+}
+
 export type { TitleColor, TitleSize, Alignment };
 
 export default function Title({
@@ -65,8 +106,8 @@ export default function Title({
   color = "primaryLight",
   highlightColor = "primaryColorLight",
   highlightSlice,
+  lineBreakBefore,
   as = "h2",
-  lineHeight,
   className,
 }: Props) {
   const scopeRef = useRef<HTMLDivElement | null>(null);
@@ -76,19 +117,57 @@ export default function Title({
 
   const Tag = as;
   const classes = className ? `${styles.title} ${className}` : styles.title;
+  const normalizedHighlightSlice = normalizeHighlightSlice(text, highlightSlice);
 
-  let before = text;
-  let highlight = "";
-  let after = "";
+  const highlightStart = normalizedHighlightSlice
+    ? normalizedHighlightSlice[0]
+    : -1;
+  const highlightEnd = normalizedHighlightSlice ? normalizedHighlightSlice[1] : -1;
 
-  if (highlightSlice) {
-    const start = Math.max(0, Math.min(highlightSlice[0], text.length));
-    const end = Math.max(start, Math.min(highlightSlice[1], text.length));
+  const lineBreakIndex =
+    lineBreakBefore && lineBreakBefore.length > 0
+      ? text.indexOf(lineBreakBefore)
+      : -1;
 
-    before = text.slice(0, start);
-    highlight = text.slice(start, end);
-    after = text.slice(end);
-  }
+  const renderRange = (start: number, end: number, keyPrefix: string) => {
+    if (
+      !normalizedHighlightSlice ||
+      highlightEnd <= start ||
+      highlightStart >= end
+    ) {
+      return text.slice(start, end);
+    }
+
+    const nodes: ReactNode[] = [];
+
+    if (start < highlightStart) {
+      nodes.push(
+        <span key={`${keyPrefix}-pre`}>
+          {text.slice(start, Math.min(end, highlightStart))}
+        </span>,
+      );
+    }
+
+    const hs = Math.max(start, highlightStart);
+    const he = Math.min(end, highlightEnd);
+    if (hs < he) {
+      nodes.push(
+        <span key={`${keyPrefix}-hl`} style={{ color: colorOpts[highlightColor] }}>
+          {text.slice(hs, he)}
+        </span>,
+      );
+    }
+
+    if (highlightEnd < end) {
+      nodes.push(
+        <span key={`${keyPrefix}-post`}>
+          {text.slice(Math.max(start, highlightEnd), end)}
+        </span>,
+      );
+    }
+
+    return nodes;
+  };
 
   return (
     <motion.div
@@ -102,15 +181,18 @@ export default function Title({
         style={{
           fontSize: sizeOpts[size],
           color: colorOpts[color],
-          lineHeight: lineHeight ?? "var(--title-line-height, inherit)",
           textAlign: alignmentOpts[alignment].textAlign,
         }}
       >
-        {highlight ? (
+        {lineBreakIndex > 0 ? (
           <>
-            <span>{before}</span>
-            <span style={{ color: colorOpts[highlightColor] }}>{highlight}</span>
-            <span>{after}</span>
+            {renderRange(0, lineBreakIndex, "line-1")}
+            <br />
+            {renderRange(lineBreakIndex, text.length, "line-2")}
+          </>
+        ) : normalizedHighlightSlice ? (
+          <>
+            {renderRange(0, text.length, "single")}
           </>
         ) : (
           text

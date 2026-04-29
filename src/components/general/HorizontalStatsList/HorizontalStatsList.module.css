@@ -1,0 +1,114 @@
+.wrapper {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  min-width: 0;
+  min-height: clamp(5.25rem, 8.5vw, 7rem);
+  padding: clamp(0.9rem, 1.8vw, 1.25rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  text-align: center;
+}
+
+.value {
+  margin: 0;
+  /* font-size: clamp(1.65rem, 2.5vw, 2.35rem); */
+  font-size: var(--fs-h3) !important;
+  line-height: 1;
+  font-family: var(--font-spaceGrotesk);
+  font-weight: var(--fw-title);
+  color: var(--primary-color-light);
+  white-space: pre;
+}
+
+.shortDetailLayout {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1px;
+  padding: 1px;
+  border-radius: var(--border-radius-primary);
+  overflow: hidden;
+  background: var(--primary-light-muted-transparent);
+  box-shadow: var(--shadow-s);
+}
+
+.shortDetailLayout .item {
+  flex: 1 1 0;
+  background: linear-gradient(
+    145deg,
+    var(--primary-dark-panel-subtle-transparent),
+    var(--primary-dark-panel-transparent)
+  );
+}
+
+.longDetailLayout {
+  --stats-long-column-gap: clamp(var(--space-m), 2.6vw, var(--space-l));
+  --stats-long-row-gap: clamp(var(--space-s), 2vw, var(--space-m));
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: var(--stats-long-column-gap);
+  row-gap: var(--stats-long-row-gap);
+}
+
+.longDetailLayout .item {
+  flex: 1 1 calc((100% - var(--stats-long-column-gap)) / 2);
+  max-width: calc((100% - var(--stats-long-column-gap)) / 2);
+  min-height: clamp(4.75rem, 7vw, 6rem);
+  padding: 0;
+  background: transparent;
+}
+
+.longDetailLayout .value {
+  white-space: normal;
+  line-height: 1.15;
+  text-wrap: balance;
+  font-size: clamp(1.35rem, 2.1vw, 2rem);
+}
+
+.longDetailLayout .label {
+  margin-top: var(--space-2xs);
+  letter-spacing: 0.08em;
+}
+
+.valueInline {
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: center;
+  white-space: pre;
+}
+
+.label {
+  margin: 0;
+  color: var(--primary-light-muted);
+  font-size: var(--fs-meta-smaller);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.35;
+}
+
+@media (max-width: 40em) {
+  .longDetailLayout .item {
+    min-height: clamp(4.25rem, 17vw, 5.2rem);
+  }
+
+  .longDetailLayout .value {
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+  }
+
+  .value {
+    font-size: clamp(1.35rem, 7vw, 1.8rem);
+  }
+}
+
+@media (max-width: 425px) {
+  .value {
+    font-size: var(--fs-h5) !important;
+  }
+}

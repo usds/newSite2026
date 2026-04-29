@@ -1,68 +1,68 @@
+.wrapper {
+  width: 100%;
+}
+
 .introduction {
   position: fixed;
   inset: 0;
   z-index: 9999;
   overflow: hidden;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 3rem;
-
+  isolation: isolate;
+  background: var(--primary-dark);
 }
 
-.introduction * {
-  color: var(--primary-light);
-}
-
-.imageWrapper,
-.inner,
-.text {
-  position: relative;
-  z-index: 2;
-  
-}
-
-.imageWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.logoText {
-  font-weight: var(--fw-subtitle);
-  font-size: var(--fs-body);
-
-}
-
-.text {
-  font-size: var(--fs-h1);
-  height: fit-content;
-  width: fit-content;
-  padding: 1.5rem;
-}
-
-.letter {
-  font-family: var(--font-instrumentSerif);
-  letter-spacing: 1;
-
-
-}
-
-.svg {
+.mediaStage {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
+}
 
-  z-index: 0;
+.image {
+  object-fit: cover;
+  filter: saturate(96%) contrast(110%) brightness(62%);
+}
+
+.content {
+  position: absolute;
+  left: clamp(1rem, 5vw, 4.6rem);
+  bottom: clamp(1rem, 6vh, 4.2rem);
+  z-index: 2;
+  max-width: min(70rem, 88vw);
   pointer-events: none;
 }
 
-.svg path {
-  fill: var(--primary-dark);
+.text {
+  margin: 0;
+  color: var(--primary-light);
+  font-family: var(--font-spaceGrotesk), var(--font-outfit), sans-serif;
+  font-size: clamp(2rem, 5.8vw, 5.4rem);
+  font-weight: var(--fw-large);
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+  text-transform: none;
+}
+
+.line {
+  display: block;
+  color: inherit;
+}
+
+@media (max-width: 72em) {
+  .text {
+    font-size: clamp(1.8rem, 9vw, 4.2rem);
+  }
+}
+
+@media (max-width: 40em) {
+  .content {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1.25rem;
+    max-width: none;
+  }
+
+  .text {
+    font-size: clamp(1.8rem, 11.4vw, 3.35rem);
+    letter-spacing: -0.045em;
+    line-height: 0.98;
+  }
 }

@@ -1,0 +1,19 @@
+.wrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+  gap: var(--space-l);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  border: 0;
+  width: 100%;
+  min-width: 0;
+}
+
+.item :global(article) {
+  height: 100%;
+}

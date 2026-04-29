@@ -1,22 +1,26 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import {
   Public_Sans,
-  Instrument_Serif,
   Outfit,
   Open_Sans,
   Inter,
+  Space_Grotesk,
+  Space_Mono,
 } from "next/font/google";
 import "./globals.css";
 import HeaderWrapper from "@/components/general/HeaderWrapper";
 import FooterWrapper from "@/components/general/FooterWrapper";
+import ImageBreak from "@/ui/ImageBreak";
 import LenisSmoothScroll from "@/utils/Initialization/LenisSmoothScroll";
 import {
   ROOT_LAYOUT_METADATA_TEXT,
   SHARED_METADATA_TEXT,
   SITE_URL_FALLBACK,
 } from "@/text/metadata";
-import { ROOT_LAYOUT_UI_TEXT } from "@/text/ui";
+import { getImageBreakScene } from "@/text/imageBreaks";
 import { toAbsoluteSiteUrl, withBasePath } from "@/utils/basePath";
+import styles from "./layout.module.css";
 // import Preloader from "@/components/general/Preloader";
 
 const publicSans = Public_Sans({
@@ -37,24 +41,24 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-spaceGrotesk",
+});
+
+const spaceMono = Space_Mono({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  display: "swap",
+  variable: "--font-spaceMono",
+});
+
 const outfit = Outfit({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-outfit",
 });
-
-const instrumentSerif = Instrument_Serif({
-  weight: ["400"],
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-instrumentSerif",
-});
-
-// const instrumentSerif = Instrument_Serif({
-//   subsets: ["latin"],
-//   display: "swap",
-//   variable: "--font-instrumentSerif",
-// });
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || SITE_URL_FALLBACK;
@@ -121,9 +125,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -145,7 +149,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         id="top"
-        className={`${publicSans.variable} ${instrumentSerif.variable} ${inter.variable} ${outfit.variable} ${openSans.variable}`}
+        className={`${publicSans.variable} ${inter.variable} ${spaceGrotesk.variable} ${spaceMono.variable} ${outfit.variable} ${openSans.variable}`}
       >
         <script
           type="application/ld+json"
@@ -157,15 +161,16 @@ export default function RootLayout({
             __html: JSON.stringify(organizationSchema),
           }}
         />
-        <a href="#" className="skipLink">
-          <div className="skipLinkInner">{ROOT_LAYOUT_UI_TEXT.skipLink}</div>
-        </a>
+
         <LenisSmoothScroll />
         <HeaderWrapper />
-        <main tabIndex={-1}>
+        <main id="main-content" tabIndex={-1}>
           {children}
         </main>
-
+        <ImageBreak
+          src={getImageBreakScene(0).src}
+          alt={getImageBreakScene(0).alt}
+        />
         <FooterWrapper />
       </body>
     </html>

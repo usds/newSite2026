@@ -1,0 +1,99 @@
+.wrapper {
+  width: 100%;
+}
+
+.hero {
+  width: 100%;
+}
+
+.heroHeader {
+  margin-bottom: 0 !important;
+}
+
+.heroHeaderChild :global(h1),
+.heroHeaderChild :global(h2),
+.heroHeaderChild :global(h3) {
+  max-width: min(28ch, 100%) !important;
+  font-size: var(--fs-h1-child) !important;
+  line-height: 1.08 !important;
+  text-transform: none !important;
+  text-wrap: balance;
+}
+
+.heroHeaderChild :global(.subTitle) {
+  font-size: var(--fs-meta) !important;
+  max-width: 46ch !important;
+}
+
+.section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.partnerQuotes {
+  width: 100%;
+}
+
+.domainGrid {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-m);
+}
+
+.domainCard {
+  flex: 1 1 calc((100% - (var(--space-m) * 2)) / 3);
+  min-width: min(100%, 15rem);
+  padding: var(--space-m);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+  background:
+    radial-gradient(
+      circle at 15% 85%,
+      var(--secondary-color-transparent),
+      transparent 72%
+    ),
+    linear-gradient(
+      148deg,
+      var(--primary-dark-panel-subtle-transparent),
+      var(--primary-dark-soft-transparent)
+    );
+}
+
+.domainEyebrow {
+  margin: 0;
+  color: var(--primary-light-muted);
+  font-size: var(--fs-meta-smaller);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.domainTitle {
+  margin: 0;
+  color: var(--primary-color-light);
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-subtitle);
+}
+
+.domainBody {
+  margin: 0;
+  color: var(--primary-light-subtle);
+  font-size: var(--fs-body);
+}
+
+.longCardStack {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+}
+
+@media (max-width: 72em) {
+  .domainCard {
+    flex-basis: 100%;
+    min-width: 0;
+  }
+}

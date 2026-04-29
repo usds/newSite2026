@@ -48,13 +48,13 @@
 
 .title {
   color: var(--primary-color-light);
-  font-family: var(--font-instrumentSerif) !important;
+  font-family: var(--font-spaceGrotesk) !important;
   font-size: var(--fs-h2);
 }
 
 .title :global(.word),
 .title :global(.char) {
-  font-family: var(--font-instrumentSerif) !important;
+  font-family: var(--font-spaceGrotesk) !important;
 }
 
 .body {

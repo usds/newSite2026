@@ -1,85 +1,302 @@
 .wrapper {
-  width: 100%;
-  /* border: 1px solid green; */
+  width: calc(100% + (var(--page-content-inline-padding) * 2));
+  margin-inline: calc(var(--page-content-inline-padding) * -1);
+  max-width: none;
 }
 
-.layout {
+.slidesWrapper {
   width: 100%;
-  display: flex;
-  gap: var(--space-m);
-  align-items: flex-start;
-}
-
-.colLeft {
   display: flex;
   flex-direction: column;
-  gap: var(--space-m);
-  min-width: 0;
-  flex: 1 1 51%;
+  /* gap: var(--space-2xl); */
+    /* border-radius: var(--border-radius-primary); */
+  overflow: hidden;
+
 }
 
-.colRight {
-  min-width: 0;
-  flex: 1 1 49%;
-}
-
-.statGrid {
+.sectionTrack {
   width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-m);
-  align-items: stretch;
+  height: calc(100lvh - var(--header-height) - (var(--space-2xl) * 2));
+
 }
 
-.statGrid > :not(.wideRow) {
-  flex: 1 1 calc((100% - var(--space-m)) / 2);
-  min-width: 0;
-}
-
-.wideRow {
-  flex: 1 1 100%;
+.section {
   width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.sectionReverse {
+  flex-direction: row-reverse;
+}
+
+.sectionContent {
+  width: 100%;
+  display: flex;
+  flex: 1 1 auto;
+}
+
+.sectionInner {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 100%;
+}
+
+.imageFrame {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  /* border-radius: var(--border-radius-primary); */
+  overflow: hidden;
+  border: 1px solid var(--primary-light-muted-transparent);
+  box-shadow: var(--shadow-m);
+
+}
+
+.image {
+  object-fit: cover;
+  filter: saturate(120%) brightness(90%);
+}
+
+.textPane {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  gap: var(--space-xl);
+  width: 50%;
+  padding: var(--space-xl);
+}
+
+@media (max-width: 425px) {
+  .textPane {
+    /* border: 1px solid red; */
+    padding: var(--space-m) var(--space-l) var(--space-2xl) !important;
+  }
+}
+
+/* @media (min-width: 64em) {
+  .sectionTrack {
+    min-height: calc(100svh - var(--header-height) - var(--space-xl));
+  }
+
+  .sectionInner {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .sectionTrack:nth-child(even) .sectionInner {
+    flex-direction: row-reverse;
+  }
+
+  .imageFrame,
+  .textPane {
+    flex: 1 1 0;
+    width: 50%;
+    min-height: 100%;
+  }
+
+  .imageFrame {
+    height: auto;
+  }
+
+  .textPane {
+    justify-content: center;
+    padding: clamp(0.25rem, 1.5vw, 1rem) 0;
+  }
+} */
+
+.slideCounter {
+  margin: 0;
+  font-family: var(--font-spaceGrotesk), sans-serif;
+  font-size: var(--fs-meta);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--primary-yellow-color);
+}
+
+.metricValue {
+  margin: 0;
+  font-family: var(--font-spaceGrotesk), var(--font-outfit), sans-serif;
+  font-size: clamp(4rem, 13vw, 11rem);
+  font-weight: var(--fw-large);
+  line-height: 0.88;
+  letter-spacing: -0.05em;
+  color: var(--primary-color-light);
+}
+
+.metricValueInline {
+  display: inline-flex;
+  align-items: flex-end;
+}
+
+.metricTitle {
+  margin: 0;
+  max-width: 26ch;
+  font-size: clamp(1.45rem, 3.2vw, 2.7rem);
+  font-weight: var(--fw-title);
+  color: var(--primary-light);
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  text-transform: none;
+  text-align: center;
+
+}
+
+.metricSubtitle {
+  margin: 0;
+  max-width: 52ch;
+  font-size: clamp(0.98rem, 1.45vw, 1.25rem);
+  line-height: 1.45;
+  color: var(--primary-light-muted);
+  font-weight: var(--fw-regular);
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+.textPaneStory {
+  align-items: flex-start;
+  gap: var(--space-l);
+}
+
+.storyEyebrow {
+  margin: 0;
+  color: var(--primary-color-light);
+  font-size: var(--fs-meta-smaller);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: var(--fw-subtitle);
+}
+
+.storyTitle {
+  margin: 0;
+  color: var(--primary-light);
+  font-size: clamp(2.1rem, 5vw, 4.7rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  max-width: 12ch;
+}
+
+.storyBody {
+  margin: 0;
+  color: var(--primary-light-subtle);
+  font-size: clamp(1rem, 1.5vw, 1.8rem);
+  line-height: 1.6;
+  margin-bottom: var(--space-s);
+  max-width: 34ch;
+}
+
+.storyMetricRow {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-m);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-s);
+}
+
+.storyMetricBefore {
+  color: var(--primary-light-muted);
+  font-size: var(--fs-meta);
+  text-decoration: line-through;
+}
+
+.storyMetricArrow {
+  color: var(--primary-light-muted);
+  font-size: var(--fs-meta);
+}
+
+.storyMetricAfter {
+  color: var(--primary-color-light);
+  font-size: clamp(1.65rem, 2.5vw, 2.6rem);
+  font-family: var(--font-spaceGrotesk), var(--font-outfit), sans-serif;
+  font-weight: var(--fw-large);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.storyMetricLabel {
+  color: var(--primary-light-muted);
+  font-size: var(--fs-meta-smaller);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.storyLink {
+  display: inline-flex;
+  width: fit-content;
+  color: var(--primary-color-light);
+  font-size: var(--fs-meta);
+  font-weight: var(--fw-subtitle);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--primary-color-light-transparent);
+  padding-bottom: 0.35rem;
 }
 
 @media (max-width: 72em) {
-  .layout {
-    gap: 1.5rem;
-  }
-
-  .colLeft {
-    gap: 1.5rem;
-  }
-
-  .statGrid {
-    gap: 1.25rem;
+  .metricValue {
+    font-size: clamp(3.5rem, 12vw, 7rem);
   }
 }
 
-@media (max-width: 64em) {
-  .layout {
+@media (max-width: 56em) {
+  .sectionTrack {
+    height: auto;
+  }
+
+  .section,
+  .sectionReverse {
     flex-direction: column;
-    gap: 1.5rem;
   }
 
-  .colLeft {
-    gap: 1.25rem;
+  .imageFrame {
+    width: 100%;
+    height: clamp(16rem, 58vw, 22rem);
   }
 
-  .statGrid {
-    gap: 1.25rem;
+  .textPane {
+    width: 100%;
+    align-items: flex-start;
+    gap: var(--space-m);
+    padding: var(--space-m);
+  }
+
+  .metricTitle {
+    text-align: left;
   }
 }
 
 @media (max-width: 40em) {
-  .wrapper {
-    gap: 2.25rem;
+  .textPane {
+    gap: var(--space-s);
+    padding: var(--space-s) var(--space-m) var(--space-m);
   }
 
-  .statGrid {
-    gap: 1rem;
+  .metricValue {
+    font-size: clamp(3rem, 17vw, 5.2rem);
   }
 
-  .statGrid > :not(.wideRow) {
-    flex-basis: 100%;
+  .metricTitle {
+    max-width: 20ch;
+    font-size: clamp(1.25rem, 6vw, 1.8rem);
+  }
+
+  .metricSubtitle {
+    max-width: 34ch;
+    font-size: clamp(0.95rem, 4.2vw, 1.1rem);
+  }
+
+  .storyTitle {
+    max-width: none;
+    font-size: clamp(1.7rem, 9vw, 2.7rem);
+  }
+
+  .storyBody {
+    max-width: none;
+    font-size: var(--fs-body);
   }
 }

@@ -1,15 +1,18 @@
 "use client";
 
 import SectionHeader from "@/components/general/SectionHeader";
-import HorizontalCards from "@/components/sections/HorizontalCards";
-import type { Card } from "@/components/cards/ContentCard";
-import styles from "./whoWeHelp.module.css";
+import LongFeatureCard, {
+  type SideTone,
+} from "@/components/cards/LongFeatureCard";
+import styles from "./WhoWeHelp.module.css";
 import { MISSION_WHO_WE_HELP_UI_TEXT } from "@/text/mission";
 
 type WhoWeHelpCard = {
   title: string;
   summary: string;
   details: string;
+  imageSrc: string;
+  imageAlt: string;
 };
 
 type WhoWeHelpContent = {
@@ -28,14 +31,9 @@ type Props = {
   content: WhoWeHelpContent;
 };
 
-export default function WhoWeHelp({ cards, content }: Props) {
-  const cardItems: Card[] = cards.map((item) => ({
-    id: item.title.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
-    title: item.title,
-    body: item.summary,
-    footer: <p className={styles.cardDetails}>{item.details}</p>,
-  }));
+const CARD_TONES: SideTone[] = ["blue", "teal", "gold", "sky"];
 
+export default function WhoWeHelp({ cards, content }: Props) {
   return (
     <section
       className={`sectionFrameBase ${styles.wrapper}`}
@@ -53,7 +51,23 @@ export default function WhoWeHelp({ cards, content }: Props) {
         linkHref={content.link?.href}
       />
 
-      <HorizontalCards className={styles.grid} cards={cardItems} />
+      <div className={styles.cardStack}>
+        {cards.map((item, index) => (
+          <LongFeatureCard
+            key={`${item.title}-${index}`}
+            eyebrow={content.eyebrow ?? MISSION_WHO_WE_HELP_UI_TEXT.defaultEyebrow}
+            title={item.title}
+            description={item.summary}
+            imageSrc={item.imageSrc}
+            imageAlt={item.imageAlt}
+            sideValue={`${index + 1}`.padStart(2, "0")}
+            sideLabel={MISSION_WHO_WE_HELP_UI_TEXT.cardSideLabel}
+            sideTone={CARD_TONES[index % CARD_TONES.length] ?? "blue"}
+            animateSideValue={false}
+            footer={<p className={styles.cardDetails}>{item.details}</p>}
+          />
+        ))}
+      </div>
     </section>
   );
 }

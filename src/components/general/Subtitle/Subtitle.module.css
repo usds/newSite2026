@@ -16,25 +16,32 @@
 }
 
 .subtitle {
-  /* margin: 0; */
-  /* letter-spacing: -0.01em; */
-  /* font-weight: 420; */
+  margin: 0;
   visibility: hidden;
-  /* max-width: 40ch; */
   font-size: var(--fs-h4);
-
+  letter-spacing: 0.02em;
+  font-family: var(--font-outfit), sans-serif;
 }
 
 .subtitle :global(.line) {
+  display: block;
   font-weight: var(--fw-body);
   color: var(--primary-light-muted);
-  line-height: 10rem !important;
-  text-box-edge: cap alphabetical;
-  text-box-trim: trim-both;
-  margin-bottom: var(--space-s);
+  margin-bottom: 0;
+  padding-block: 0.06em;
+  font-family: inherit;
 }
 
 
 .noAnimation {
   visibility: visible;
+}
+
+@media (max-width: 425px) {
+  .subtitle {
+    font-size: var(--fs-h5);
+    width: 100%;
+    max-width: 90vw;
+    /* border: 1px solid red; */
+  }
 }

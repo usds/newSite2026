@@ -9,7 +9,7 @@ export type HeaderNavItem =
   | {
       type: "dropdown";
       label: string;
-      items: {
+      items: readonly {
         label: string;
         href: string;
       }[];
@@ -25,7 +25,7 @@ export type FooterSocialItem = {
 
 export type FooterColumn = {
   title: string;
-  links: {
+  links: readonly {
     label: string;
     href: string;
   }[];
@@ -37,20 +37,36 @@ type FooterCalloutContent = {
   cta: CtaLink;
 };
 
-export const HEADER_NAV_ITEMS: HeaderNavItem[] = [
+export const HEADER_NAV_ITEMS: readonly HeaderNavItem[] = [
   {
     type: "dropdown",
     label: "About",
     items: [
       { label: "Our Mission", href: "/mission" },
       { label: "How We Work", href: "/how-we-work" },
+      { label: "Projects", href: "/projects" },
+      { label: "About USDS", href: "/about" },
+      { label: "Dispatches", href: "/dispatches" },
+      { label: "People", href: "/about/people" },
       { label: "Hiring FAQ", href: "/hiring-faq" },
     ],
   },
   {
+    type: "dropdown",
+    label: "Impact",
+    items: [
+      { label: "Impact Overview", href: "/impact" },
+      { label: "Congressional Snapshot", href: "/impact/congress" },
+      { label: "FAFSA Modernization", href: "/impact/fafsa" },
+      { label: "VA AI Claims", href: "/impact/va-ai" },
+      { label: "Visa Recovery", href: "/impact/state-visas" },
+      { label: "Passport Renewal", href: "/impact/passport" },
+    ],
+  },
+  {
     type: "link",
-    label: "Projects",
-    href: "/projects",
+    label: "Agencies",
+    href: "/agencies",
   },
   {
     type: "link",
@@ -60,7 +76,7 @@ export const HEADER_NAV_ITEMS: HeaderNavItem[] = [
   {
     type: "cta",
     text: "Apply now",
-    href: "/mission#applyNow",
+    href: "/apply",
   },
 ];
 
@@ -77,14 +93,14 @@ export const FOOTER_SOCIALS: FooterSocialItem[] = [
   },
 ];
 
-export const FOOTER_COLUMNS: FooterColumn[] = [
+export const FOOTER_COLUMNS: readonly FooterColumn[] = [
   {
     title: "Programs",
     links: [
       { label: "Mission", href: "/mission" },
       { label: "How We Work", href: "/how-we-work" },
-      { label: "Impact", href: "/mission#impact" },
-      { label: "Stories", href: "/mission#stories" },
+      { label: "Impact", href: "/impact" },
+      { label: "Dispatches", href: "/dispatches" },
       { label: "Careers", href: "/careers" },
     ],
   },
@@ -101,10 +117,10 @@ export const FOOTER_COLUMNS: FooterColumn[] = [
     title: "About",
     links: [
       { label: "Our Values", href: "/mission#ourValues" },
-      { label: "Origin Story", href: "/mission#originStory" },
+      { label: "About USDS", href: "/about" },
+      { label: "People", href: "/about/people" },
       { label: "Hiring FAQ", href: "/hiring-faq" },
-      { label: "Contact", href: "/mission#contact" },
-      { label: "Press", href: "/mission#stories" },
+      { label: "Contact", href: "/contact" },
     ],
   },
 ];
@@ -114,7 +130,7 @@ export const FOOTER_CALLOUT_CONTENT: FooterCalloutContent = {
   body: "We partner with federal teams to modernize the systems Americans depend on, from benefits to education and public health services.",
   cta: {
     text: "Apply now",
-    href: "/mission#applyNow",
+    href: "/apply",
   },
 };
 
@@ -125,12 +141,11 @@ export const FOOTER_ACTIONS = [
   },
   {
     text: "Contact us",
-    href: "/mission#contact",
+    href: "/contact",
   },
-] as CtaLink[];
+] as const satisfies readonly CtaLink[];
 
 export const FOOTER_POLICIES = [
   { label: "Privacy Policy", href: "/privacy" },
-  { label: "Accessibility", href: "/accessibility" },
-  { label: "FOIA", href: "/foia" },
-];
+  { label: "Contact", href: "/contact" },
+] as const;

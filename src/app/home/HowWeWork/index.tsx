@@ -10,7 +10,7 @@ export default function HowWeWork() {
 
   return (
     <section
-      className={`sectionFrameBase homeSection ${styles.wrapper}`}
+      className={`sectionFrameBase ${styles.wrapper}`}
       id="work"
       aria-label={HOME_SECTION_ARIA_TEXT.howWeWork}
     >
@@ -27,30 +27,6 @@ export default function HowWeWork() {
 
       <div className={styles.content}>
         <HorizontalCards className={styles.practiceGrid} cards={practices} />
-
-        {/* <aside className={styles.communitiesPanel} aria-label="Communities we hire from">
-          <div className={styles.communitiesPanelInner}>
-            <p className={styles.communitiesTitle}>{sidePanelTitle}</p>
-
-            <ul className={styles.communityList}>
-              {communities.map((item) => (
-                <li key={item} className={styles.communityItem}>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-
-            <div className={styles.communitiesCta}>
-              <CTA
-                text={sidePanelCta.text}
-                href={sidePanelCta.href}
-                icon="arrowRight"
-                backgroundColor="var(--primary-color)"
-                textColor="var(--primary-light)"
-              />
-            </div>
-          </div>
-        </aside> */}
       </div>
     </section>
   );

@@ -34,39 +34,15 @@
   width: 100%;
 }
 
+.heroSectionHeader {
+  margin-bottom: var(--space-m);
+}
+
 .section {
   padding: 0;
   /* border: 1px solid red; */
 }
 
-
-
-
-.quickLinks {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-s);
-}
-
-.quickLink {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem 0.9rem;
-  border-radius: var(--border-radius-tertiary);
-  border: 1px solid var(--primary-light-muted-transparent);
-  background: var(--primary-dark-panel-transparent);
-  color: var(--primary-light-subtle);
-  font-size: var(--fs-meta);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  transition: var(--transition-fast);
-}
-
-.quickLink:hover {
-  color: var(--primary-light);
-  border-color: var(--primary-color-light-transparent);
-}
 
 .faqList {
   width: 100%;
@@ -149,29 +125,16 @@
   flex: 1 1 auto;
   max-width: calc(50% - var(--space-m));
   border-radius: var(--border-radius-primary);
-  /* background: radial-gradient(
-    circle at 10% 10%,
-    var(--primary-color-transparent),
-    transparent 90%
-  ); */
-  box-shadow: var(--shadow-s);
   overflow: hidden;
 }
 
-.timelineCard:nth-child(1) {
-  background: radial-gradient(
-    circle at 50% 90%,
-    var(--primary-color-transparent),
-    transparent 90%
-  );
+.timelineTable tbody tr:nth-child(odd) {
+  background: transparent;
 }
 
-.timelineCard:nth-child(2) {
-  background: radial-gradient(
-    circle at 70% 50%,
-    var(--primary-color-transparent),
-    transparent 90%
-  );
+.timelineTable tbody tr:nth-child(odd) td:first-child,
+.timelineTable tbody tr:nth-child(odd) td:last-child {
+  border-radius: 0;
 }
 
 .timelineCardInner {
@@ -190,49 +153,6 @@
   color: var(--primary-color-light);
 }
 
-.timelineTable {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0 0.5rem;
-}
-
-.timelineTable th,
-.timelineTable td {
-  text-align: left;
-  padding: var(--space-m);
-  /* border-top: 1px solid var(--primary-light-muted-transparent); */
-  font-size: var(--fs-h5);
-}
-
-.timelineTable tbody tr:nth-child(odd) td:first-child {
-  border-top-left-radius: calc(var(--border-radius-primary) - var(--space-m));
-  border-bottom-left-radius: calc(var(--border-radius-primary) - var(--space-m));
-}
-
-.timelineTable tbody tr:nth-child(odd) td:last-child {
-  border-top-right-radius: calc(var(--border-radius-primary) - var(--space-m));
-  border-bottom-right-radius: calc(var(--border-radius-primary) - var(--space-m));
-}
-
-tbody tr:nth-child(odd) {
-  background: var(--primary-dark-muted-transparent);
-}
-
-
-.timelineTable th {
-  color: var(--primary-color);
-  font-weight: var(--fw-subtitle);
-}
-
-.timelineTable td {
-  color: var(--primary-light-muted);
-}
-
-.timelineTable th:last-child,
-.timelineTable td:last-child {
-  text-align: right;
-}
-
 .ctaSection {
   align-items: center;
   text-align: center;
@@ -243,9 +163,8 @@ tbody tr:nth-child(odd) {
   margin: 0;
   color: var(--primary-light);
   font-size: var(--fs-h2);
-  font-weight: 400;
-  line-height: 1.5;
-  font-family: var(--font-instrumentSerif);
+  font-weight: var(--fw-regular);
+  font-family: var(--font-spaceGrotesk);
 }
 
 .ctaAction {
@@ -271,24 +190,16 @@ tbody tr:nth-child(odd) {
 }
 
 @media (max-width: 40em) {
+  .heroSectionHeader {
+    margin-bottom: var(--space-s);
+  }
+
   .hero {
     margin-top: clamp(6.5rem, 13vh, 8rem);
   }
 
   .panelTone {
     padding: var(--space-l);
-  }
-
-  .quickLinks {
-    width: 100%;
-    gap: 0.5rem;
-  }
-
-  .quickLink {
-    flex: 1 1 calc((100% - 0.5rem) / 2);
-    min-width: 0;
-    padding: 0.5rem 0.75rem;
-    font-size: var(--fs-meta-smaller);
   }
 
   .question {
@@ -303,17 +214,6 @@ tbody tr:nth-child(odd) {
   .answerList {
     padding-left: var(--space-m);
     font-size: var(--fs-body);
-  }
-
-  .timelineTable th,
-  .timelineTable td {
-    padding: var(--space-s);
-    font-size: var(--fs-meta);
-  }
-
-  .timelineTable th:last-child,
-  .timelineTable td:last-child {
-    text-align: left;
   }
 
   .ctaTitle {

@@ -1,3 +1,7 @@
+.wrapper {
+  display: contents;
+}
+
 .cardGradient {
   min-height: 260px;
 }

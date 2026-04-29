@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { useBodyReveal, useTitleReveal } from "@/hooks/useSplitReveal/presets";
 import styles from "./ImpactCard.module.css";
+import CardSurface, { type CardSurfaceTone } from "@/components/cards/CardSurface";
 
 type CardVariant =
   | "default"
@@ -43,6 +44,7 @@ type IconName =
 type Props = {
   className?: string;
   variant?: CardVariant;
+  surface?: CardSurfaceTone;
   icon?: IconName;
   status?: string;
   eyebrow?: string;
@@ -75,6 +77,7 @@ const iconMap: Record<IconName, ReactNode> = {
 export default function ImpactCard({
   className,
   variant = "default",
+  surface = "background",
   icon,
   status,
   title,
@@ -102,7 +105,7 @@ export default function ImpactCard({
   return (
     <motion.article
       ref={cardRef}
-      className={`${styles.card} ${styles[variant]} ${className ?? className}`}
+      className={styles.wrapper}
       style={gradientStyle}
       aria-label={title}
       layout
@@ -131,46 +134,51 @@ export default function ImpactCard({
         amount: 0.2
       }}
     >
-      <div className={`${styles.cardTop} ${!isStat ? styles.cardTopInline : ""}`}>
-        {iconNode ? (
-          <span className={styles.iconPill} aria-hidden="true">
-            {iconNode}
-          </span>
-        ) : (
-          <span />
-        )}
+      <CardSurface
+        tone={surface}
+        className={`${styles.card} ${surface === "background" ? styles.cardBackground : ""} ${styles[variant]} ${className ?? ""}`}
+      >
+        <div className={`${styles.cardTop} ${!isStat ? styles.cardTopInline : ""}`}>
+          {iconNode ? (
+            <span className={styles.iconPill} aria-hidden="true">
+              {iconNode}
+            </span>
+          ) : (
+            <span />
+          )}
 
-        {!isStat ? (
-          <h3 className={`${styles.title} ${styles.inlineTitle}`} ref={titleRef}>
-            {title}
-          </h3>
-        ) : null}
+          {!isStat ? (
+            <h3 className={`${styles.title} ${styles.inlineTitle}`} ref={titleRef}>
+              {title}
+            </h3>
+          ) : null}
 
-        {/* {status ? <span className={styles.statusPill}>{status}</span> : null} */}
-      </div>
+          {/* {status ? <span className={styles.statusPill}>{status}</span> : null} */}
+        </div>
 
-      <div className={styles.cardBody}>
-        {isStat && value ? <p className={`${styles.value} ${styles.statValue}`}>{value}</p> : null}
+        <div className={styles.cardBody}>
+          {isStat && value ? <p className={`${styles.value} ${styles.statValue}`}>{value}</p> : null}
 
-        {isStat ? (
-          <h3 className={styles.title} ref={titleRef}>
-            {title}
-          </h3>
-        ) : null}
+          {isStat ? (
+            <h3 className={styles.title} ref={titleRef}>
+              {title}
+            </h3>
+          ) : null}
 
-        {!isStat && bullets?.length ? (
-          <div className={styles.bodyCopy} ref={bodyRef}>
-            <ul className={styles.bullets}>
-              {bullets.map((bullet) => (
-                <li key={bullet} className={styles.bullet}>
-                  <span className={styles.bulletDot} aria-hidden="true" />
-                  <span className={styles.bulletText}>{bullet}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ) : null}
-      </div>
+          {!isStat && bullets?.length ? (
+            <div className={styles.bodyCopy} ref={bodyRef}>
+              <ul className={styles.bullets}>
+                {bullets.map((bullet) => (
+                  <li key={bullet} className={styles.bullet}>
+                    <span className={styles.bulletDot} aria-hidden="true" />
+                    <span className={styles.bulletText}>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+        </div>
+      </CardSurface>
     </motion.article>
   );
 }

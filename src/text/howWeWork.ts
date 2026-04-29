@@ -29,6 +29,24 @@ export const HOW_WE_WORK_PAGE_CONTENT = {
     eyebrow: "Mission-Driven Service Tours",
     title: "How We Work",
     body: "We deploy mission-driven experts with federal teams to solve urgent service problems and deliver measurable improvements for the people.",
+    details: [
+      {
+        label: "Tour length",
+        value: "Up to 4 years",
+      },
+      {
+        label: "Working model",
+        value: "Embedded with agency teams",
+      },
+      {
+        label: "Delivery focus",
+        value: "Fast, measurable outcomes",
+      },
+      {
+        label: "Team composition",
+        value: "Cross-functional delivery squads",
+      },
+    ],
   },
   valuesSection: {
     header: {
@@ -120,7 +138,7 @@ export const HOW_WE_WORK_PAGE_CONTENT = {
       },
       {
         id: "va-veteran-care",
-        eyebrow: "Department of Veterans Affairs",
+        eyebrow: "Dept. of Veterans Affairs",
         title: "Transforming Veteran care",
         body: "Partnering with VA teams to modernize legacy systems and deliver faster, more secure digital benefits and services for Veterans and their families.",
         tone: "teal",
@@ -130,7 +148,7 @@ export const HOW_WE_WORK_PAGE_CONTENT = {
       },
       {
         id: "education-fafsa",
-        eyebrow: "Department of Education",
+        eyebrow: "Dept. of Education",
         title: "Modernizing FAFSA and student aid",
         body: "Collaborating with Education to modernize FAFSA and student aid systems so millions of students can apply for and receive support without disruption.",
         tone: "amber",
@@ -176,7 +194,7 @@ export const HOW_WE_WORK_PAGE_CONTENT = {
     body: "Work directly with federal teams to ship measurable improvements.",
     primary: {
       text: "Apply now",
-      href: "/mission#applyNow",
+      href: "/apply",
     },
     secondary: {
       text: "View careers",

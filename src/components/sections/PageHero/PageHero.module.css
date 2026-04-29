@@ -1,0 +1,303 @@
+.wrapper {
+  width: 100%;
+  justify-content: space-between;
+  padding-top: var(--space-xl);
+}
+
+.centered {
+  --hero-centered-max-width: min(100%, 72rem);
+}
+
+.topRow {
+  width: 100%;
+}
+
+.centered .topRow {
+  display: flex;
+  justify-content: center;
+  margin-inline: auto;
+}
+
+.headerColumn {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  /* align-items: flex-start; */
+  /* gap: var(--space-2xl); */
+}
+
+.centered .headerColumn {
+  width: var(--hero-centered-max-width);
+  margin-inline: auto;
+}
+
+.header {
+  width: 100%;
+  margin-bottom: 0 !important;
+}
+
+.header :global([class*="subtitle"]) {
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+  line-height: 1.45;
+}
+
+.split .topRow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-l);
+  align-items: stretch;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.frameless.split .topRow {
+  gap: 0;
+}
+
+.split .headerColumn {
+  display: flex;
+  min-height: 0;
+}
+
+.splitStackedContent .headerColumn {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.splitStackedContent .topRow {
+  align-items: flex-start;
+}
+
+.split .header {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.splitStackedContent .header {
+  width: 100%;
+  height: auto;
+  align-items: flex-start;
+}
+
+.splitStackedContent .header :global(.sectionHeaderWrapper),
+.splitStackedContent .header :global(header) {
+  margin-bottom: 0 !important;
+}
+
+.splitStackedContent .header :global(h1),
+.splitStackedContent .header :global(h2),
+.splitStackedContent .header :global(h3),
+.splitStackedContent .header :global(.subTitle),
+.splitStackedContent .header :global([class*="subtitle"]) {
+  text-align: left !important;
+  margin-inline: 0 !important;
+}
+
+.headerCompact :global(h1),
+.headerCompact :global(h2),
+.headerCompact :global(h3) {
+  font-size: var(--fs-section-header-title-compact) !important;
+  line-height: 1.15 !important;
+  max-width: min(28ch, 100%) !important;
+  text-wrap: balance;
+}
+
+.mediaColumn {
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+}
+
+.imageFrame {
+  width: 100%;
+  height: 100%;
+  min-height: clamp(15rem, 32vw, 26rem);
+  border-radius: var(--border-radius-primary);
+  overflow: hidden;
+  background: var(--primary-dark-panel-transparent);
+  border: none !important;
+}
+
+.imageFrameFrameless {
+  border: 0;
+  border-radius: calc(var(--border-radius-primary) - var(--space-s));
+  background: transparent;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.statsGridContent {
+  margin-top: var(--space-m);
+}
+
+.statsGridBottom {
+  margin-top: var(--space-xl);
+}
+
+.split .statsGridContent,
+.split .statsGridBottom {
+  margin: var(--space-xl) 0;
+  display: flex !important;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  row-gap: var(--space-xl) !important;
+  column-gap: var(--space-xl) !important;
+}
+
+.split .statsGridContent > li,
+.split .statsGridBottom > li {
+  flex: 0 1 clamp(11.75rem, 23vw, 15.5rem);
+  max-width: clamp(11.75rem, 23vw, 15.5rem);
+  min-height: 0;
+}
+
+.statsGridBottomCentered {
+  width: min(100%, 44rem);
+  margin-inline: auto;
+}
+
+.centered .statsGridBottomCentered {
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: center;
+  row-gap: var(--space-xl) !important;
+  column-gap: var(--space-xl) !important;
+}
+
+.centered .statsGridBottomCentered > li {
+  flex: 0 1 clamp(11.75rem, 23vw, 15.5rem);
+  max-width: clamp(11.75rem, 23vw, 15.5rem);
+  min-height: 0;
+}
+
+.ctaAfterStats {
+  width: 100%;
+  margin-top: var(--space-l);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-s);
+  /* margin-top: var(--space-2xl); */
+}
+
+.splitContentStatsInline {
+  width: 100%;
+}
+
+.splitContentAfterMedia {
+  display: none;
+  width: 100%;
+}
+
+.mediaLeft .topRow {
+  direction: rtl;
+}
+
+.mediaLeft .topRow > * {
+  direction: ltr;
+}
+
+@media (max-width: 72em) {
+  .wrapper {
+    height: auto;
+    max-height: none;
+  }
+
+  .split .topRow {
+    grid-template-columns: 1fr;
+  }
+
+  .split .header {
+    height: auto;
+  }
+
+  .mediaColumn {
+    min-height: clamp(15rem, 56vw, 24rem);
+  }
+
+  .mediaLeft .topRow {
+    direction: ltr;
+  }
+}
+
+@media (max-width: 40em) {
+  .split .statsGridContent > li,
+  .split .statsGridBottom > li,
+  .centered .statsGridBottomCentered > li {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+
+  .headerCompact :global(h1),
+  .headerCompact :global(h2),
+  .headerCompact :global(h3) {
+    max-width: none !important;
+  }
+}
+
+@media (max-width: 425px) {
+  .split {
+    height: fit-content;
+    min-height: 0;
+    max-height: none;
+    justify-content: flex-start;
+  }
+
+  .split .topRow {
+    display: flex;
+    flex-direction: column;
+    flex: none;
+    min-height: 0;
+    height: auto;
+    gap: var(--space-m);
+  }
+
+  .split .header {
+    height: auto;
+    align-items: flex-start;
+  }
+
+  .split .mediaColumn {
+    height: auto;
+    min-height: 0;
+    margin-top: var(--space-s);
+  }
+
+  .split .imageFrame {
+    height: auto;
+    min-height: clamp(7.5rem, 28vw, 12rem);
+  }
+
+  .splitContentStatsInline {
+    display: none;
+  }
+
+  .splitContentAfterMedia {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .split .statsGridContent,
+  .split .statsGridBottom {
+    margin: var(--space-m) 0 0;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-m) !important;
+    row-gap: var(--space-m) !important;
+  }
+
+  .split .statsGridContent > li,
+  .split .statsGridBottom > li {
+    flex: initial;
+    max-width: none;
+    min-width: 0;
+  }
+}

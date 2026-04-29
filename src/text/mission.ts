@@ -21,12 +21,15 @@ type WhoWeHelpCard = {
   title: string;
   summary: string;
   details: string;
+  imageSrc: string;
+  imageAlt: string;
 };
 
 export type Items = Item[];
 
 export type Item = {
   id: number;
+  alt: string;
   className?: string;
   src: string;
 };
@@ -88,12 +91,18 @@ export const MISSION_PAGE_CONTENT = {
           "Modern, reliable digital tools for agriculture and rural communities.",
         details:
           "We help farmers access benefits faster, reduce paperwork burden, and improve field service coordination through clearer forms, resilient platforms, and better data sharing.",
+        imageSrc:
+          "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=1800&q=80",
+        imageAlt: "A farm landscape with rows of crops and agricultural equipment.",
       },
       {
         title: "Veterans",
         summary: "Faster, clearer access to benefits and service decisions.",
         details:
           "We improve claim workflows, communication touchpoints, and VA product performance so Veterans can complete tasks quicker and get transparent status updates.",
+        imageSrc:
+          "https://images.unsplash.com/photo-1544717305-2782549b5136?w=1800&q=80",
+        imageAlt: "A U.S. veteran in uniform.",
       },
       {
         title: "Medicare beneficiaries",
@@ -101,6 +110,10 @@ export const MISSION_PAGE_CONTENT = {
           "Safer systems that protect care delivery and payment integrity.",
         details:
           "We strengthen identity and eligibility checks, reduce fraud vectors, and streamline beneficiary-facing services so people get trusted access to care.",
+        imageSrc:
+          "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1800&q=80",
+        imageAlt:
+          "A healthcare professional supporting a patient in a clinical setting.",
       },
       {
         title: "Students",
@@ -108,6 +121,9 @@ export const MISSION_PAGE_CONTENT = {
           "Simpler aid experiences that reduce friction and uncertainty.",
         details:
           "We modernize student aid journeys, improve completion flows, and reduce outages so students can apply, verify, and receive support with less confusion.",
+        imageSrc:
+          "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=1800&q=80",
+        imageAlt: "Students walking on a university campus.",
       },
       {
         title: "Military Service Members",
@@ -115,6 +131,9 @@ export const MISSION_PAGE_CONTENT = {
           "Reliable digital pathways for critical military and transition services.",
         details:
           "We support secure, mission-ready systems that improve access to records, benefits, and essential workflows used by Service Members and their families.",
+        imageSrc:
+          "https://images.unsplash.com/photo-1473091534298-04dcbce3278c?w=1800&q=80",
+        imageAlt: "Military personnel in the field.",
       },
       {
         title: "Small Business Owners",
@@ -122,6 +141,9 @@ export const MISSION_PAGE_CONTENT = {
           "Clearer federal interactions so businesses can grow and compete.",
         details:
           "We simplify complex service touchpoints, modernize application processes, and improve platform trust so owners can spend less time navigating bureaucracy.",
+        imageSrc:
+          "https://images.unsplash.com/photo-1556740749-887f6717d7e4?w=1800&q=80",
+        imageAlt: "A small business owner working with a customer.",
       },
     ] as WhoWeHelpCard[],
   },
@@ -171,6 +193,12 @@ export const MISSION_HERO_CONTENT = {
   titleHighlightSlice: [4, 11] as [number, number],
   message:
     "Transforming government to deliver fast, secure and user-centered digital services that millions of Americans rely on every day.",
+  stats: [
+    { value: "30+", label: "Agency partners" },
+    { value: "70+", label: "Technologists deployed" },
+    { value: "$4B+", label: "Fraud and waste identified" },
+    { value: "1,000+", label: "Public-service alumni" },
+  ],
 };
 
 export const MISSION_VALUES_SECTION_CONTENT = {
@@ -181,11 +209,29 @@ export const MISSION_VALUES_SECTION_CONTENT = {
     "Our values shape how we partner, how we build, and how we deliver measurable outcomes for the public.",
   linkText: "See how we work",
   linkHref: "/how-we-work",
+  cardSideLabel: "Value",
 };
 
 export const MISSION_WHO_WE_HELP_UI_TEXT = {
   sectionAriaLabel: "Who we help",
+  cardSideLabel: "Community",
+  defaultEyebrow: "Public Impact",
 };
+
+export const MISSION_ORIGIN_STORY_UI_TEXT = {
+  selectedImagePrefix: "Selected image:",
+  selectedImageSuffix: "Click to cycle.",
+  galleryAriaLabel: "Origin story image gallery",
+  showImagePrefix: "Show image:",
+};
+
+export function formatMissionSelectedImageLabel(alt: string): string {
+  return `${MISSION_ORIGIN_STORY_UI_TEXT.selectedImagePrefix} ${alt}. ${MISSION_ORIGIN_STORY_UI_TEXT.selectedImageSuffix}`;
+}
+
+export function formatMissionThumbnailImageLabel(alt: string): string {
+  return `${MISSION_ORIGIN_STORY_UI_TEXT.showImagePrefix} ${alt}`;
+}
 
 export const MISSION_ORIGIN_STORY_CONTENT = {
   header: {
@@ -195,7 +241,7 @@ export const MISSION_ORIGIN_STORY_CONTENT = {
     subtitle:
       "How a scrappy idea became a durable digital service for the American people.",
     linkText: "Apply now",
-    linkHref: "#applyNow",
+    linkHref: "/apply",
   },
   body: `The idea of a team like USDS had been percolating since 2012, and people across federal agencies had been exploring new modes of hiring and working since 2008. The HealthCare.gov launch crisis created an opportunity for a scrappy idea to become a reality. The challenges behind the launch made clear that accessing government services should be as easy as ordering a book online.
 
@@ -204,39 +250,54 @@ export const MISSION_ORIGIN_STORY_CONTENT = {
   - We quickly went to work with a simple strategy:
   - Recruit top designers and engineers.
   - Pair them with leading civil servants.
-  - Deploy teams to address critical services.
-
-  Does this sound like you? Apply now.`,
+  - Deploy teams to address critical services.`,
+  cta: {
+    prompt: "Does this sound like you?",
+    text: "Apply now",
+    href: "/apply",
+  },
   items: [
     {
       id: 1,
       className: "one",
-      src: "https://picsum.photos/id/237/200/300",
+      alt: "Wide view of the White House exterior in Washington, D.C.",
+      src: "/image-breaks/white-house.jpg",
     } as Item,
     {
       id: 2,
       className: "two",
-      src: "https://assets.codepen.io/16327/portrait-image-1.jpg",
+      alt: "Main facade of the Eisenhower Executive Office Building.",
+      src: "/image-breaks/eop-building.jpg",
     } as Item,
     {
       id: 3,
       className: "three",
-      src: "https://assets.codepen.io/16327/portrait-image-12.jpg",
+      alt: "Center view of the White House complex and surrounding grounds.",
+      src: "/image-breaks/white-house-center.jpg",
     } as Item,
     {
       id: 4,
       className: "four",
-      src: "https://assets.codepen.io/16327/portrait-image-2.jpg",
+      alt: "Western perspective of the Eisenhower Executive Office Building.",
+      src: "/image-breaks/eop-west.jpg",
     } as Item,
     {
       id: 5,
       className: "five",
-      src: "https://assets.codepen.io/16327/portrait-image-4.jpg",
+      alt: "South view of the White House and nearby executive offices.",
+      src: "/image-breaks/white-house-south.jpg",
     } as Item,
     {
       id: 6,
       className: "six",
-      src: "https://assets.codepen.io/16327/portrait-image-8.jpg",
+      alt: "Detailed east-side angle of the Eisenhower Executive Office Building.",
+      src: "/image-breaks/eop-east.jpg",
+    } as Item,
+    {
+      id: 7,
+      className: "seven",
+      alt: "Historic Jackson Place streetscape adjacent to White House offices.",
+      src: "/image-breaks/jackson-place.jpg",
     } as Item,
   ] as Items,
 };
@@ -247,7 +308,7 @@ export const MISSION_PAGE_CTA_CONTENT = {
   body: "USDS tours pair private-sector expertise with urgent federal delivery challenges.",
   primary: {
     text: "Apply now",
-    href: "/mission#applyNow",
+    href: "/apply",
   },
   secondary: {
     text: "View projects",

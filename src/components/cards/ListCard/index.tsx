@@ -2,6 +2,7 @@
 
 import ImpactCard from "@/components/cards/ImpactCard";
 import type { IconName } from "@/components/cards/ImpactCard";
+import styles from "./ListCard.module.css";
 
 type ListCardProps = {
   icon: IconName;
@@ -21,13 +22,15 @@ export default function ListCard({
   tone = "default",
 }: ListCardProps) {
   return (
-    <ImpactCard
-      variant={tone === "soft" ? "soft" : "default"}
-      icon={icon}
-      status={pill}
-      eyebrow={tag}
-      title={title}
-      bullets={bullets}
-    />
+    <div className={styles.wrapper}>
+      <ImpactCard
+        variant={tone === "soft" ? "soft" : "default"}
+        icon={icon}
+        status={pill}
+        eyebrow={tag}
+        title={title}
+        bullets={bullets}
+      />
+    </div>
   );
 }

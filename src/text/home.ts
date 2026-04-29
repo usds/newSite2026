@@ -24,6 +24,11 @@ type HomeHeroContent = {
   })[];
 };
 
+type HomeHeroAgencyMarqueeContent = {
+  label: string;
+  agencies: string[];
+};
+
 type HomePractice = BasicTextCard;
 
 type HomeHowWeWorkContent = {
@@ -78,12 +83,70 @@ type ImpactStatCard = {
   subtitle: string;
 };
 
+type ImpactFeaturedSection = {
+  id: string;
+  eyebrow: string;
+  title: string;
+  body: string;
+  imageSrc: string;
+  imageAlt: string;
+  linkText: string;
+  linkHref: string;
+  metric?: {
+    before: string;
+    after: string;
+    label: string;
+  };
+};
+
 type HomeOurImpactContent = {
   header: HomeHeaderContent;
   leftCards: ImpactListCard[];
   statsTop: ImpactStatCard[];
+  featuredSections: ImpactFeaturedSection[];
   statsBottom?: ImpactStatCard[];
   wideCard: ImpactListCard;
+};
+
+type HomeImpactImage = {
+  src: string;
+  alt: string;
+};
+
+type HomeWhyTheyServeCard = {
+  name: string;
+  role: string;
+  quote: string;
+  shipped: string;
+};
+
+type HomeWhyTheyServeContent = {
+  header: {
+    eyebrow: string;
+    title: string;
+    subTitle: string;
+  };
+  cards: HomeWhyTheyServeCard[];
+  link: CtaLink;
+};
+
+type HomeFeaturedProjectsProject = {
+  id: string;
+  agency: string;
+  title: string;
+  description: string;
+  stat: string;
+  href: string;
+  imageSrc: string;
+};
+
+type HomeFeaturedProjectsContent = {
+  header: {
+    eyebrow: string;
+    title: string;
+    subTitle?: string;
+  };
+  projects: HomeFeaturedProjectsProject[];
 };
 
 export const HOME_HERO_CONTENT: HomeHeroContent = {
@@ -109,6 +172,43 @@ export const HOME_HERO_CONTENT: HomeHeroContent = {
     },
   ],
 };
+
+export const HOME_HERO_AGENCY_MARQUEE_CONTENT: HomeHeroAgencyMarqueeContent = {
+  label: "Embedded across 30+ federal agencies",
+  agencies: [
+    "Dept. of Veterans Affairs",
+    "Dept. of War",
+    "Dept. of State",
+    "Internal Revenue Service",
+    "Centers for Medicare & Medicaid Services",
+    "Dept. of Education",
+    "Dept. of Homeland Security",
+    "Social Security Administration",
+    "Dept. of Health & Human Services",
+    "General Services Administration",
+    "Small Business Administration",
+    "U.S. Citizenship & Immigration Services",
+  ],
+};
+
+export const HOME_OUR_IMPACT_IMAGES: HomeImpactImage[] = [
+  {
+    src: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1600&q=80",
+    alt: "USDS team collaborating on mission planning",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1600&q=80",
+    alt: "Cross-functional team discussing a delivery plan",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&q=80",
+    alt: "Delivery team reviewing priorities on sticky notes",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1600&q=80",
+    alt: "Program lead presenting service performance metrics",
+  },
+];
 
 export const HOME_OUR_IMPACT_CONTENT: HomeOurImpactContent = {
   header: {
@@ -175,6 +275,33 @@ export const HOME_OUR_IMPACT_CONTENT: HomeOurImpactContent = {
       subtitle: "National Provider Directory",
     },
   ],
+  featuredSections: [
+    {
+      id: "fafsa-simplified",
+      eyebrow: "Featured Project",
+      title: "FAFSA Simplified",
+      body: "The federal student aid application was 108 questions long - confusing, intimidating, and a barrier that kept millions of families from financial aid. We cut it to 36, made it mobile-first, and unlocked aid for a generation.",
+      imageSrc: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1000&q=80",
+      imageAlt: "Students collaborating on laptops in a library.",
+      linkText: "Read the full story",
+      linkHref: "/impact/fafsa",
+      metric: {
+        before: "108 questions",
+        after: "36 questions",
+        label: "Form length",
+      },
+    },
+    {
+      id: "white-house-mandate",
+      eyebrow: "Executive Office of the President",
+      title: "White House-based. Deployed nationwide.",
+      body: "USDS operates with a Presidential mandate to deploy across any federal agency. When a critical system is failing, we do not wait. We move. Codified into permanent law by Congress in 2022.",
+      imageSrc: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1000&q=80",
+      imageAlt: "Federal buildings and streets in Washington, D.C.",
+      linkText: "Our story",
+      linkHref: "/about",
+    },
+  ],
   wideCard: {
     eyebrow: "Security & Infrastructure",
     title: "Modernizing Federal Security",
@@ -204,19 +331,19 @@ export const HOME_HOW_WE_WORK_CONTENT: HomeHowWeWorkContent = {
     {
       id: "short-tours-high-trust",
       title: "Short tours, high trust",
-      body: "Teams deploy on focused tours of service and work directly with civil servants on hard, high-impact delivery problems.",
+      body: "Focused tours pair experts with civil servants on urgent public service work.",
       gradientPosition: { x: "20%", y: "80%" },
     },
     {
       id: "cross-functional",
       title: "Cross-functional",
-      body: "Engineering, product, design, data, and acquisition expertise move together so execution decisions stay practical and user-centered.",
+      body: "Product, design, engineering, data, and acquisition move as one delivery team.",
       gradientPosition: { x: "50%", y: "80%" },
     },
     {
       id: "outcomes-over-optics",
       title: "Outcomes over optics",
-      body: "We prioritize measurable service improvements that make government more effective, accountable, and useful for people.",
+      body: "We judge success by better services people can use quickly and trust.",
       gradientPosition: { x: "80%", y: "80%" },
     },
   ],
@@ -230,7 +357,7 @@ export const HOME_HOW_TO_JOIN_CONTENT: HomeHowToJoinContent = {
     subTitle:
       "Join a tour of duty that makes a difference. We're looking for talented professionals ready to bring private sector innovation to public service.",
     linkText: "View open roles",
-    linkHref: "#apply",
+    linkHref: "/apply",
   },
   rolesTitle: "Who We're Looking For",
   roles: [
@@ -264,7 +391,7 @@ export const HOME_HOW_TO_JOIN_CONTENT: HomeHowToJoinContent = {
   ],
   cta: {
     text: "Start Your Application",
-    href: "#apply",
+    href: "/apply",
   },
   ctaNote: "Applications are reviewed on a rolling basis",
 };
@@ -302,11 +429,105 @@ export const HOME_WHAT_TO_EXPECT_CONTENT: HomeWhatToExpectContent = {
   ],
 };
 
+export const HOME_WHY_THEY_SERVE_CONTENT: HomeWhyTheyServeContent = {
+  header: {
+    eyebrow: "Our People",
+    title: "Why they serve",
+    subTitle:
+      "Mission-driven professionals from every background. What they share is the ability to deliver when it matters most.",
+  },
+  cards: [
+    {
+      name: "Sarah P.",
+      role: "Senior Software Engineer",
+      quote:
+        "A single deploy can affect millions of veterans. There is no more consequential place to write code.",
+      shipped:
+        "Rebuilt the VA disability claims pipeline - processing time cut from 125 days to under 30.",
+    },
+    {
+      name: "Marcus W.",
+      role: "Product Designer",
+      quote:
+        "I grew up watching my grandmother struggle with government forms. I came here to make sure no one else has to.",
+      shipped:
+        "Redesigned FAFSA, reducing abandonment rates by 40% and unlocking billions in student aid.",
+    },
+    {
+      name: "David T.",
+      role: "Data Engineer",
+      quote:
+        "The government sits on some of the most consequential datasets in the world. I came to help make sense of them responsibly.",
+      shipped:
+        "Built the fraud detection pipeline that identified over $4 billion in fraudulent claims.",
+    },
+  ],
+  link: {
+    text: "Meet the full team",
+    href: "/about/people",
+  },
+};
+
+export const HOME_FEATURED_PROJECTS_CONTENT: HomeFeaturedProjectsContent = {
+  header: {
+    eyebrow: "Featured Projects",
+    title: "Systems we transformed",
+  },
+  projects: [
+    {
+      id: "cms-claims-modernization",
+      agency: "Centers for Medicare & Medicaid Services",
+      title: "Medicare Claims Modernization",
+      description:
+        "Rebuilt the claims processing pipeline to reduce errors, accelerate payments, and bring transparency to one of the largest healthcare systems on earth.",
+      stat: "40M+",
+      href: "/impact",
+      imageSrc:
+        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1600&q=80",
+    },
+    {
+      id: "state-passport-renewal",
+      agency: "Dept. of State",
+      title: "Passport Renewal System",
+      description:
+        "Designed an end-to-end digital renewal experience, eliminating paper bottlenecks and reducing wait times for millions of Americans.",
+      stat: "6wks",
+      href: "/impact/passport",
+      imageSrc:
+        "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1600&q=80",
+    },
+    {
+      id: "va-claims-processing",
+      agency: "Dept. of Veterans Affairs",
+      title: "VA Claims Processing",
+      description:
+        "Transformed the disability claims pipeline with intelligent automation, reducing backlog and delivering faster decisions to veterans.",
+      stat: "82%",
+      href: "/impact/va-ai",
+      imageSrc:
+        "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1600&q=80",
+    },
+    {
+      id: "education-fafsa-modernization",
+      agency: "Dept. of Education",
+      title: "FAFSA Modernization",
+      description:
+        "Simplified the federal student aid experience so more families can complete applications quickly and access support sooner.",
+      stat: "36",
+      href: "/impact/fafsa",
+      imageSrc:
+        "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1600&q=80",
+    },
+  ],
+};
+
 export const HOME_SECTION_ARIA_TEXT = {
   heroPrimaryActions: "Primary actions",
   howWeWork: "How we work",
   whatToExpect: "What to expect",
   applicationProcess: "Application Process",
+  whyTheyServe: "Why they serve",
+  whyTheyServeShippedLabel: "Shipped:",
 };
 
 export const HOME_COMMUNITIES_CONTENT = {
@@ -322,7 +543,7 @@ export const HOME_PAGE_CTA_CONTENT = {
   body: "Explore open roles and start your USDS application.",
   primary: {
     text: "Apply now",
-    href: "/mission#applyNow",
+    href: "/apply",
   },
   secondary: {
     text: "View careers",

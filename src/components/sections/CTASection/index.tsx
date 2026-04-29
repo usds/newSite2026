@@ -8,13 +8,14 @@ import type { CtaSectionContent } from "@/types/cta";
 type Props = CtaSectionContent & {
   className?: string;
   id?: string;
+  surface?: "panel" | "plain";
 };
 
 const IMPORTANT_CTA_PATTERN = /\b(apply|join|career|hiring|role|start)\b/i;
 
 function shouldShowArrow(text: string, href: string) {
   if (IMPORTANT_CTA_PATTERN.test(text)) return true;
-  return /\/careers|#apply|\/mission#applyNow/i.test(href);
+  return /\/careers|\/apply|#apply|\/mission#applyNow/i.test(href);
 }
 
 export default function CTASection({
@@ -25,11 +26,14 @@ export default function CTASection({
   primary,
   secondary,
   className,
+  surface = "plain",
 }: Props) {
+  const surfaceClass = surface === "plain" ? styles.plain : styles.panel;
+
   return (
     <section
       id={id}
-      className={`sectionFrameBase sectionFrameTonePanel ${styles.wrapper} ${className ?? ""}`}
+      className={`sectionFrameBase ${styles.wrapper} ${surfaceClass} ${className ?? ""}`}
     >
       {eyebrow ? (
         <div className={styles.eyebrowWrap}>

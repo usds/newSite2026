@@ -3,10 +3,13 @@
 import styles from "./hiringFaq.module.css";
 import DividerStars from "@/ui/DividerStars";
 import SectionHeader from "@/components/general/SectionHeader";
+import DataTable from "@/components/general/DataTable";
+import SelectorRow from "@/components/general/SelectorRow";
 import FaqItem from "./FaqItem";
 import { motion } from "motion/react";
 import { HIRING_FAQ_PAGE_CONTENT, type HiringTimelineRow } from "@/text/hiringFaq";
 import CTASection from "@/components/sections/CTASection";
+import HeroFrame from "@/components/sections/PageHero";
 
 function TimelineCard({
   title,
@@ -19,22 +22,18 @@ function TimelineCard({
     <article className={styles.timelineCard}>
       <div className={styles.timelineCardInner}>
         <h3 className={styles.timelineTitle}>{title}</h3>
-        <table className={styles.timelineTable}>
-          <thead>
-            <tr>
-              <th>{HIRING_FAQ_PAGE_CONTENT.timelineTableHeaders.stage}</th>
-              <th>{HIRING_FAQ_PAGE_CONTENT.timelineTableHeaders.businessDays}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((row) => (
-              <tr key={row.step}>
-                <td>{row.step}</td>
-                <td>{row.days}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <DataTable
+          headers={[
+            HIRING_FAQ_PAGE_CONTENT.timelineTableHeaders.stage,
+            HIRING_FAQ_PAGE_CONTENT.timelineTableHeaders.businessDays,
+          ]}
+          rows={rows.map((row) => ({
+            key: row.step,
+            cells: [row.step, row.days],
+          }))}
+          alignLastColumn="right"
+          tableClassName={styles.timelineTable}
+        />
       </div>
     </article>
   );
@@ -46,21 +45,29 @@ export default function ClientHiringFaq() {
   return (
     <div className={`pageWrap ${styles.wrapper}`}>
       <section className={`${styles.frame} ${styles.gapLg} ${styles.hero}`}>
-        <SectionHeader
+        <HeroFrame
+          className={styles.hero}
+          headerClassName={styles.heroSectionHeader}
+          variant="center"
           eyebrow={hero.eyebrow}
           title={hero.title}
-          isPageTitle
           titleHighlightSlice={hero.titleHighlightSlice}
           subtitle={hero.subtitle}
+          stats={hero.details.map((detail, index) => ({
+            label: detail.label,
+            value: detail.value,
+            tone: (["blue", "teal", "gold"] as const)[index % 3],
+          }))}
         />
 
-        <div className={styles.quickLinks}>
-          {quickLinks.map((link) => (
-            <a key={link.href} href={link.href} className={styles.quickLink}>
-              {link.label}
-            </a>
-          ))}
-        </div>
+        <SelectorRow
+          ariaLabel={HIRING_FAQ_PAGE_CONTENT.quickLinksAriaLabel}
+          items={quickLinks.map((link) => ({
+            key: link.href,
+            label: link.label,
+            href: link.href,
+          }))}
+        />
       </section>
 
       <DividerStars />
@@ -72,7 +79,7 @@ export default function ClientHiringFaq() {
         <SectionHeader
           eyebrow={sections.gettingHired.header.eyebrow}
           title={sections.gettingHired.header.title}
-          titleSize="medium"
+          titleSize="large"
         />
 
         <div className={styles.faqList}>
@@ -135,7 +142,7 @@ export default function ClientHiringFaq() {
         <SectionHeader
           eyebrow={sections.onboarding.header.eyebrow}
           title={sections.onboarding.header.title}
-          titleSize="medium"
+          titleSize="large"
         />
 
         <div className={styles.faqList}>
@@ -154,7 +161,7 @@ export default function ClientHiringFaq() {
         <SectionHeader
           eyebrow={sections.relocation.header.eyebrow}
           title={sections.relocation.header.title}
-          titleSize="medium"
+          titleSize="large"
         />
 
         <div className={styles.faqList}>
@@ -173,7 +180,7 @@ export default function ClientHiringFaq() {
         <SectionHeader
           eyebrow={sections.lifeAtUsds.header.eyebrow}
           title={sections.lifeAtUsds.header.title}
-          titleSize="medium"
+          titleSize="large"
         />
 
         <div className={styles.faqList}>

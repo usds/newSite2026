@@ -1,60 +1,57 @@
 .wrapper {
   border-radius: var(--border-radius-tertiary);
   position: relative;
-  /* background: transparent; */
   cursor: pointer;
   display: flex;
-  font-weight: inherit;
-  font-size: inherit;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
   -webkit-backdrop-filter: var(--backdrop-filter-blur);
   backdrop-filter: var(--backdrop-filter-blur);
-  height: 100%;
   box-shadow: var(--shadow-s);
   overflow: hidden;
-  font-family: var(--font-outfit);
-  width: fit-content;
-
+  transition: transform 0.25s ease;
 }
 
 .wrapper:active {
-  scale: 0.97;
+  transform: scale(0.97);
   box-shadow: none;
 }
 
 .wrapper * {
-  font-family: var(--font-outfit);
-}
-
-.wrapper > * {
-  position: relative;
-  z-index: 1;
+  font-family: var(--font-spaceGrotesk), var(--font-outfit), sans-serif;
 }
 
 .link {
-  /* flex: 1 1 auto; */
   width: 100%;
-  height: 100%;
-  padding: 0.75rem 1.5rem;
+  min-height: 2.7rem;
+  padding: 0.75rem 1.2rem;
   border-radius: var(--border-radius-tertiary);
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0;
   transition:
     padding 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    gap 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    gap 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.28s ease;
+  text-transform: capitalize;
+  letter-spacing: 0.05rem !important;
+  font-size: var(--fs-body );
+  font-weight: var(--fw-title);
+
 }
 
 .withAffordance {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
 }
 
 .withAffordance:hover,
 .withAffordance:focus-visible {
-  gap: 0.55rem;
-  padding-left: 1.85rem;
-  padding-right: 1.85rem;
+  gap: 0.48rem;
+  padding-left: 1.45rem;
+  padding-right: 1.45rem;
 }
 
 .text {
@@ -62,10 +59,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 1.25em;
-  line-height: 1;
+  height: 1.1em;
   overflow: hidden;
-  font-weight: var(--fw-subtitle) !important;
 }
 
 .line {
@@ -90,10 +85,10 @@
 .char {
   display: inline-block;
   transition:
-    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-    filter 0.3s ease,
-    opacity 0.28s ease;
-  transition-delay: calc(var(--char-index, 0) * 14ms);
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.28s ease,
+    opacity 0.26s ease;
+  transition-delay: calc(var(--char-index, 0) * 12ms);
   will-change: transform, filter, opacity;
 }
 
@@ -101,18 +96,17 @@
   transform: translateY(0%);
   filter: blur(0);
   opacity: 1;
-
 }
 
 .lineBack .char {
-  transform: translateY(130%);
-  filter: blur(2px);
+  transform: translateY(120%);
+  filter: blur(1.5px);
   opacity: 0;
 }
 
 .link:hover .lineFront .char {
-  transform: translateY(-130%);
-  filter: blur(2px);
+  transform: translateY(-120%);
+  filter: blur(1.5px);
   opacity: 0;
 }
 
@@ -144,34 +138,34 @@
 }
 
 .leftDot {
-  block-size: 0.45rem;
-  transform: translateX(-0.35rem);
+  block-size: 0.35rem;
+  transform: translateX(-0.3rem);
 }
 
 .leftDot::before {
   content: "";
-  inline-size: 0.45rem;
-  block-size: 0.45rem;
-  border-radius: 999px;
+  inline-size: 0.35rem;
+  block-size: 0.35rem;
+  border-radius: var(--border-radius-tertiary);
   background: currentColor;
   flex: 0 0 auto;
 }
 
 .rightIcon {
-  block-size: 1rem;
-  transform: translateX(0.35rem) scale(0.9);
+  block-size: 0.95rem;
+  transform: translateX(0.3rem) scale(0.92);
 }
 
 .link:hover .leftDot,
 .link:focus-visible .leftDot {
-  inline-size: 0.45rem;
+  inline-size: 0.35rem;
   opacity: 1;
   transform: translateX(0);
 }
 
 .link:hover .rightIcon,
 .link:focus-visible .rightIcon {
-  inline-size: 1rem;
+  inline-size: 0.95rem;
   opacity: 1;
   transform: translateX(0) scale(1);
 }
@@ -194,6 +188,7 @@
   }
 
   .link {
+    justify-content: center;
     padding: 0.75rem 1rem;
   }
 }

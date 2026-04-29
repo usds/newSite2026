@@ -1,0 +1,92 @@
+.grid {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-m);
+}
+
+.card {
+  flex: 1 1 calc((100% - (var(--space-m) * 2)) / 3);
+  min-width: min(100%, 19rem);
+  padding: var(--space-m);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.quoteIcon {
+  align-self: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--primary-color-transparent);
+  border-radius: 50%;
+  color: var(--primary-color-light);
+  font-family: var(--font-spaceGrotesk);
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.quoteBody {
+  margin: 0;
+  color: var(--primary-light-subtle);
+  font-size: var(--quote-section-quote-size, var(--fs-h2));
+  line-height: 1.28;
+  font-weight: var(--fw-title);
+  font-family: var(--font-spaceGrotesk);
+}
+
+.identity {
+  margin-top: auto;
+  padding-top: var(--space-m);
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.name {
+  margin: 0;
+  color: var(--primary-color-light);
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-title);
+  font-family: var(--font-spaceGrotesk);
+}
+
+.role {
+  margin: 0;
+  color: var(--primary-light-muted);
+  font-size: var(--fs-h5);
+  font-weight: var(--fw-regular);
+  letter-spacing: 0.05rem;
+}
+
+.detail {
+  margin: 0;
+  color: var(--primary-light-subtle);
+  font-size: var(--fs-body);
+  line-height: var(--lh-tall);
+  min-height: var(--quote-section-detail-min-height, 0);
+}
+
+.detailLabel {
+  color: var(--primary-yellow-color);
+  font-weight: var(--fw-subtitle);
+}
+
+@media (max-width: 72em) {
+  .card {
+    flex-basis: calc(50% - (var(--space-m) / 2));
+    min-width: 0;
+  }
+}
+
+@media (max-width: 40em) {
+  .card {
+    flex-basis: 100%;
+  }
+}

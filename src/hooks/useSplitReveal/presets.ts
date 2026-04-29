@@ -17,14 +17,14 @@ export function useTitleReveal<TScope extends Element, TText extends Element>(
   opts: PresetOpts = {}
 ) {
   useSplitReveal(scopeRef, textRef, {
-    type: "words,chars",
-    mask: "chars",
-    charsClass: "char",
+    type: "lines",
+    mask: "lines",
+    linesClass: "line",
     deps,
     from: {
-      duration: 1,
-      yPercent: -120,
-      stagger: 0.01,
+      duration: 0.9,
+      yPercent: -108,
+      stagger: 0.08,
       ease: "expo.out",
     },
     ...opts,

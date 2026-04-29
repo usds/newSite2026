@@ -2,6 +2,7 @@
 
 import ImpactCard from "@/components/cards/ImpactCard";
 import type { IconName } from "@/components/cards/ImpactCard";
+import styles from "./GradientCard.module.css";
 
 type GradientCardProps = {
   icon: IconName;
@@ -21,13 +22,15 @@ export default function GradientCard({
   variant,
 }: GradientCardProps) {
   return (
-    <ImpactCard
-      variant={variant === "teal" ? "gradientTeal" : "gradientBlue"}
-      icon={icon}
-      status={pill}
-      eyebrow={tag}
-      title={title}
-      bullets={bullets}
-    />
+    <div className={styles.wrapper}>
+      <ImpactCard
+        variant={variant === "teal" ? "gradientTeal" : "gradientBlue"}
+        icon={icon}
+        status={pill}
+        eyebrow={tag}
+        title={title}
+        bullets={bullets}
+      />
+    </div>
   );
 }

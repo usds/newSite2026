@@ -55,9 +55,9 @@
   margin: 0;
   color: var(--primary-light);
   font-size: var(--fs-h1);
-  font-weight: 400;
+  font-weight: var(--fw-regular);
   text-transform: capitalize;
-  font-family: var(--font-instrumentSerif);
+  font-family: var(--font-spaceGrotesk);
 }
 
 .communityList {
@@ -68,8 +68,6 @@
   flex-direction: column;
   width: 100%;
   margin-bottom: var(--space-m);
-  border: 1px solid red;
-
 }
 
 .communityItem {
@@ -81,13 +79,12 @@
   padding: 0.75rem;
   font-weight: var(--fw-subtitle);
   padding: var(--space-xl);
-  border: 1px solid green;
 }
 
 .dot {
   width: 0.5rem;
   height: 0.5rem;
-  border-radius: 999px;
+  border-radius: var(--border-radius-tertiary);
   background: var(--primary-color-light);
   opacity: 0.9;
   flex: 0 0 auto;

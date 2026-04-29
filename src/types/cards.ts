@@ -8,4 +8,5 @@ export type BasicTextCard = {
   title: string;
   body: string;
   gradientPosition?: CardGradientPosition;
+  surface?: "background" | "plain";
 };

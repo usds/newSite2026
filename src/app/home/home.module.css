@@ -1,117 +1,48 @@
 .wrapper {
-  height: fit-content;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.page {
-
-  display: flex;
-  min-height: 100vh;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--background);
-}
-
-.main {
-  display: flex;
-  min-height: 100vh;
   width: 100%;
+  min-height: 100lvh;
   max-width: var(--max-layout-width);
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-}
-
-.intro {
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 24px;
-  /* border: 1px solid rgb(94, 255, 0); */
-}
-
-.intro h1 {
-  max-width: 320px;
-  font-size: 40px;
-  font-weight: var(--fw-large);
-  line-height: 48px;
-  text-wrap: balance;
-  color: var(--text-primary);
-}
-
-.intro p {
-  max-width: 440px;
-  font-size: 18px;
-  line-height: 32px;
-  text-wrap: balance;
-  color: var(--text-secondary);
-}
-
-.intro a {
-  font-weight: var(--fw-subtitle);
-  color: var(--text-primary);
-}
-
-.ctas {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  max-width: 440px;
-  gap: 16px;
-  font-size: 14px;
-}
-
-.ctas a {
-  display: flex;
-  justify-content: center;
   align-items: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 128px;
-  border: 1px solid transparent;
-  transition: var(--transition-fast);
-  cursor: pointer;
-  width: fit-content;
-  font-weight: var(--fw-subtitle);
+  justify-content: center;
 }
 
-a.primary {
-  background: var(--text-primary);
-  color: var(--background);
-  gap: 8px;
+.innerWrapper {
+  width: min(100%, var(--max-layout-width));
+  margin: 0 auto;
+  padding: calc(var(--header-clearance) + (var(--space-l) * 2))
+    var(--page-content-inline-padding);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-l);
 }
 
-a.secondary {
-  border-color: var(--button-secondary-border);
+@media (max-width: 425px) {
+  /* .wrapper {
+    padding: var(--space-s) !important;
+  } */
 }
 
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
+@media (max-width: 72em) {
+  .wrapper {
+    padding: 0 0 calc(2rem + var(--header-height));
   }
 
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
+  .innerWrapper {
+    gap: var(--space-xl);
   }
 }
 
-@media (max-width: 600px) {
-  .main {
-    padding: 48px 24px;
-  }
+@media (max-width: 40em) {
+  /* .wrapper {
+    padding: 1.25rem 0 calc(1.25rem + var(--header-height));
+  } */
 
-  .intro {
-    gap: 16px;
-  }
-
-  .intro h1 {
-    font-size: 32px;
-    line-height: 40px;
+  .innerWrapper {
+    padding: 0 clamp(1rem, 4vw, 1.25rem);
+    gap: var(--space-l);
   }
 }

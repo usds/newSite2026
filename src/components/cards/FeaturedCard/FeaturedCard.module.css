@@ -1,3 +1,7 @@
+.wrapper {
+  display: contents;
+}
+
 .cardFeatured {
   background: linear-gradient(
     135deg,
@@ -54,7 +58,7 @@
 
 .wave {
   height: 2px;
-  border-radius: 999px;
+  border-radius: var(--border-radius-tertiary);
   background: linear-gradient(
     90deg,
     rgba(255, 255, 255, 0.18),

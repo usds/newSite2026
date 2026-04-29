@@ -2,6 +2,7 @@ import styles from "./FooterSocialLinks.module.css";
 import type { FooterSocialItem } from "@/text/site";
 import { FOOTER_SOCIAL_LINKS_TEXT } from "@/text/ui";
 import { withBasePath } from "@/utils/basePath";
+import Link from "next/link";
 
 type Props = {
   socials: FooterSocialItem[];
@@ -17,7 +18,7 @@ const iconKeyByLabel: Record<string, string> = {
 export default function FooterSocialLinks({ socials }: Props) {
   return (
     <ul
-      className={styles.socialList}
+      className={`${styles.wrapper} ${styles.socialList}`}
       aria-label={FOOTER_SOCIAL_LINKS_TEXT.listAriaLabel}
     >
       {socials.map(({ label, href }) => {
@@ -25,7 +26,7 @@ export default function FooterSocialLinks({ socials }: Props) {
 
         return (
           <li key={href}>
-            <a
+            <Link
               className={styles.socialLink}
               href={href}
               aria-label={label}
@@ -40,7 +41,7 @@ export default function FooterSocialLinks({ socials }: Props) {
               >
                 <use href={withBasePath(`/assets/img/sprite.svg#${iconKey}`)} />
               </svg>
-            </a>
+            </Link>
           </li>
         );
       })}

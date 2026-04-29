@@ -107,7 +107,7 @@
 .stepBadge {
   width: 40px;
   height: 40px;
-  border-radius: 999px;
+  border-radius: var(--border-radius-tertiary);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -152,7 +152,7 @@
   gap: 0.75rem;
   width: 100%;
   padding: 0.95rem 1.1rem;
-  border-radius: 14px;
+  border-radius: var(--border-radius-primary);
   font-weight: var(--fw-large);
   color: var(--primary-dark);
   background: linear-gradient(

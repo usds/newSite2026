@@ -17,9 +17,6 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  experimental: {
-    turbopackUseSystemTlsCerts: true,
-  },
 };
 
 export default nextConfig;

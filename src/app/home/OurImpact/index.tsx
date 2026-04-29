@@ -1,43 +1,179 @@
 "use client";
 
+import { useEffect, useMemo, useRef, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import styles from "./OurImpact.module.css";
-import ImpactCard, { type IconName } from "@/components/cards/ImpactCard";
 import SectionHeader from "@/components/general/SectionHeader";
-import { HOME_OUR_IMPACT_CONTENT } from "@/text/home";
-import { AnimatePresence } from "motion/react";
+import SlotMachineValue from "@/components/general/SlotMachineValue";
+import { HOME_OUR_IMPACT_CONTENT, HOME_OUR_IMPACT_IMAGES } from "@/text/home";
+import { withBasePath } from "@/utils/basePath";
+import { motion } from "motion/react";
+
+type ImpactSlide = {
+  id: string;
+  value?: string;
+  eyebrow?: string;
+  title: string;
+  subtitle?: string;
+  body?: string;
+  metric?: {
+    before: string;
+    after: string;
+    label: string;
+  };
+  link?: {
+    text: string;
+    href: string;
+  };
+  image: {
+    src: string;
+    alt: string;
+  };
+};
+
+type ImpactSlidePanelProps = {
+  slide: ImpactSlide;
+  index: number;
+  totalSlides: number;
+};
+
+function ImpactSlidePanel({ slide, index, totalSlides }: ImpactSlidePanelProps) {
+  const panelRef = useRef<HTMLElement | null>(null);
+  const [animateValue, setAnimateValue] = useState(false);
+  const isStorySlide = Boolean(slide.body || slide.eyebrow || slide.link || slide.metric);
+
+  useEffect(() => {
+    const panelEl = panelRef.current;
+    if (!panelEl) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry?.isIntersecting) {
+          setAnimateValue(true);
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.4,
+      },
+    );
+
+    observer.observe(panelEl);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  return (
+    <section className={styles.sectionTrack} aria-labelledby={`${slide.id}-title`}>
+      <motion.article
+        className={[styles.section, (index & 1) === 0 ? "" : styles.sectionReverse]
+          .filter(Boolean)
+          .join(" ")}
+        ref={panelRef}
+        style={{ zIndex: totalSlides - index }}
+      >
+            <div className={styles.imageFrame}>
+              <Image
+                className={styles.image}
+                src={slide.image.src}
+                alt={slide.image.alt}
+                fill
+                sizes="(min-width: 64em) 50vw, 100vw"
+                priority={index === 0}
+              />
+            </div>
+
+            <div className={`${styles.textPane} ${isStorySlide ? styles.textPaneStory : ""}`}>
+              {isStorySlide ? (
+                <>
+                  {slide.eyebrow ? (
+                    <p className={styles.storyEyebrow}>{slide.eyebrow}</p>
+                  ) : null}
+                  <h3 className={styles.storyTitle} id={`${slide.id}-title`}>
+                    {slide.title}
+                  </h3>
+                  {slide.body ? <p className={styles.storyBody}>{slide.body}</p> : null}
+                  {slide.metric ? (
+                    <div className={styles.storyMetricRow}>
+                      <span className={styles.storyMetricBefore}>{slide.metric.before}</span>
+                      <span className={styles.storyMetricArrow} aria-hidden="true">
+                        →
+                      </span>
+                      <span className={styles.storyMetricAfter}>{slide.metric.after}</span>
+                      <span className={styles.storyMetricLabel}>{slide.metric.label}</span>
+                    </div>
+                  ) : null}
+                  {slide.link ? (
+                    <Link href={slide.link.href} className={styles.storyLink}>
+                      {slide.link.text} →
+                    </Link>
+                  ) : null}
+                </>
+              ) : (
+                <>
+                  <p className={styles.slideCounter} aria-hidden="true">
+                    {String(index + 1).padStart(2, "0")} /{" "}
+                    {String(totalSlides).padStart(2, "0")}
+                  </p>
+                  <h3 className={styles.metricValue}>
+                    <SlotMachineValue
+                      value={slide.value ?? ""}
+                      animate={animateValue}
+                      className={styles.metricValueInline}
+                      digitDelayMs={90}
+                    />
+                  </h3>
+                  <h4 className={styles.metricTitle} id={`${slide.id}-title`}>
+                    {slide.title}
+                  </h4>
+                  {slide.subtitle ? <p className={styles.metricSubtitle}>{slide.subtitle}</p> : null}
+                </>
+              )}
+            </div>
+      </motion.article>
+    </section>
+  );
+}
 
 export default function OurImpact() {
-  const { header, leftCards, statsTop, statsBottom, wideCard } = HOME_OUR_IMPACT_CONTENT;
-  const leftCardStyles: Array<{
-    variant: "default" | "feature" | "gradientTeal";
-    icon: IconName;
-    animateWaves: boolean;
-  }> = [
-    { variant: "default", icon: "groups", animateWaves: false },
-    { variant: "feature", icon: "verified", animateWaves: true },
-    { variant: "gradientTeal", icon: "iphone", animateWaves: false },
-  ];
-  const leftGradientPositions: Array<{ x: string; y: string }> = [
-    { x: "50%", y: "10%" },
-    { x: "90%", y: "90%" },
-    { x: "10%", y: "90%" },
-  ];
-  const topStatIcons: IconName[] = ["dollar", "school", "building", "globe"];
-  const topStatGradientPositions: Array<{ x: string; y: string }> = [
-    { x: "90%", y: "10%" },
-    { x: "10%", y: "10%" },
-    { x: "90%", y: "90%" },
-    { x: "10%", y: "90%" },
-  ];
-  const bottomStatIcons: IconName[] = ["trendingUp", "map"];
-  const bottomStatGradientPositions: Array<{ x: string; y: string }> = [
-    { x: "50%", y: "10%" },
-    { x: "90%", y: "90%" },
-  ];
+  const { header, statsTop, featuredSections } = HOME_OUR_IMPACT_CONTENT;
+
+  const slides = useMemo<ImpactSlide[]>(
+    () => [
+      ...statsTop.map((stat, index) => ({
+        id: `impact-slide-${index + 1}`,
+        value: stat.value,
+        title: stat.title,
+        subtitle: stat.subtitle,
+        image: HOME_OUR_IMPACT_IMAGES[index % HOME_OUR_IMPACT_IMAGES.length],
+      })),
+      ...featuredSections.map((section) => ({
+        id: section.id,
+        eyebrow: section.eyebrow,
+        title: section.title,
+        body: section.body,
+        metric: section.metric,
+        link: {
+          text: section.linkText,
+          href: section.linkHref,
+        },
+        image: {
+          src: withBasePath(section.imageSrc),
+          alt: section.imageAlt,
+        },
+      })),
+    ],
+    [featuredSections, statsTop],
+  );
 
   return (
     <section
-      className={`sectionFrameBase homeSection ${styles.wrapper}`}
+      className={`sectionFrameBase ${styles.wrapper}`}
+      id="impact"
       aria-labelledby="impact-title"
     >
       <SectionHeader
@@ -49,65 +185,15 @@ export default function OurImpact() {
         linkHref={header.linkHref}
       />
 
-      <div className={styles.layout}>
-        <div className={styles.colLeft}>
-          <AnimatePresence mode="popLayout">
-            {leftCards.map((card, index) => (
-              <ImpactCard
-                key={card.title}
-                variant={leftCardStyles[index]?.variant ?? "default"}
-                icon={leftCardStyles[index]?.icon ?? "groups"}
-                status={card.status}
-                eyebrow={card.eyebrow}
-                title={card.title}
-                bullets={card.bullets}
-                animateWaves={leftCardStyles[index]?.animateWaves ?? false}
-                gradientPosition={leftGradientPositions[index]}
-              />
-            ))}
-          </AnimatePresence>
-        </div>
-
-        <div className={styles.colRight}>
-          <div className={styles.statGrid}>
-            <AnimatePresence mode="popLayout">
-              {statsTop.map((card, index) => (
-                <ImpactCard
-                  key={card.title}
-                  variant="stat"
-                  icon={topStatIcons[index] ?? "dollar"}
-                  value={card.value}
-                  title={card.title}
-                  subtitle={card.subtitle}
-                  gradientPosition={topStatGradientPositions[index]}
-                />
-              ))}
-
-              <div className={styles.wideRow} key={wideCard.title}>
-                <ImpactCard
-                  variant="soft"
-                  icon="storage"
-                  eyebrow={wideCard.eyebrow}
-                  title={wideCard.title}
-                  bullets={wideCard.bullets}
-                  gradientPosition={{ x: "10%", y: "10%" }}
-                />
-              </div>
-
-              {statsBottom?.map((card, index) => (
-                <ImpactCard
-                  key={card.title}
-                  variant="stat"
-                  icon={bottomStatIcons[index] ?? "trendingUp"}
-                  value={card.value}
-                  title={card.title}
-                  subtitle={card.subtitle}
-                  gradientPosition={bottomStatGradientPositions[index]}
-                />
-              ))}
-            </AnimatePresence>
-          </div>
-        </div>
+      <div className={styles.slidesWrapper}>
+        {slides.map((slide, index) => (
+          <ImpactSlidePanel
+            key={slide.id}
+            slide={slide}
+            index={index}
+            totalSlides={slides.length}
+          />
+        ))}
       </div>
     </section>
   );

@@ -3,6 +3,7 @@
 import { useEffect, useLayoutEffect, useRef } from "react";
 import Lenis from "lenis";
 import { usePathname } from "next/navigation";
+import styles from "./LenisSmoothScroll.module.css";
 
 export default function LenisSmoothScroll() {
   const pathname = usePathname();
@@ -44,17 +45,15 @@ export default function LenisSmoothScroll() {
   }, []);
 
   useEffect(() => {
-  const id = requestAnimationFrame(() => {
-    lenisRef.current?.scrollTo(0, { immediate: true });
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-  });
+    const id = requestAnimationFrame(() => {
+      lenisRef.current?.scrollTo(0, { immediate: true });
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    });
 
-  return () => {
-    cancelAnimationFrame(id);
-  };
+    return () => {
+      cancelAnimationFrame(id);
+    };
+  }, [pathname]);
 
-}, [pathname]);
-
-  return null;
+  return <div className={styles.wrapper} aria-hidden="true" />;
 }
-

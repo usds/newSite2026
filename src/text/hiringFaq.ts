@@ -20,6 +20,24 @@ export const HIRING_FAQ_PAGE_CONTENT = {
     titleHighlightSlice: [7, 10] as [number, number],
     subtitle:
       "Guidance on eligibility, interviews, timelines, background checks, relocation expectations, and day-to-day life at USDS.",
+    details: [
+      {
+        label: "Hiring timeline",
+        value: "16-28 business days",
+      },
+      {
+        label: "Onboarding timeline",
+        value: "14-44 business days",
+      },
+      {
+        label: "Work model",
+        value: "In-person in Washington, D.C.",
+      },
+      {
+        label: "Eligibility",
+        value: "U.S. citizenship required",
+      },
+    ],
   },
   quickLinks: [
     { href: "#getting-hired", label: "Getting hired" },
@@ -27,6 +45,7 @@ export const HIRING_FAQ_PAGE_CONTENT = {
     { href: "#relocation", label: "Relocation" },
     { href: "#life-at-usds", label: "Life at USDS" },
   ],
+  quickLinksAriaLabel: "Hiring FAQ quick links",
   sections: {
     gettingHired: {
       id: "getting-hired",
@@ -247,7 +266,7 @@ export const HIRING_FAQ_PAGE_CONTENT = {
     body: "Submit one application and we will evaluate you across the tracks where your skills fit best.",
     primary: {
       text: "Apply now",
-      href: "/mission#applyNow",
+      href: "/apply",
     },
     secondary: {
       text: "View careers",

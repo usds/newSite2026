@@ -44,6 +44,24 @@ export const HOVER_CURSOR_PREVIEW_TEXT = {
   defaultCursorLabel: "View",
 };
 
+export const IMPACT_CASE_STUDY_CARDS_TEXT = {
+  domainFilterAriaLabel: "Case study domains",
+  allFilterLabel: "All",
+  domainFilterOrder: [
+    "Healthcare",
+    "Veterans",
+    "Immigration & State",
+    "Education & Finance",
+    "Defense & Security",
+  ],
+  imageAltSuffix: "case study image",
+  openCaseStudyLabel: "Open case study",
+};
+
+export function formatImpactCaseStudyImageAlt(title: string): string {
+  return `${title} ${IMPACT_CASE_STUDY_CARDS_TEXT.imageAltSuffix}`;
+}
+
 export const INFO_PANEL_CARD_TEXT = {
   images: {
     whoWeAre: {
@@ -74,8 +92,4 @@ export const STICKY_LIST_HEADER_OPTIONS: Record<string, StickyListHeaderOption> 
     highlightSlice: [4, 11],
     showLinkArrow: false,
   },
-};
-
-export const ROOT_LAYOUT_UI_TEXT = {
-  skipLink: "Skip to main content",
 };

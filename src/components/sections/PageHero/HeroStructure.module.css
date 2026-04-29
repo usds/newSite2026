@@ -1,0 +1,12 @@
+.frame {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.top,
+.bottom {
+  width: 100%;
+  min-width: 0;
+}

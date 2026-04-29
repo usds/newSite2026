@@ -40,7 +40,9 @@ export default function SectionFrame({
 
   return (
     <Tag
-      className={`${styles.frame} ${gapMap[gap]} ${toneMap[tone]} ${className ?? ""}`}
+      className={`${styles.wrapper} ${styles.frame} ${gapMap[gap]} ${toneMap[tone]} ${
+        className ?? ""
+      }`}
       {...rest}
     >
       {children}

@@ -7,6 +7,24 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || SITE_URL
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
+  const extraRoutes = [
+    "/about",
+    "/about/people",
+    "/about/people/seth-eheart",
+    "/impact",
+    "/impact/congress",
+    "/impact/fafsa",
+    "/impact/va-ai",
+    "/impact/state-visas",
+    "/impact/passport",
+    "/agencies",
+    "/dispatches",
+    "/join",
+    "/join/alumni",
+    "/apply",
+    "/privacy",
+    "/contact",
+  ] as const;
 
   return [
     {
@@ -45,5 +63,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.9,
     },
+    ...extraRoutes.map((route) => ({
+      url: `${siteUrl}${route}`,
+      lastModified,
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    })),
   ];
 }

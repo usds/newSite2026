@@ -14,6 +14,14 @@
   align-items: centers;
 }
 
+.hero {
+  gap: var(--space-m);
+}
+
+.heroSectionHeader {
+  margin-bottom: var(--space-m);
+}
+
 
 
 .heroLayout {
@@ -37,13 +45,13 @@
   max-width: 72ch;
   color: var(--primary-light-muted);
   font-size: var(--fs-h5);
-  /* line-height: 1.65; */
+  /* line-height: var(--lh-norm); */
   font-weight: var(--fw-body);
   
 }
 
 /* .valuesFoot {
-  font-weight: 300;
+  font-weight: var(--fw-body);
 } */
 
 .valuesGrid {
@@ -83,7 +91,6 @@
   color: var(--primary-color);
   font-size: var(--fs-h4);
   font-weight: var(--fw-title);
-  line-height: 1.35;
   letter-spacing: -0.01em;
 }
 
@@ -93,7 +100,7 @@
   margin: 0;
   color: var(--primary-light-muted);
   font-size: var(--fs-body);
-  /* line-height: 1.6; */
+  /* line-height: var(--lh-norm); */
   font-weight: var(--fw-body);
 }
 
@@ -163,7 +170,7 @@
   font-size: var(--fs-h4);
   font-weight: var(--fw-title);
   margin-bottom: var(--space-s);
-  /* line-height: 1.5; */
+  /* line-height: var(--lh-norm); */
   /* letter-spacing: -0.01em; */
 }
 
@@ -173,7 +180,7 @@
   margin: 0;
   color: var(--primary-light);
   font-size: var(--fs-body);
-  line-height: 2;
+  line-height: var(--lh-tall);
   font-weight: var(--fw-body);
   margin-bottom: 0;
 }
@@ -185,10 +192,10 @@
   color: var(--primary-light-muted);
   font-size: var(--fs-body);
   font-weight: var(--fw-body);
-  /* line-height: 2; */
+  /* line-height: var(--lh-norm); */
 
 
-  /* line-height: 1.65; */
+  /* line-height: var(--lh-norm); */
 }
 
 .disciplineSkills span {
@@ -224,7 +231,6 @@
   color: var(--primary-light);
   font-size: var(--fs-h4);
   font-weight: var(--fw-title);
-  line-height: 1.35;
   letter-spacing: -0.01em;
 }
 
@@ -234,7 +240,6 @@
   margin: 0;
   color: var(--primary-light-muted);
   font-size: var(--fs-body);
-  line-height: 1.6;
   font-weight: var(--fw-body);
 }
 
@@ -272,7 +277,6 @@
   color: var(--primary-light);
   font-size: var(--fs-h4);
   font-weight: var(--fw-title);
-  line-height: 1.35;
   letter-spacing: -0.01em;
 }
 
@@ -282,7 +286,6 @@
   margin: 0;
   color: var(--primary-light-muted);
   font-size: var(--fs-body);
-  line-height: 1.6;
   font-weight: var(--fw-body);
 }
 
@@ -311,9 +314,8 @@
   margin: 0;
   color: var(--primary-light);
   font-size: var(--fs-h2);
-  font-weight: 400;
-  line-height: 1.2;
-  font-family: var(--font-instrumentSerif);
+  font-weight: var(--fw-regular);
+  font-family: var(--font-spaceGrotesk);
 }
 
 .ctaAction {
@@ -365,6 +367,10 @@
 @media (max-width: 40em) {
   .hero {
     margin-top: clamp(6.5rem, 13vh, 8rem);
+  }
+
+  .heroSectionHeader {
+    margin-bottom: var(--space-s);
   }
 
   .valueCardInner,

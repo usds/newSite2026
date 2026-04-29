@@ -18,13 +18,15 @@ export default function StatCard({
   subtitle,
 }: StatCardProps) {
   return (
-    <ImpactCard
-      className={styles.statCard}
-      variant="stat"
-      icon={icon}
-      value={value}
-      title={title}
-      // subtitle={subtitle}
-    />
+    <div className={styles.wrapper}>
+      <ImpactCard
+        className={styles.statCard}
+        variant="stat"
+        icon={icon}
+        value={value}
+        title={title}
+        // subtitle={subtitle}
+      />
+    </div>
   );
 }
